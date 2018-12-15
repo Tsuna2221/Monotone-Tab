@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
+.sketch-picker{
+    padding: 0px !important;
+    box-sizing: initial !important;
+    background: none !important;
+    border-radius: 4px !important;
+    box-shadow: none !important;
+}
 body{
   	margin: 0;
 	padding: 0;
@@ -170,6 +176,7 @@ body{
 
 .quick-item{
 	margin: 6px;
+	transition: .25s ease;
 	padding-bottom: 20px;
 	display: flex;
 	cursor: pointer;
@@ -243,11 +250,11 @@ body{
 
 /*Modal*/
 
-.new-item-modal{
+.new-item-modal, .edit-item-modal{
 	display: none;
 	justify-content: center;
 	align-items: center;
-    z-index: 1999;
+    z-index: 19999999;
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -301,11 +308,17 @@ body{
 }
 
 .color-field{
-	display: grid;
-	grid-template-columns: 42px 42px 42px 42px;
-    grid-auto-rows: 42px;
-	grid-gap: 7px;
 	margin: 3px 0;
+}
+
+
+
+.a-color-picker-row{
+	padding: 5px 15px;
+}
+
+.a-color-picker-row-top{
+	padding: 0px;
 }
 
 .color-option{
@@ -313,7 +326,7 @@ body{
 }
 
 .color-selected{
-	border: 2px dashed #3e3e3e;
+	border: 2px dashed #0e0e29;;
 	border-radius: 8px;
 }
 
@@ -337,7 +350,7 @@ body{
 }
 
 .remove-btn{
-	color: #999;
+	color: #737373;
     background-color: rgba(255, 255, 255, 0);
     border: 1px solid #c3c3c3;
 }

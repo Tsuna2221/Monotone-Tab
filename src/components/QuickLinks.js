@@ -3,6 +3,7 @@ import p from 'parse-string-data'
 
 //Components
 import QuickLinkModal from './Modals/QuickLinkSettingModal'
+import QuickLinkEdit from './Modals/QuickLinkEditModal'
 
 //Images
 import OptionButton from "../assets/OptionButton.svg";
@@ -12,6 +13,7 @@ class QuickLinks extends Component {
         window.onclick = this.closeModal
         return (
             <div id='QuickLinks'>
+                <QuickLinkEdit data={this.state.selectedData} lastItem={this.getLastItems()} updateLinksState={this.updateLinksState} linkColors={this.state.linkColors}/>
                 <QuickLinkModal lastItem={this.getLastItems()} updateLinksState={this.updateLinksState} linkColors={this.state.linkColors} />
                 <div id="quick-main-container">
                 <span className="quick-label">Quick Links</span>
@@ -45,15 +47,14 @@ class QuickLinks extends Component {
             {hex: '#98DB33'},
             {hex: '#9D9D0F'},
             {hex: '#B57719'},
-            {hex: '#B51919'}
+            {hex: '#B51919'},
         ],
         itemState: '',
         newItemName: '',
         newItemURL: '',
         newItemColor: '',
+        selectedData: {}
     }
-
-    //parseInt(JSON.parse(localStorage.getItem('item' + (localStorage.length - 1))).id.replace('item', ''))
 
     drawContainer = () => {
         var items = [];
@@ -89,7 +90,18 @@ class QuickLinks extends Component {
     }
 
     editButton = (e) => {
-        console.log(JSON.parse(localStorage.getItem(e.target.previousSibling.dataset.id)))
+        var modal = document.querySelector(".edit-item-modal")
+        var selectedItem = JSON.parse(localStorage.getItem(e.target.previousSibling.dataset.id))
+        var nameInput = document.querySelector(".edit-name-input")
+        var urlInput = document.querySelector(".edit-url-input")
+
+        this.setState({
+            selectedData: selectedItem
+        })
+
+        modal.style.display = "flex"
+        nameInput.value = selectedItem.name
+        urlInput.value = selectedItem.url
     }
 
     getLastItems = () => {
@@ -126,9 +138,7 @@ class QuickLinks extends Component {
         return items;
     }
 
-    redirectTo = (url) => {
-        window.location.href = url
-    }
+    redirectTo = (url) => window.location.href = url
 
     showModal = (e) => {
         var modal = document.querySelector(".new-item-modal")
@@ -141,18 +151,24 @@ class QuickLinks extends Component {
     }
 
     closeModal = (e) => {
-        var modal = document.querySelector(".new-item-modal")
+        var newModal = document.querySelector(".new-item-modal")
+        var editModal = document.querySelector(".edit-item-modal")
         var elements = document.getElementsByClassName('color-option')
 
-        if(e.target === modal){
-            document.querySelector(".input-name").value = ''
-            document.querySelector(".input-url").value = ''
+
+        if(e.target === newModal || e.target === editModal){
+            var inputs = document.querySelectorAll(".input")
+
+            inputs.forEach(e => {
+                e.value = ''
+            });
 
             for(var i = 0; i < elements.length; i++){
                 elements[i].className = 'color-option'
             }
 
-            modal.style.display = 'none'
+            editModal.style.display = 'none'
+            newModal.style.display = 'none'
         }
     }
 }
