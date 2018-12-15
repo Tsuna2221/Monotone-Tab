@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 25.263">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #616161;
+      }
+    </style>
+  </defs>
+  <path id="ic_format_list_numbered_24px" class="cls-1" d="M2,24.526H5.158v.789H3.579v1.579H5.158v.789H2v1.579H6.737V22.947H2ZM3.579,10.316H5.158V4H2V5.579H3.579ZM2,15.053H4.842L2,18.368v1.421H6.737V18.211H3.895l2.842-3.316V13.474H2ZM9.895,5.579V8.737H32V5.579Zm0,22.105H32V24.526H9.895Zm0-9.474H32V15.053H9.895Z" transform="translate(-2 -4)"/>
+</svg>

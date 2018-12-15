@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 18">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e2e2e2;
+      }
+    </style>
+  </defs>
+  <path id="ic_menu_24px" class="cls-1" d="M3,24H30V21H3Zm0-7.5H30v-3H3ZM3,6V9H30V6Z" transform="translate(-3 -6)"/>
+</svg>
