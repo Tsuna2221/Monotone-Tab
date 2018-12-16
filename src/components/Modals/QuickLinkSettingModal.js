@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SliderPicker } from 'react-color';
+import { SketchPicker } from 'react-color';
 
 class QuickLinkModal extends Component {
     render() {
@@ -46,7 +46,7 @@ class QuickLinkModal extends Component {
     }
 
     modalColors = () => {
-        return <SliderPicker color={this.state.colorSelected} onChangeComplete={ this.handleColor }/>
+        return <SketchPicker color={this.state.colorSelected} onChangeComplete={ this.handleColor }/>
         /*return this.props.linkColors.map((col) => (
                 <div key={col.hex} onClick={this.handleModalColor} className={'color-option' + this.state.colorSelected} style={{backgroundColor: col.hex}} data-color={col.hex}></div>
             )
