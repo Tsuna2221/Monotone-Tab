@@ -1,0 +1,60 @@
+.AccountModal{
+    position: absolute;
+    top: 66px;
+    right: 85px;
+    background-color: #faf9ff;
+    padding: 17px 25px;
+    box-shadow: 0 2px 10px #00000033;
+    transition: .1s ease;
+}
+
+.account-modal-inactive{
+    display: none;
+}
+
+.account-field > label {
+    font-size: 12px;
+    color: #727272;
+}
+
+.account-password{
+    margin-top: 10px;
+}
+
+.account-field > div {
+    margin: 4px 0;
+}
+
+.account-field > div > input{
+    outline: none;
+    border: none;
+    height: 27px;
+    padding: 0 7px;
+    color: #7b7b7b;
+    box-shadow: 0 1px 3px #00000033;
+}
+
+.account-buttons{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.account-btn{
+    width: fit-content;
+    padding: 10px 19px;
+    margin: 17px auto 0 auto;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.login-btn{
+    color: #fff;
+    background-color: #3d405d;
+    height: fit-content;
+    padding: 11px 19px;
+}
+
+.signout-btn{
+    color: #3d405d;
+    border: 1px solid #3f405d;
+}

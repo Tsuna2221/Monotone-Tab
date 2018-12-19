@@ -41,19 +41,22 @@ class QuickLinkEdit extends Component {
     }
 
     state = {
-        colorSelected: '',
-        items: []
+
     }
 
     modalColors = () => {
-        return <SketchPicker color={this.state.colorSelected} onChangeComplete={ this.handleColor }/>
-        /*return this.props.linkColors.map((col) => (
-                <div key={col.hex} onClick={this.handleModalColor} className={'color-option' + this.state.colorSelected} style={{backgroundColor: col.hex}} data-color={col.hex}></div>
-            )
-        )*/
+        var items = [];
+
+        for(var data in localStorage){
+            if(localStorage.getItem(data)){
+                items.push(JSON.parse(localStorage.getItem(data)).color)
+            }
+        }
+
+        return <SketchPicker presetColors={items} color={this.state.colorSelected} onChangeComplete = { this.handleColor }/>
     }
 
-    handleColor = (color, event) => this.setState({colorSelected: color.hex})
+    handleColor = (color) => this.setState({colorSelected: color.hex})
 
     handleModalInput = (e) => {
         var key = e.target.name
@@ -98,26 +101,29 @@ class QuickLinkEdit extends Component {
             color = this.state.colorSelected
         }
 
-        //URL "parser"
-        if(!urlInput.includes('http')){
-            urlInput = 'http://' + urlInput
-        }
-
-        //Update State
-        this.props.updateLinksState()
-
+        //Reset selected color border
         for(var i = 0; i < elements.length; i++){
             elements[i].className = 'color-option'
         }
 
-        // eslint-disable-next-line
-        window.localStorage.setItem(this.props.data.id, '{ "name":'+ '"' + nameInput + '"' +', "url":'+ '"' + urlInput + '"' +', "color":'+ '"' + color + '"' +', "id": ' + '"' + this.props.data.id + '"' +'}')
+        //Parse http
+        if(!urlInput.includes('http')){
+            urlInput = 'http://' + urlInput
+        }
+
         //Hide modal
         modal.style.display = 'none'
+
+        //Update State
+        this.props.updateLinksState()
+
+        // eslint-disable-next-line
+        window.localStorage.setItem(this.props.data.id, '{ "name":'+ '"' + nameInput + '"' +', "url":'+ '"' + urlInput + '"' +', "color":'+ '"' + color + '"' +', "id": ' + '"' + this.props.data.id + '"' +'}')
     }
 
     removeItem = () => {
         var modal = document.querySelector(".edit-item-modal")
+        
         window.localStorage.removeItem(this.props.data.id)
 
         this.props.updateLinksState()

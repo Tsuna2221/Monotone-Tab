@@ -31,7 +31,7 @@ class Sidebar extends Component {
 
                         <div className="side-set">
                             <img className="side-icon" src={Info} alt=""/>
-                            <img className="side-icon" src={Setting} alt=""/>
+                            <img onClick={this.showSettings} className="side-icon" src={Setting} alt=""/>
                             <img className="side-icon" src={Expand} alt=""/>
                         </div>
                     </div>
@@ -42,6 +42,12 @@ class Sidebar extends Component {
 
     state = {
 
+    }
+
+    showSettings = () => {
+        var stgModal = document.querySelector('.settings-container')
+
+        stgModal.style.display = 'block'
     }
 }
 

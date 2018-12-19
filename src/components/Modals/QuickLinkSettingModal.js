@@ -47,18 +47,13 @@ class QuickLinkModal extends Component {
 
     modalColors = () => {
         return <SketchPicker color={this.state.colorSelected} onChangeComplete={ this.handleColor }/>
-        /*return this.props.linkColors.map((col) => (
-                <div key={col.hex} onClick={this.handleModalColor} className={'color-option' + this.state.colorSelected} style={{backgroundColor: col.hex}} data-color={col.hex}></div>
-            )
-        )*/
     }
 
-    handleColor = (color, event) => this.setState({colorSelected: color.hex})
+    handleColor = (color) => this.setState({colorSelected: color.hex})
 
     handleModalInput = (e) => {
         var key = e.target.name
         var val = e.target.value
-
         
         this.setState({
             [key]: val
@@ -87,20 +82,11 @@ class QuickLinkModal extends Component {
     }
 
     handleItem = () => {
-        //Define URL if passed data through editing or not
         var url = this.state.newItemURL;
-
-        //Get Color List Elements
         var elements = document.getElementsByClassName('color-option')
-
-        //Get Input Field Data
         var inputName = document.querySelector(".input-name")
         var inputURL = document.querySelector(".input-url")
-
-        //Get Modal
         var modal = document.querySelector(".new-item-modal")
-
-        //Last number integer
         var lastNumberInt = this.props.lastItem
 
         //URL "parser"

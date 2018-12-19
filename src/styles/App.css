@@ -1,0 +1,43 @@
+.new-note-btn{
+	position: fixed;
+    background-color: #3D405D;
+    border-radius: 50px;
+    width: 60px;
+    height: 60px;
+    right: 105px;
+    bottom: 20px;
+    display: flex;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.new-note-btn > img{
+	width: 30%;
+}
+
+.side-modal{
+    position: absolute;
+    transform: translateX(-85px);
+    z-index: 1000;
+    right: 0;
+    bottom: 0px;
+    background-color: #FAF9FF;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 1px grey; 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(153, 153, 153); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(129, 129, 129); 
+}

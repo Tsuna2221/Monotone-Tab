@@ -1,0 +1,33 @@
+.sidebar-container{
+	position: fixed;
+	overflow: hidden;
+	z-index: 10;
+	transition: .15s ease;
+	width: 0px;
+	height: 100%;
+	background-color: #FAF9FF;
+	display: flex;
+    justify-content: center;
+	align-items: flex-end;
+	top: 0;
+}
+
+.sidebar-active{
+	width: 85px;
+}
+
+.side-set{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.side-icon{
+	cursor: pointer;
+	margin: 15px auto;
+	width: 22px;
+}
+
+.sidebar-items{
+	transform: translateY(-5%);
+}

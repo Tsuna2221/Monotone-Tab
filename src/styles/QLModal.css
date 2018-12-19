@@ -1,0 +1,108 @@
+.new-item-modal, .edit-item-modal{
+	display: none;
+	justify-content: center;
+	align-items: center;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background-color: #5d5d5dc2;
+}
+
+.new-item-modal-content{
+	transition: .5s;
+	background-color: #f3f3f3;
+	border-radius: 5px;
+}
+
+.modal-container{
+	padding: 17px 25px;
+}
+
+.modal-field{
+	margin-bottom: 13px;
+}
+
+.modal-label{
+	font-size: 12px;
+    color: #727272;
+}
+
+.input-field{
+	margin: 3px 0;
+	position: relative;
+}
+
+.input-field > input{
+	border: none;
+	outline: none;
+	width: 100%;
+	height: 23px;
+}
+
+.input:focus + span{
+	width: 100%;
+}
+
+.input-field > span{
+	transition: 0.3s ease;
+	position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #727272;
+    left: 0;
+    bottom: -2px;
+}
+
+.color-field{
+	margin: 3px 0;
+}
+
+.a-color-picker-row{
+	padding: 5px 15px;
+}
+
+.a-color-picker-row-top{
+	padding: 0px;
+}
+
+.color-option{
+	cursor: pointer;
+}
+
+.color-selected{
+	border: 2px dashed #0e0e29;;
+	border-radius: 8px;
+}
+
+.modal-btn{
+	width: fit-content;
+	height: fit-content;
+    padding: 9px 15px;
+    color: #fff;
+    font-size: 11px;
+    margin-top: 17px;
+    cursor: pointer;
+}
+
+.setting-buttons{
+	display: flex;
+    justify-content: space-around;
+}
+
+.confirm-btn{
+	background-color: #3d405d;
+	padding: 10px 15px;
+}
+
+.remove-btn{
+	color: #737373;
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid #c3c3c3;
+}
+
+.input{
+	color: #7b7b7b;
+	box-shadow: 0 1px 3px #00000033;
+}

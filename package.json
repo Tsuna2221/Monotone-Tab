@@ -4,7 +4,11 @@
   "private": true,
   "dependencies": {
     "a-color-picker": "^1.1.7",
+    "bcryptjs": "^2.4.3",
+    "firebase": "^4.12.1",
+    "js-cookie": "^2.2.0",
     "moment": "^2.22.2",
+    "node-input-validator": "^2.3.3",
     "parse-string-data": "^1.0.0",
     "react": "^16.6.3",
     "react-color": "^2.14.1",
@@ -12,7 +16,8 @@
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
-    "secure-random-string": "^1.1.0"
+    "secure-random-string": "^1.1.0",
+    "validate-js": "^2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

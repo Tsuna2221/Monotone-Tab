@@ -1,0 +1,119 @@
+#FirstStart{
+    z-index: 1100;
+    position: absolute;
+    top: 0;
+    transition: .85s ease;
+    opacity: 1;
+}
+
+#FirstStart > *{
+    user-select: none;
+}
+
+.welcome{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0078D7;
+    justify-content: center;
+    align-items: center;
+}
+
+#text{
+    position: absolute;
+}
+
+h1{
+    transition: 1s ease;
+    opacity: 1;
+    margin: 0;
+    color: #fff;
+    font-weight: 200;
+    font-size: 40px;
+    text-align: center;
+    align-items: center;
+}
+
+h2{
+    margin: 10px 0;
+    color: #fff;
+    font-weight: 200;
+    font-size: 15px;
+}
+
+.signup-label{
+    color: #fff;
+    font-weight: 200;
+    font-size: 15px;
+}
+
+p{
+    margin: 0;
+}
+
+.no2{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-signup-container{
+    display: none;
+    transition: 1s ease;
+    opacity: 0;
+}
+
+.sign-label{
+    margin: 15px 0;
+}
+
+.signup-input{
+    position: relative;
+    margin-top: 3px;
+}
+
+.signup-input > input{
+    transition: .2s ease;
+    width: -webkit-fill-available;
+    border: none;
+    height: 33px;
+    outline: none;
+    background-color: #ffffff42;
+    color: #fff;
+    padding: 0 10px;
+}
+
+.signup-input > input:focus{
+    background-color: #fff;
+    color: #000;
+}
+
+.sign-input-border{
+    position: absolute;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #fff;
+}
+
+.signup-buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+.sign-btn{
+    cursor: pointer;
+    width: fit-content;
+    text-align: center;
+    border: 2px solid;
+    padding: 12px 25px;
+    font-size: 13px;
+    font-weight: 500;
+    border-color: #fff;
+    color: #fff;
+}
+
+.sign-confirm-btn{
+    background-color: #fff;
+    color: #0078D7;
+}

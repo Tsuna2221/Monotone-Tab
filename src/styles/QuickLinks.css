@@ -1,0 +1,92 @@
+#QuickLinks{
+	margin-top: 90px;
+}
+
+#quick-main-container{
+	width: fit-content;
+    margin: 20px auto 0 auto;
+}
+
+.quick-item-container{
+	position: relative;
+}
+
+.quick-container{
+	display: grid;
+	margin: 10px auto;
+    user-select: none;
+}
+
+.quick-item{
+	margin: 1px;
+	transition: .25s ease;
+	padding-bottom: 20px;
+	display: flex;
+	cursor: pointer;
+	flex-direction: column;
+	position: relative;
+}
+
+.quick-label{
+	margin-left: 6px;
+    border-left: 3px solid #3D405D;
+    padding-left: 5px;
+    font-size: 20px;
+    color: #6b6b6b;
+}
+
+.empty-item{
+	background-color: #CECECE;
+}
+
+.item-let{
+	width: 68px;
+    height: 68px;
+    margin: 20px auto 5px auto;
+    text-align: center;
+    background-color: #ffffff80;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-let{
+	background-color: #74747471;
+}
+
+.let-ind{
+	font-size: 30px;
+    font-weight: bold;
+    color: #FFF;
+}
+
+.item-name{
+	font-weight: 600;
+    font-size: 14px;
+	color: #E6E6E6;
+	text-align: center;
+	margin-top: 6px;
+}
+
+.empty-name{
+	color: #727272;
+	text-align: center;
+}
+
+.quick-item-container:hover > .item-option-btn{
+	opacity: 1;
+}
+
+.item-option-btn{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 4px;
+	z-index: 11;
+	transition: .2s ease;
+	opacity: 0;
+    padding: 5px 13px;
+	margin: 13px 8px;
+	border-radius: 60px;
+}

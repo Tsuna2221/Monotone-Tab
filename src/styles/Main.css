@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+.sketch-picker{
+    padding: 0px !important;
+    box-sizing: initial !important;
+    background: none !important;
+    border-radius: 4px !important;
+    box-shadow: none !important;
+}
+body{
+  	margin: 0;
+	padding: 0;
+	background-color: #e6e6e6;
+	overflow-x: hidden;
+}
+
+*{
+	font-family: 'Roboto', arial, sans-serif;
+}

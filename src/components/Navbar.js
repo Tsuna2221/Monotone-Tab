@@ -3,6 +3,7 @@ import moment from "moment"
 
 //Images
 import MenuButton from "../assets/MenuButton.svg";
+import Avatar from "../assets/DefaultAvatar.svg";
 
 class Navbar extends Component {
     render() {
@@ -18,14 +19,15 @@ class Navbar extends Component {
                         <p className="con-time">{this.state.currentTime}</p>
                     </div>
                     
-                    <img onClick={this.showSidebar} className="con-menu" src={MenuButton} alt=""/>
+                    <img onClick={this.toggleModal} className="con-avatar" src={Avatar} alt=""/>
+                    <img onClick={this.props.showSidebar} className="con-menu" src={MenuButton} alt=""/>
                 </div>
             </nav>
         );
     }
 
     state = {
-        currentTime: ""
+        
     }
 
     componentDidMount = () => {
@@ -43,13 +45,13 @@ class Navbar extends Component {
         window.location.href = "https://www.google.com/search?q=" + input
     }
 
-    showSidebar = () => {
-        this.props.showSidebar()
-    }
+    currentTime = () => moment().format('h:mm:ss, MMMM Do YYYY');
 
-    currentTime = () => {
-        var time = moment().format('h:mm:ss, MMMM Do YYYY');
-        return time;
+    toggleModal = () => {
+        var element = document.querySelector('.AccountModal')
+        var prefix = 'account-modal-inactive'
+        
+        element.classList.toggle(prefix)
     }
 }
 
