@@ -1,20 +1,3 @@
-.new-note-btn{
-	position: fixed;
-    background-color: #3D405D;
-    border-radius: 50px;
-    width: 60px;
-    height: 60px;
-    right: 105px;
-    bottom: 20px;
-    display: flex;
-	justify-content: center;
-	cursor: pointer;
-}
-
-.new-note-btn > img{
-	width: 30%;
-}
-
 .side-modal{
     position: absolute;
     transform: translateX(-85px);

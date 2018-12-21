@@ -41,7 +41,7 @@ class QuickLinks extends Component {
     state = {}
 
     componentDidMount = () => {
-        if(Cookies.get('isFirstStart') !== false){
+        if(Cookies.get('isFirstStart') === undefined){
             Cookies.set('noOfColumns', 4)
         }
     }

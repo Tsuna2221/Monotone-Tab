@@ -1,10 +1,13 @@
 import firebase from '../config/fbConfig'
-const auth = firebase.auth()
 
-const createNewPerson = (email, password) => {
+const auth = firebase.auth()
+const db = firebase.firestore();
+
+
+const createNewPerson = (name, email, password) => {
     auth.createUserWithEmailAndPassword(email, password)
         .then(res => {
-            console.log(res)
+            res.updateProfile({displayName: name, photoURL: null})
         })
         .catch(err => {
             console.log(err)
@@ -29,31 +32,19 @@ const signOutPerson = () => {
     });
 }
 
+const storeNote = (name, body, uid) => {
+    db.collection("person").doc(uid).collection('notes').add({
+        body: {
+            name: name,
+            content: body
+        }
+    })
+    .then(function(res) {
+        console.log("Document written with ID: ", res);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+}
 
-// const getPerson = () => {
-//     var db = firebase.firestore();
-
-//     db.collection("users").get().then((query) => {
-//         query.forEach((doc) => {
-//             console.log(doc.id, doc.data());
-//         });
-//     });   
-// }
-
-// const storePerson = (name, email, password) => {
-//     var db = firebase.firestore();
-
-//     db.collection("person").add({
-//         name: name,
-//         email: email,
-//         password: password
-//     })
-//     .then(function(res) {
-//         console.log("Document written with ID: ", res.id);
-//     })
-//     .catch(function(error) {
-//         console.error("Error adding document: ", error);
-//     });
-// }
-
-export { createNewPerson, loginPerson, signOutPerson };
+export { createNewPerson, loginPerson, signOutPerson, storeNote };

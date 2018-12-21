@@ -1,0 +1,71 @@
+.new-note-btn{
+    background-color: #3D405D;
+    border-radius: 50px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+	justify-content: center;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.new-note-btn > img{
+    width: 30%;
+    pointer-events: none;
+}
+
+.AddNoteModal{
+    padding: 17px 25px;
+    background-color: #faf9ff;
+    box-shadow: 0 2px 10px #00000033;
+    transition: .2s ease;
+    opacity: 1;
+}
+
+.note-modal-inactive{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.NewNote{
+    display:flex;
+    align-items: flex-end;
+    position: fixed;
+    right: 105px;
+    bottom: 20px;
+    user-select: none;
+}
+
+.note-field > label{
+    font-size: 12px;
+    color: #727272;
+}
+
+.note-field > div {
+    margin: 4px 0;
+}
+
+.note-field > div > input{
+    outline: none;
+    border: none;
+    height: 27px;
+    padding: 0 7px;
+    color: #7b7b7b;
+    box-shadow: 0 1px 3px #00000033;
+}
+
+.note-body{
+    margin-top: 9px; 
+}
+
+.note-add-btn{
+    width: fit-content;
+    padding: 10px 19px;
+    margin: 17px auto 0 auto;
+    font-size: 11px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #3d405d;
+    height: fit-content;
+    padding: 11px 19px;
+}

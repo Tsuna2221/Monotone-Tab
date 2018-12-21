@@ -3,7 +3,6 @@ import moment from "moment"
 
 //Images
 import MenuButton from "../assets/MenuButton.svg";
-import Avatar from "../assets/DefaultAvatar.svg";
 
 class Navbar extends Component {
     render() {
@@ -19,7 +18,7 @@ class Navbar extends Component {
                         <p className="con-time">{this.state.currentTime}</p>
                     </div>
                     
-                    <img onClick={this.toggleModal} className="con-avatar" src={Avatar} alt=""/>
+                    {this.checkIfLogged()}
                     <img onClick={this.props.showSidebar} className="con-menu" src={MenuButton} alt=""/>
                 </div>
             </nav>
@@ -45,13 +44,17 @@ class Navbar extends Component {
         window.location.href = "https://www.google.com/search?q=" + input
     }
 
-    currentTime = () => moment().format('h:mm:ss, MMMM Do YYYY');
+    currentTime = () => moment().format('hh:mm:ss  |  dddd, Do');
 
-    toggleModal = () => {
-        var element = document.querySelector('.AccountModal')
-        var prefix = 'account-modal-inactive'
-        
-        element.classList.toggle(prefix)
+    toggleModal = () => document.querySelector('.AccountModal').classList.toggle('account-modal-inactive')
+    
+    checkIfLogged = () => {
+        if(this.props.isLogged){
+            var {displayName, email} = this.props.currentPerson
+            return <p onClick={this.toggleModal} className="con-login">{`Hello, ${displayName || email}!`}</p>
+        }else{
+            return <p onClick={this.toggleModal} className="con-login">Log In</p>
+        }
     }
 }
 

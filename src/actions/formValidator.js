@@ -28,5 +28,25 @@ const validatePassword = (pass, confirm) => {
         return false
     }
 }
-export { validateUser, validateEmail, validatePassword };
+
+const checkIfNotNull = (name, body) => {
+    if(name !== undefined){
+        if(name !== ''){
+            if(body !== undefined){
+                if(body !== ''){
+                    return true
+                }else{
+                    return false
+                }
+            }else{
+                return false
+            }
+        }else{
+            return false
+        }
+    }else{
+        return false
+    }
+}
+export { validateUser, validateEmail, validatePassword, checkIfNotNull };
 

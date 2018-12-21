@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie'
-
-//Images
-import NoteButton from "./assets/NoteButton.svg";
+import firebase from './config/fbConfig'
 
 //Components
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
 import QuickLinks from './components/QuickLinks'
 import FirstStart from './components/FirstStart'
+import NewNote from './components/NewNote'
 
 //Modals
 import SettingsModal from './components/Modals/SidebarModals/Settings'
@@ -20,22 +19,43 @@ class App extends Component {
 		return (
 			<div className="App">
 				{this.drawIfFirstStart()}
-				<Navbar isVisible={this.state.sidebarVisible} showSidebar={this.showSidebar}/>
-				<AccountModal/>
+				<Navbar isLogged={this.state.isLogged} currentPerson={this.state.currentPerson} isVisible={this.state.sidebarVisible} showSidebar={this.showSidebar}/>
+				<AccountModal isLogged={this.state.isLogged} currentPerson={this.state.currentPerson} />
 				<Sidebar isVisible={this.state.sidebarVisible}/>
 				<QuickLinks/>
 				<SettingsModal/>
-				<div className="new-note-btn">
-					<img src={NoteButton} alt=""/>
-				</div>
+				{this.showNoteButtonIfLogged()}
 			</div>			
 		);
 	}
 
 	state = {
-		'sidebarVisible': 'inactive'
+		'sidebarVisible': 'inactive',
 	}
 
+	componentDidMount = () => {
+		firebase.auth().onAuthStateChanged((user) => {
+			if (user){
+				var { email, emailVerified, uid, isAnonymous, displayName } = user
+				this.setState({
+					...this.state,
+					isLogged: true,
+					currentPerson: {
+						email,
+						emailVerified,
+						uid,
+						isAnonymous,
+						displayName
+					}
+				})
+			}else{
+				this.setState({
+					isLogged: false
+				})
+			}
+		});
+	}
+	
 	drawIfFirstStart = () => {
 		if(Cookies.get('isFirstStart') === undefined){
 			return <FirstStart/>
@@ -53,6 +73,13 @@ class App extends Component {
 			})
 		}
 	}
+
+	showNoteButtonIfLogged = () => {
+		if(this.state.isLogged){
+			return <NewNote isLogged={this.state.isLogged} currentPerson={this.state.currentPerson}/>
+		}
+	}
+
 }
 
 export default App;

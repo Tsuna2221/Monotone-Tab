@@ -60,15 +60,19 @@
 	align-items: center;
 }
 
-.con-time{
-	color: #F8F8F8;
-    font-weight: 600;
+.con-time, .con-login{
+    color: #F8F8F8;
+    font-weight: 500;
+    font-size: 13px;
 }
 
-.con-avatar{
-	height: 65%;
+.con-login{
 	margin-left: 30px;
 	cursor: pointer;
+}
+
+.con-login:hover{
+	text-decoration: underline;
 }
 
 .con-menu{

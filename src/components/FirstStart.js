@@ -99,7 +99,7 @@ class FirstStart extends Component {
         if(formValid.isUserValid && formValid.isEmailValid && formValid.isPassValid){
             var mail = email.toLowerCase()
 
-            createNewPerson(mail, password)
+            createNewPerson(name, mail, password)
 
             this.hideStart()
         }
@@ -127,14 +127,13 @@ class FirstStart extends Component {
         var form = document.querySelector('.form-signup-container') 
         form.style.opacity = 0
 
-        Cookies.set('isFirstStart', false)
-
         setTimeout(() => {
             start.style.transform = 'translateX(-100%)'
 
             setTimeout(() => {
                 start.style.display = 'none'
-            },4000)
+                Cookies.set('isFirstStart', false)
+            },2000)
         },1500)
     }
 }
