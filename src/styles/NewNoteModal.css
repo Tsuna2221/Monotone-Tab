@@ -7,6 +7,7 @@
 	justify-content: center;
     cursor: pointer;
     margin-left: 20px;
+    transition: .4s ease;
 }
 
 .new-note-btn > img{
@@ -24,6 +25,7 @@
 
 .note-modal-inactive{
     opacity: 0;
+    height: 0px;
     pointer-events: none;
 }
 
@@ -49,6 +51,14 @@
     outline: none;
     border: none;
     height: 27px;
+    padding: 0 7px;
+    color: #7b7b7b;
+    box-shadow: 0 1px 3px #00000033;
+}
+
+.note-field > div > textarea{
+    outline: none;
+    border: none;
     padding: 0 7px;
     color: #7b7b7b;
     box-shadow: 0 1px 3px #00000033;

@@ -62,15 +62,14 @@ class QuickLinks extends Component {
             if(itemDet !== null){
                 return (
                     <div key={itemDet.id} className="quick-item-container">
-                        <div data-id={itemDet.id} onClick={() => {this.redirectTo(itemDet.url);}} style={{backgroundColor: itemDet.color}} className="quick-item">
+                        <a href={itemDet.url} data-id={itemDet.id} style={{backgroundColor: itemDet.color}} className="quick-item">
                             <div className="item-let">
                                 <span className="let-ind">{itemDet.name.substr(0,1).toUpperCase()}</span>
                             </div>
                             <span className="item-name">{itemDet.name}</span>
-                        </div>
+                        </a>
                         <img onClick={this.showEditModal} data-id="item" className="item-option-btn" src={OptionButton} alt=""/>
-                    </div>
-                    
+                    </div> 
                 )
             }
             return null;
@@ -118,8 +117,6 @@ class QuickLinks extends Component {
             items: items
         })
     }
-
-    redirectTo = (url) => window.location.href = url
 
     showNewModal = () => document.querySelector(".new-item-modal").style.display = "flex"
 

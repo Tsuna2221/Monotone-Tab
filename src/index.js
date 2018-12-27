@@ -11,6 +11,7 @@ import './styles/Sidebar.css';
 import './styles/FirstStart.css';
 import './styles/SettingsModal.css';
 import './styles/AccountModal.css';
-import './styles/NoteModal.css';
+import './styles/NewNoteModal.css';
+import './styles/NotesModal.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));

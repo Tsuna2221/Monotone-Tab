@@ -10,8 +10,11 @@ import FirstStart from './components/FirstStart'
 import NewNote from './components/NewNote'
 
 //Modals
-import SettingsModal from './components/Modals/SidebarModals/Settings'
 import AccountModal from './components/Modals/AccountModal'
+import SettingsModal from './components/Modals/SidebarModals/Settings'
+import NotesModal from './components/Modals/SidebarModals/Notes'
+
+const db = firebase.firestore();
 
 class App extends Component {
 	render() {
@@ -23,7 +26,10 @@ class App extends Component {
 				<AccountModal isLogged={this.state.isLogged} currentPerson={this.state.currentPerson} />
 				<Sidebar isVisible={this.state.sidebarVisible}/>
 				<QuickLinks/>
+
+				{/* Sidebar Modals */}
 				<SettingsModal/>
+				<NotesModal notes={this.state.currentNotes}/>
 				{this.showNoteButtonIfLogged()}
 			</div>			
 		);
@@ -37,6 +43,20 @@ class App extends Component {
 		firebase.auth().onAuthStateChanged((user) => {
 			if (user){
 				var { email, emailVerified, uid, isAnonymous, displayName } = user
+				var notesCollection = db.collection('person').doc(uid).collection('notes').orderBy('createdAt', 'desc')
+				//.orderBy("body", "asc")
+				
+				notesCollection.onSnapshot(res => {
+					var notes = [];
+					res.forEach(data => {
+						notes.push(data.data())
+					})
+					this.setState({
+						...this.state,
+						currentNotes: notes
+					})
+				})
+
 				this.setState({
 					...this.state,
 					isLogged: true,
@@ -45,7 +65,7 @@ class App extends Component {
 						emailVerified,
 						uid,
 						isAnonymous,
-						displayName
+						displayName,
 					}
 				})
 			}else{
@@ -79,7 +99,6 @@ class App extends Component {
 			return <NewNote isLogged={this.state.isLogged} currentPerson={this.state.currentPerson}/>
 		}
 	}
-
 }
 
 export default App;

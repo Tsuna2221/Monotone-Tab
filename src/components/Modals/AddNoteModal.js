@@ -19,7 +19,7 @@ class AddNoteModal extends Component {
                     <div className="note-field note-body">
                         <label>Note Content</label>
                         <div className="note-name-body">
-                            <input onChange={this.handleInput} autoComplete="off" spellCheck="false" name='body' type="text"/>
+                            <textarea onChange={this.handleInput} autoComplete="off" spellCheck="false" name='body' type="text" rows="7"/>
                         </div>
                     </div>
 

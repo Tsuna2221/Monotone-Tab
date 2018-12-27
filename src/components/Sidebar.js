@@ -16,23 +16,23 @@ class Sidebar extends Component {
                 <div className={'sidebar-container sidebar-' + this.props.isVisible} style={{'right': 0}}>
                     <div className="sidebar-items">
                         <div className="side-set">
-                            <img className="side-icon" src={NotesIcon} alt=""/>
-                            <img className="side-icon" src={Calendar} alt=""/>
+                            <img onClick={this.showNotes} className="side-icon note-icon" src={NotesIcon} alt=""/>
+                            <img className="side-icon calendar-icon" src={Calendar} alt=""/>
                         </div>
 
                         <hr className="side-separator"/>
 
                         <div className="side-set">
-                            <img className="side-icon" src={Evernote} alt=""/>
-                            <img className="side-icon" src={Mail} alt=""/>
+                            <img className="side-icon evernote-icon" src={Evernote} alt=""/>
+                            <img className="side-icon mail-icon" src={Mail} alt=""/>
                         </div>
 
                         <hr className="side-separator"/>
 
                         <div className="side-set">
-                            <img className="side-icon" src={Info} alt=""/>
-                            <img onClick={this.showSettings} className="side-icon" src={Setting} alt=""/>
-                            <img className="side-icon" src={Expand} alt=""/>
+                            <img className="side-icon info-icon" src={Info} alt=""/>
+                            <img onClick={this.showSettings} className="side-icon settings-icon" src={Setting} alt=""/>
+                            <img className="side-icon expand-icon" src={Expand} alt=""/>
                         </div>
                     </div>
                 </div>
@@ -48,6 +48,12 @@ class Sidebar extends Component {
         var stgModal = document.querySelector('.settings-container')
 
         stgModal.style.display = 'block'
+    }
+
+    showNotes = () => {
+        var notesModal = document.querySelector('.Notes')
+
+        notesModal.classList.toggle('Notes-Inactive')
     }
 }
 

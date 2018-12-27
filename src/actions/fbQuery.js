@@ -1,4 +1,5 @@
 import firebase from '../config/fbConfig'
+import randString from './randomString'
 
 const auth = firebase.auth()
 const db = firebase.firestore();
@@ -33,11 +34,13 @@ const signOutPerson = () => {
 }
 
 const storeNote = (name, body, uid) => {
+    var currentTime = new Date().getTime();
+
     db.collection("person").doc(uid).collection('notes').add({
-        body: {
-            name: name,
-            content: body
-        }
+        name: name,
+        content: body,
+        id: randString(5),
+        createdAt: Math.round(currentTime / 1000)
     })
     .then(function(res) {
         console.log("Document written with ID: ", res);

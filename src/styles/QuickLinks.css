@@ -11,6 +11,11 @@
 	position: relative;
 }
 
+.quick-item{
+	position: relative;
+	text-decoration: none;
+}
+
 .quick-container{
 	display: grid;
 	margin: 10px auto;
