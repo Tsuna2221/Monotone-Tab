@@ -90,9 +90,10 @@
 	right: 0;
 	width: 4px;
 	z-index: 11;
-	transition: .2s ease;
+	transition: .4s ease;
 	opacity: 0;
     padding: 5px 13px;
 	margin: 13px 8px;
 	border-radius: 60px;
+	cursor: pointer;
 }

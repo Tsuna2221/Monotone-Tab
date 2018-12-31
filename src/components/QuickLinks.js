@@ -130,8 +130,7 @@ class QuickLinks extends Component {
         var nameInput = document.querySelector(".edit-name-input")
         var urlInput = document.querySelector(".edit-url-input")
         var colorInput = document.querySelector(".edit-colors-input")
-        var pickerHex = document.getElementsByClassName('flexbox-fix')[1].children[0].children[0].children[0].value
-
+        
         this.setState({
             selectedData: selectedItem
         })
@@ -140,8 +139,6 @@ class QuickLinks extends Component {
         nameInput.value = selectedItem.name
         urlInput.value = selectedItem.url
         colorInput.value = selectedItem.color
-        pickerHex = selectedItem.color
-        console.log(pickerHex)
     }
 
     closeModal = (e) => {

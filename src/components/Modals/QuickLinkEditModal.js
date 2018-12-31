@@ -28,7 +28,7 @@ class QuickLinkEdit extends Component {
                             <label className="modal-label" htmlFor="colors">Color</label>
 
                             <div className="input-field">
-                                <input onFocus={this.showColors} onChange={this.handleModalInput} spellCheck="false" autoComplete="off" name="newItemURL" className="input-colors edit-colors-input" placeholder="#E32018" value={this.state.color} type="text"/>
+                                <input onFocus={this.showColors} onChange={this.handleModalInput} spellCheck="false" autoComplete="off" name="newItemColor" className="input-colors edit-colors-input" placeholder="#E32018" value={this.state.color} type="text"/>
                             </div>
                         </div>
                     </div>
@@ -48,17 +48,19 @@ class QuickLinkEdit extends Component {
 
     modalColors = () => {
         var items = [];
+        var colorInput = document.querySelector('.input-colors') || '#fff'
 
         for(var data in localStorage){
             if(localStorage.getItem(data)){
                 items.push(JSON.parse(localStorage.getItem(data)).color)
             }
         }
+        
 
-        return <SketchPicker presetColors={items} color={this.state.colorSelected} onChangeComplete = { this.handleColor }/>
+        return <SketchPicker presetColors={items} color={colorInput} onChangeComplete = { this.handleColor }/>
     }
-
-    handleColor = (color) => this.setState({colorSelected: color.hex})
+    //this.setState({colorSelected: color.hex})
+    handleColor = (color) => document.querySelector('.input-colors').value = color.hex
 
     handleModalInput = (e) => {
         var key = e.target.name
@@ -89,13 +91,7 @@ class QuickLinkEdit extends Component {
         var modal = document.querySelector(".edit-item-modal")
         var picker = document.querySelector('.sketch-picker')
         var colorInput = document.querySelector(".edit-colors-input")
-        var color;
-
-        if(this.state.colorSelected === ''){
-            color = colorInput.value
-        }else{
-            color = this.state.colorSelected
-        }
+        var color = colorInput.value;
 
         //Reset selected color border
         for(var i = 0; i < elements.length; i++){

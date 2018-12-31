@@ -42,15 +42,15 @@ class QuickLinkModal extends Component {
 
     state = {
         colorSelected:'',
-        items: [],
-        color: ''
     }
 
     modalColors = () => {
-        return <SketchPicker className="new-sketch" presetColors={['fff']} color={this.state.colorSelected} onChangeComplete={ this.handleColor }/>
+        var colorInput = document.querySelector('.input-color') || '#fff'
+
+        return <SketchPicker className="new-sketch" presetColors={['fff']} color={colorInput} onChangeComplete={ this.handleColor }/>
     }
 
-    handleColor = (color) => this.setState({colorSelected: color.hex})
+    handleColor = (color) => document.querySelector('.input-color').value = color.hex
 
     handleModalInput = (e) => {
         var key = e.target.name
@@ -81,6 +81,8 @@ class QuickLinkModal extends Component {
         var modal = document.querySelector(".new-item-modal")
         var lastNumberInt = this.props.lastItem
         var picker = document.querySelector('.new-sketch')
+        var colorInput = document.querySelector(".input-color")
+        var color = colorInput.value;
 
         //URL "parser"
         if(!url.includes('http')){
@@ -96,7 +98,7 @@ class QuickLinkModal extends Component {
         this.props.updateLinksState()
 
         // eslint-disable-next-line
-        window.localStorage.setItem('item' + (lastNumberInt + 1), '{ "name":'+ '"' + this.state.newItemName + '"' +', "url":'+ '"' + url + '"' +', "color":'+ '"' + this.state.colorSelected + '"' +', "id": "item' + (lastNumberInt + 1) + '"' +'}')
+        window.localStorage.setItem('item' + (lastNumberInt + 1), '{ "name":'+ '"' + this.state.newItemName + '"' +', "url":'+ '"' + url + '"' +', "color":'+ '"' + color + '"' +', "id": "item' + (lastNumberInt + 1) + '"' +'}')
 
         //Clear Input Fields
         inputName.value = ''
