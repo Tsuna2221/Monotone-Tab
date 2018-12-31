@@ -7,6 +7,16 @@
     background-color: #FAF9FF;
 }
 
+.transition-bg{
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 0vh;
+    background-color: #fff;
+    transition: .4s ease;
+    z-index: 999999;
+}
+
 ::-webkit-scrollbar {
     width: 6px;
 }

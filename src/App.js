@@ -31,6 +31,7 @@ class App extends Component {
 				<SettingsModal updateState={this.updateState}/>
 				<NotesModal notes={this.state.currentNotes}/>
 				{this.showNoteButtonIfLogged()}
+				<div className="transition-bg"></div>
 			</div>			
 		);
 	}

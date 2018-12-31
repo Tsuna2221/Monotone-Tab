@@ -66,7 +66,7 @@ class QuickLinks extends Component {
             if(itemDet !== null){
                 return (
                     <div key={itemDet.id} className="quick-item-container">
-                        <a href={itemDet.url} data-id={itemDet.id} style={{backgroundColor: itemDet.color}} className="quick-item">
+                        <a onClick={this.setTransition} href={itemDet.url} data-id={itemDet.id} style={{backgroundColor: itemDet.color}} className="quick-item">
                             <div className="item-let">
                                 <span className="let-ind">{itemDet.name.substr(0,1).toUpperCase()}</span>
                             </div>
@@ -78,6 +78,13 @@ class QuickLinks extends Component {
             }
             return null;
         })
+    }
+
+    setTransition = (e) => {
+        var bg = document.querySelector('.transition-bg')
+        if(!e.ctrlKey){
+            bg.style.height = '100vh'
+        }
     }
 
     initColumnNo = () => {
@@ -122,7 +129,7 @@ class QuickLinks extends Component {
         })
     }
 
-    showNewModal = () => document.querySelector(".new-item-modal").style.display = "flex"
+    showNewModal = () => document.querySelector(".new-item-modal").classList.add('modal-active')
 
     showEditModal = (e) => {
         var modal = document.querySelector(".edit-item-modal")
@@ -130,12 +137,12 @@ class QuickLinks extends Component {
         var nameInput = document.querySelector(".edit-name-input")
         var urlInput = document.querySelector(".edit-url-input")
         var colorInput = document.querySelector(".edit-colors-input")
-        
+
         this.setState({
             selectedData: selectedItem
         })
 
-        modal.style.display = "flex"
+        modal.classList.add('modal-active')
         nameInput.value = selectedItem.name
         urlInput.value = selectedItem.url
         colorInput.value = selectedItem.color
@@ -157,8 +164,9 @@ class QuickLinks extends Component {
                 elements[i].className = 'color-option'
             }
 
-            editModal.style.display = 'none'
-            newModal.style.display = 'none'
+            document.querySelector(".edit-item-modal").classList.remove('modal-active')
+            document.querySelector(".new-item-modal").classList.remove('modal-active')
+            
             picker.style.display = 'none'
             pickerNew.style.display = 'none'
         }

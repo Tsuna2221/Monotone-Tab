@@ -1,5 +1,5 @@
 .new-item-modal, .edit-item-modal{
-	display: none;
+	display: flex;
 	justify-content: center;
 	align-items: center;
     z-index: 100;
@@ -7,7 +7,16 @@
     height: 100vh;
     position: fixed;
     top: 0;
-    background-color: #5d5d5dc2;
+	background-color: #5d5d5dc2;
+	transition: .1s ease;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.modal-active{
+	display: flex;
+	opacity: 1;
+	pointer-events: initial;
 }
 
 .new-item-modal-content{
