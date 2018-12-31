@@ -9,6 +9,7 @@
 
 .quick-item-container{
 	position: relative;
+	width: 245px;/**/
 }
 
 .quick-item{

@@ -27,7 +27,7 @@ class SettingsModal extends Component {
 
     columnInput = () => {
         var maxRange = Math.floor(window.innerWidth / 245)
-
+        
         return <input onChange={this.handleRange} type="range" min="1" max={maxRange} name="column-range" className="column-range"/>
     }
 
@@ -35,7 +35,8 @@ class SettingsModal extends Component {
         var container = document.querySelector(".quick-container")
 
         Cookies.set('noOfColumns', e.target.value)
-        
+
+        this.props.updateState()
         container.style.gridTemplateColumns = "repeat("+ e.target.value +", 245px)"
     }
 }

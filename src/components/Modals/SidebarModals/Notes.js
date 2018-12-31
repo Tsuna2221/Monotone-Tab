@@ -36,7 +36,6 @@ class NotesModal extends Component {
 
     drawNotes = () => {
         var notes = this.props.notes
-        console.log(notes)
         if(notes){
             if(notes.length > 0){
                 return notes.map(note => {

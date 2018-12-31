@@ -7,32 +7,33 @@ class QuickLinkModal extends Component {
             <div className="new-item-modal">
                 <div className="new-item-modal-content">
                     <div className="modal-container">
+                        {this.modalColors()}
+                        <h1 className="modal-set">Add Quick Link</h1>
+
                         <div className="modal-field">
                             <label className="modal-label" htmlFor="name">Name</label>
                             <div className="input-field">
-                                <input onChange={this.handleModalInput} autoComplete="off" name="newItemName" className="input-name input" type="text"/>
-                                <span className="input-underline"></span>
+                                <input onChange={this.handleModalInput} autoComplete="off" name="newItemName" className="input-name input" placeholder="Example" type="text"/>
                             </div>
                         </div>
                         
                         <div className="modal-field">
                             <label className="modal-label" htmlFor="url">URL</label>
                             <div className="input-field">
-                                <input onChange={this.handleModalInput} autoComplete="off" name="newItemURL" className="input-url input" type="text"/>
-                                <span className="input-underline"></span>
+                                <input onChange={this.handleModalInput} autoComplete="off" name="newItemURL" className="input-url input" placeholder="http://www.example.com" type="text"/>
                             </div>
                         </div>
 
-                        <div className="modal-colors">
+                        <div className="modal-field">
                             <label className="modal-label" htmlFor="colors">Color</label>
 
-                            <div className="color-field">
-                                {this.modalColors()}
+                            <div className="input-field">
+                                <input onFocus={this.showColors} onChange={this.handleModalInput} autoComplete="off" name="newItemColor" className="input-color input" placeholder="#E32018" type="text"/>
                             </div>
                         </div>
-                        <div className="setting-buttons">
-                            <div onClick={this.handleItem} className="modal-btn confirm-btn">Add Link</div>
-                        </div>
+                    </div>
+                    <div className="setting-buttons">
+                        <div onClick={this.handleItem} className="modal-button f-w">Add Link</div>
                     </div>
                 </div>
             </div>
@@ -46,7 +47,7 @@ class QuickLinkModal extends Component {
     }
 
     modalColors = () => {
-        return <SketchPicker color={this.state.colorSelected} onChangeComplete={ this.handleColor }/>
+        return <SketchPicker className="new-sketch" presetColors={['fff']} color={this.state.colorSelected} onChangeComplete={ this.handleColor }/>
     }
 
     handleColor = (color) => this.setState({colorSelected: color.hex})
@@ -70,16 +71,7 @@ class QuickLinkModal extends Component {
         this.markSelectedColor(e)
     }
 
-    markSelectedColor = (e) =>{
-        var selected = e.target
-        var elements = document.getElementsByClassName('color-option')
-
-        for(var i = 0; i < elements.length; i++){
-            elements[i].className = 'color-option'
-        }
-
-        selected.classList.toggle('color-selected')
-    }
+    showColors = () => { document.querySelector('.new-sketch').style.display = 'block' }
 
     handleItem = () => {
         var url = this.state.newItemURL;
@@ -88,6 +80,7 @@ class QuickLinkModal extends Component {
         var inputURL = document.querySelector(".input-url")
         var modal = document.querySelector(".new-item-modal")
         var lastNumberInt = this.props.lastItem
+        var picker = document.querySelector('.new-sketch')
 
         //URL "parser"
         if(!url.includes('http')){
@@ -111,6 +104,7 @@ class QuickLinkModal extends Component {
 
         //Hide modal
         modal.style.display = 'none'
+        picker.style.display = 'none'
     }
 }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import p from 'parse-string-data'
 import Cookies from 'js-cookie'
+import Masonry from 'react-masonry-component';
 
 //Components
 import QuickLinkModal from './Modals/QuickLinkSettingModal'
@@ -21,7 +22,10 @@ class QuickLinks extends Component {
                 <div id="quick-main-container">
                     <span className="quick-label">Quick Links</span>
 
-                    <div className="quick-container" style={{ gridTemplateColumns: 'repeat( '+ this.initColumnNo() +', 245px )' }}>
+                    <Masonry
+                        elementType={'div'}
+                        options={this.state.masonryOptions}
+                        className="quick-container" style={{ gridTemplateColumns: 'repeat( '+ this.initColumnNo() +', 245px )' }}>
                         {this.drawContainer()}
                         <div className="quick-item-container">
                             <div data-id="new-item" onClick={this.showNewModal} className="quick-item empty-item">
@@ -32,7 +36,7 @@ class QuickLinks extends Component {
                                 <span className="item-name empty-name">Add New</span>
                             </div>
                         </div>
-                    </div>
+                    </Masonry>
                 </div>
             </div>
         );
@@ -125,6 +129,8 @@ class QuickLinks extends Component {
         var selectedItem = JSON.parse(localStorage.getItem(e.target.previousSibling.dataset.id))
         var nameInput = document.querySelector(".edit-name-input")
         var urlInput = document.querySelector(".edit-url-input")
+        var colorInput = document.querySelector(".edit-colors-input")
+        var pickerHex = document.getElementsByClassName('flexbox-fix')[1].children[0].children[0].children[0].value
 
         this.setState({
             selectedData: selectedItem
@@ -133,12 +139,17 @@ class QuickLinks extends Component {
         modal.style.display = "flex"
         nameInput.value = selectedItem.name
         urlInput.value = selectedItem.url
+        colorInput.value = selectedItem.color
+        pickerHex = selectedItem.color
+        console.log(pickerHex)
     }
 
     closeModal = (e) => {
         var newModal = document.querySelector(".new-item-modal")
         var editModal = document.querySelector(".edit-item-modal")
         var elements = document.getElementsByClassName('color-option')
+        var picker = document.querySelector('.sketch-picker')
+        var pickerNew = document.querySelector('.new-sketch')
 
         if(e.target === newModal || e.target === editModal){
             var inputs = document.querySelectorAll(".input")
@@ -151,6 +162,8 @@ class QuickLinks extends Component {
 
             editModal.style.display = 'none'
             newModal.style.display = 'none'
+            picker.style.display = 'none'
+            pickerNew.style.display = 'none'
         }
     }
 }

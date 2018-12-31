@@ -23,7 +23,7 @@
     position: absolute;
 }
 
-h1{
+#text > h1, [name=signup] > h1{
     transition: 1s ease;
     opacity: 1;
     margin: 0;

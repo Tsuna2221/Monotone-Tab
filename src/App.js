@@ -28,7 +28,7 @@ class App extends Component {
 				<QuickLinks/>
 
 				{/* Sidebar Modals */}
-				<SettingsModal/>
+				<SettingsModal updateState={this.updateState}/>
 				<NotesModal notes={this.state.currentNotes}/>
 				{this.showNoteButtonIfLogged()}
 			</div>			
@@ -92,6 +92,12 @@ class App extends Component {
 				'sidebarVisible': 'inactive'
 			})
 		}
+	}
+
+	updateState = () => {
+			this.setState({
+				...this.state
+			})
 	}
 
 	showNoteButtonIfLogged = () => {

@@ -1,11 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 .sketch-picker{
-    padding: 0px !important;
-    box-sizing: initial !important;
+    width: 275px !important;
     background: none !important;
-    border-radius: 4px !important;
+    border: none;
+    border-radius: 0px !important;
     box-shadow: none !important;
+    position: absolute !important;
+    transform: translate(87%, -25px) !important;
+    background-color: #f3f3f3 !important;
+    padding: 27px 20px !important;
+    display: none;
 }
+
+.sketch-picker-true{
+    display: block;
+}
+
 body{
   	margin: 0;
 	padding: 0;
