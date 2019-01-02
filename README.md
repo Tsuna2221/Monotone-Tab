@@ -1,6 +1,6 @@
 # Monotone Tab
 
-[Try it here](https://tsuna2221.github.io/Monotone-Tab/) 
+[Try an alpha here](https://tsuna2221.github.io/Monotone-Tab/) 
 
 ## Using
 
