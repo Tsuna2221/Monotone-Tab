@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.384 36.25">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #616161;
+      }
+    </style>
+  </defs>
+  <path id="note_arrow" class="cls-1" d="M8.59,37.741,22.425,23.875,8.59,10.009,12.849,5.75,30.974,23.875,12.849,42Z" transform="translate(-8.59 -5.75)"/>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24.002">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e2e2e2;
+      }
+    </style>
+  </defs>
+  <g id="ic_border_color_24px" transform="translate(0 0.002)">
+    <path id="Path_81" data-name="Path 81" class="cls-1" d="M17.75,7,14,3.25l-10,10V17H7.75Zm2.96-2.96a1,1,0,0,0,0-1.41L18.37.29a1,1,0,0,0-1.41,0L15,2.25,18.75,6Z"/>
+    <path id="Path_82" data-name="Path 82" class="cls-1" d="M0,20H24v4H0Z"/>
+  </g>
+</svg>
