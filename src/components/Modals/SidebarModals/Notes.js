@@ -6,7 +6,7 @@ import ArrowIcon from '../../../assets/NoteArrow.svg'
 class NotesModal extends Component {
     render() {
         return (
-            <div className='Notes Notes-Inactive'>
+            <div className='Notes Notes-Inactive modal-g'>
                 <div className="notes-container">
                     <p>Notes</p>
                     {this.drawNotes()}

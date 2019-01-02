@@ -4,11 +4,17 @@ import Cookies from 'js-cookie'
 class SettingsModal extends Component {
     render() {
         return (
-            <div id='SettingsModal'>
-                <div className="settings-container side-modal">
-                    <div className="setting-columns">
-                        <label>Nº of Columns</label>
-                        {this.columnInput()}
+            <div className='Settings Settings-Inactive modal-g'>
+                <div className="settings-container">
+                    <div className="modal-w">
+                        <h1 className="head-w">Settings</h1>
+
+                        <div className="field-w">
+                            <label className="label-w">Columns</label>
+                            <div className="range-w">
+                                {this.columnInput()}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -21,8 +27,20 @@ class SettingsModal extends Component {
 
     componentDidMount = () => {
         var range = document.querySelector(".column-range")
-
         range.value = Cookies.get('noOfColumns')
+
+        document.addEventListener("click", function(event) {
+            var prefix = 'Settings-Inactive'
+            var element = document.querySelector('.Settings')
+            var inactive = document.querySelector('.Settings-Inactive')
+            var button = document.querySelector('.settings-icon')
+
+            if (!inactive && event.target !== button && !event.target.closest(".Settings")){
+                if(element){
+                    element.classList.toggle(prefix)
+                }
+            };
+        });
     }
 
     columnInput = () => {

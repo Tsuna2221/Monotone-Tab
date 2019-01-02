@@ -1,3 +1,14 @@
-.settings-container{
-    display: none;
+.Settings{
+    position: fixed;
+    width: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    bottom: 0;
+    right: 85px;
+    background-color: #FAF9FF;
+    transition: .4s ease;
+}
+
+.Settings-Inactive{
+    width: 0px;
 }

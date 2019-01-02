@@ -6,34 +6,34 @@ class QuickLinkModal extends Component {
         return (
             <div className="new-item-modal">
                 <div className="new-item-modal-content">
-                    <div className="modal-container">
+                    <div className="modal-w">
                         {this.modalColors()}
-                        <h1 className="modal-set">Add Quick Link</h1>
+                        <h1 className="head-w">Add Quick Link</h1>
 
-                        <div className="modal-field">
-                            <label className="modal-label" htmlFor="name">Name</label>
-                            <div className="input-field">
+                        <div className="field-w">
+                            <label className="label-w" htmlFor="name">Name</label>
+                            <div className="input-w">
                                 <input onChange={this.handleModalInput} autoComplete="off" name="newItemName" className="input-name input" placeholder="Example" type="text"/>
                             </div>
                         </div>
                         
-                        <div className="modal-field">
-                            <label className="modal-label" htmlFor="url">URL</label>
-                            <div className="input-field">
+                        <div className="field-w">
+                            <label className="label-w" htmlFor="url">URL</label>
+                            <div className="input-w">
                                 <input onChange={this.handleModalInput} autoComplete="off" name="newItemURL" className="input-url input" placeholder="http://www.example.com" type="text"/>
                             </div>
                         </div>
 
-                        <div className="modal-field">
-                            <label className="modal-label" htmlFor="colors">Color</label>
+                        <div className="field-w">
+                            <label className="label-w" htmlFor="colors">Color</label>
 
-                            <div className="input-field">
+                            <div className="input-w">
                                 <input onFocus={this.showColors} onChange={this.handleModalInput} autoComplete="off" name="newItemColor" className="input-color input" placeholder="#E32018" type="text"/>
                             </div>
                         </div>
                     </div>
-                    <div className="setting-buttons">
-                        <div onClick={this.handleItem} className="modal-button f-w">Add Link</div>
+                    <div className=".btn-container-w">
+                        <div onClick={this.handleItem} className="btn-w f-w">Add Link</div>
                     </div>
                 </div>
             </div>

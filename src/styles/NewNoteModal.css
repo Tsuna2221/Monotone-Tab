@@ -8,6 +8,7 @@
     cursor: pointer;
     margin-left: 20px;
     transition: .4s ease;
+    z-index: 10;
 }
 
 .new-note-btn > img{
@@ -16,26 +17,21 @@
 }
 
 .AddNoteModal{
-    padding: 17px 25px;
-    background-color: #faf9ff;
-    box-shadow: 0 2px 10px #00000033;
-    transition: .2s ease;
-    opacity: 1;
+    transition: .3s;
+    background-color: #f3f3f3;
 }
 
 .note-modal-inactive{
     opacity: 0;
-    height: 0px;
     pointer-events: none;
 }
 
 .NewNote{
-    display:flex;
+    display: flex;
     align-items: flex-end;
     position: fixed;
     right: 105px;
     bottom: 20px;
-    user-select: none;
 }
 
 .note-field > label{
