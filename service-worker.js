@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Monotone-Tab/precache-manifest.60f9e8a4b02c34ff55aceb185048718f.js"
+  "/Monotone-Tab/precache-manifest.791eda77c5a8933b0723b41a834acd57.js"
 );
 
 workbox.clientsClaim();

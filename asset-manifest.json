@@ -1,7 +1,7 @@
 {
-  "main.css": "/Monotone-Tab/static/css/main.a231537a.chunk.css",
-  "main.js": "/Monotone-Tab/static/js/main.92dffb7c.chunk.js",
-  "main.js.map": "/Monotone-Tab/static/js/main.92dffb7c.chunk.js.map",
+  "main.css": "/Monotone-Tab/static/css/main.27c5a752.chunk.css",
+  "main.js": "/Monotone-Tab/static/js/main.0028b547.chunk.js",
+  "main.js.map": "/Monotone-Tab/static/js/main.0028b547.chunk.js.map",
   "static/js/1.09790b0b.chunk.js": "/Monotone-Tab/static/js/1.09790b0b.chunk.js",
   "static/js/1.09790b0b.chunk.js.map": "/Monotone-Tab/static/js/1.09790b0b.chunk.js.map",
   "runtime~main.js": "/Monotone-Tab/static/js/runtime~main.12579078.js",
@@ -18,8 +18,8 @@
   "static/media/NoteButton.svg": "/Monotone-Tab/static/media/NoteButton.09e37ac1.svg",
   "static/media/NoteArrow.svg": "/Monotone-Tab/static/media/NoteArrow.5c382123.svg",
   "static/media/Notes.svg": "/Monotone-Tab/static/media/Notes.5f0f1500.svg",
-  "static/css/main.a231537a.chunk.css.map": "/Monotone-Tab/static/css/main.a231537a.chunk.css.map",
+  "static/css/main.27c5a752.chunk.css.map": "/Monotone-Tab/static/css/main.27c5a752.chunk.css.map",
   "index.html": "/Monotone-Tab/index.html",
-  "precache-manifest.60f9e8a4b02c34ff55aceb185048718f.js": "/Monotone-Tab/precache-manifest.60f9e8a4b02c34ff55aceb185048718f.js",
+  "precache-manifest.791eda77c5a8933b0723b41a834acd57.js": "/Monotone-Tab/precache-manifest.791eda77c5a8933b0723b41a834acd57.js",
   "service-worker.js": "/Monotone-Tab/service-worker.js"
 }
