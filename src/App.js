@@ -8,6 +8,7 @@ import Sidebar from './components/Sidebar'
 import QuickLinks from './components/QuickLinks'
 import FirstStart from './components/FirstStart'
 import NewNote from './components/NewNote'
+import AddNoteModal from './components/Modals/AddNoteModal'
 
 //Modals
 import AccountModal from './components/Modals/AccountModal'
@@ -26,6 +27,8 @@ class App extends Component {
 				<AccountModal isLogged={this.state.isLogged} currentPerson={this.state.currentPerson} />
 				<Sidebar isVisible={this.state.sidebarVisible}/>
 				<QuickLinks/>
+
+				<AddNoteModal currentPerson={this.state.currentPerson}/>
 
 				{/* Sidebar Modals */}
 				<SettingsModal updateState={this.updateState}/>

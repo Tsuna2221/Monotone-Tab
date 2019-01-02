@@ -20,7 +20,7 @@ class QuickLinks extends Component {
                 <QuickLinkModal lastItem={this.getLastItems()} updateLinksState={this.updateLinksState} linkColors={this.state.linkColors}/>
 
                 <div id="quick-main-container">
-                    <span className="quick-label">Quick Links</span>
+                    <span className="quick-label head-w">Quick Links</span>
 
                     <Masonry
                         elementType={'div'}
@@ -137,6 +137,8 @@ class QuickLinks extends Component {
         var nameInput = document.querySelector(".edit-name-input")
         var urlInput = document.querySelector(".edit-url-input")
         var colorInput = document.querySelector(".edit-colors-input")
+
+        console.log('ewq')
 
         this.setState({
             selectedData: selectedItem

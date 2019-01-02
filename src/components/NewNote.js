@@ -7,8 +7,7 @@ import AddNoteModal from "./Modals/AddNoteModal"
 class NewNote extends Component {
     render() {
         return (
-            <div className='NewNote'>
-                <AddNoteModal currentPerson={this.props.currentPerson}/>
+            <div className='NewNoteButton'>
                 <div onClick={this.toggleModal} className="new-note-btn">
 					<img src={NoteButton} alt=""/>
 				</div>

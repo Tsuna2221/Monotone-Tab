@@ -19,11 +19,23 @@
 .AddNoteModal{
     transition: .3s;
     background-color: #f3f3f3;
+    position: fixed;
+    right: 185px;
+    bottom: 20px;
+}
+
+.NewNoteButton{
+    display: flex;
+    align-items: flex-end;
+    position: fixed;
+    right: 105px;
+    bottom: 20px;
 }
 
 .note-modal-inactive{
     opacity: 0;
     pointer-events: none;
+    z-index: -1;
 }
 
 .NewNote{

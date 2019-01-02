@@ -45,31 +45,52 @@ class AccountModal extends Component {
 
     checkIfLogged = () => {
         if(this.props.isLogged){
+            var { displayName, email } = this.props.currentPerson
+
             return (
                 <div className="account-container">
-                    <div className="account-buttons">
-                        <div onClick={signOutPerson} className="account-btn signout-btn">Sign Out</div>
+                    <div className="modal-w">
+                        <h1 className="head-w">Account</h1>
+
+                        <div className="field-w">
+                            <label className="label-w">User</label>
+                            <div className="input-w">
+                                <p className="text-w">{displayName}</p>
+                            </div>
+                        </div>
+
+                        <div className="field-w">
+                            <label className="label-w">Email</label>
+                            <div className="input-w">
+                                <p className="text-w">{email}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="btn-container-w">
+                        <div onClick={signOutPerson} className="btn-w f-w">Sign Out</div>
                     </div>
                 </div>
             )
         }else{
             return (
                 <div className="account-container">
-                    <div className="account-field account-email">
-                        <label htmlFor="account-email">Email</label>
-                        <div className="account-email-input">
-                            <input onChange={this.handleInput} name="email" type="email"/>
+                    <div className="modal-w">
+                        <h1 className="head-w">Log In</h1>
+                        <div className="field-w">
+                            <label className="label-w">Email</label>
+                            <div className="input-w input-w175">
+                                <input onChange={this.handleInput} name="email" type="email"/>
+                            </div>
+                        </div>
+                        <div className="field-w">
+                            <label className="label-w">Password</label>
+                            <div className="input-w input-w175">
+                                <input onChange={this.handleInput} name="password" type="password"/>
+                            </div>
                         </div>
                     </div>
-                    <div className="account-field account-password">
-                        <label htmlFor="account-password">Password</label>
-                        <div className="account-password-input">
-                            <input onChange={this.handleInput} name="password" type="password"/>
-                        </div>
-                    </div>
-
-                    <div className="account-buttons">
-                        <div onClick={this.login} className="account-btn login-btn">Log In</div>
+                    <div className="btn-container-w">
+                        <div onClick={this.login} className="btn-w f-w">Log In</div>
                     </div>
                 </div>
             )

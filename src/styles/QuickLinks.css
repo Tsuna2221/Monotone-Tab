@@ -34,11 +34,8 @@
 }
 
 .quick-label{
-	margin-left: 6px;
-    border-left: 3px solid #3D405D;
-    padding-left: 5px;
-    font-size: 20px;
-    color: #6b6b6b;
+	font-weight: 300;
+    color: #545454;
 }
 
 .empty-item{

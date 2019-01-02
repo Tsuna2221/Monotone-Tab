@@ -103,7 +103,7 @@ class QuickLinkEdit extends Component {
         }
 
         //Hide modal
-        modal.style.display = 'none'
+        modal.classList.remove('modal-active')
         picker.style.display = 'none'
 
         //Update State
