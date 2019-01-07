@@ -27,7 +27,6 @@ class App extends Component {
 				<AccountModal isLogged={this.state.isLogged} currentPerson={this.state.currentPerson} />
 				<Sidebar isVisible={this.state.sidebarVisible}/>
 				<QuickLinks/>
-
 				<AddNoteModal currentPerson={this.state.currentPerson}/>
 
 				{/* Sidebar Modals */}
@@ -48,7 +47,6 @@ class App extends Component {
 			if (user){
 				var { email, emailVerified, uid, isAnonymous, displayName } = user
 				var notesCollection = db.collection('person').doc(uid).collection('notes').orderBy('createdAt', 'desc')
-				//.orderBy("body", "asc")
 				
 				notesCollection.onSnapshot(res => {
 					var notes = [];
@@ -79,7 +77,7 @@ class App extends Component {
 			}
 		});
 	}
-	
+
 	drawIfFirstStart = () => {
 		if(Cookies.get('isFirstStart') === undefined){
 			return <FirstStart/>
@@ -99,9 +97,9 @@ class App extends Component {
 	}
 
 	updateState = () => {
-			this.setState({
-				...this.state
-			})
+		this.setState({
+			...this.state
+		})
 	}
 
 	showNoteButtonIfLogged = () => {

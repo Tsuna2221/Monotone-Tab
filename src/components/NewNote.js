@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 //Images
 import NoteButton from "../assets/NoteButton.svg";
-import AddNoteModal from "./Modals/AddNoteModal"
 
 class NewNote extends Component {
     render() {

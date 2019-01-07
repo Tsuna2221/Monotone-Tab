@@ -105,7 +105,7 @@ class QuickLinkModal extends Component {
         inputURL.value = ''
 
         //Hide modal
-        modal.style.display = 'none'
+        modal.classList.toggle('modal-active')
         picker.style.display = 'none'
     }
 }

@@ -52,7 +52,6 @@ class QuickLinks extends Component {
 
     drawContainer = () => {
         var items = [];
-        var sortedItems;
 
         for(var data in localStorage){
             if(localStorage.getItem(data) && JSON.parse(localStorage.getItem(data)).name){
@@ -60,7 +59,7 @@ class QuickLinks extends Component {
             }
         }
 
-        sortedItems = items.sort(function(a, b){ return a.id - b.id })
+        var sortedItems = items.sort((a, b) => parseInt(a.id.replace(/\D/g ,'')) - parseInt(b.id.replace(/\D/g ,'')))
         
         return sortedItems.map(itemDet => {
             if(itemDet !== null){
@@ -129,7 +128,7 @@ class QuickLinks extends Component {
         })
     }
 
-    showNewModal = () => document.querySelector(".new-item-modal").classList.add('modal-active')
+    showNewModal = () => document.querySelector(".new-item-modal").classList.toggle('modal-active')
 
     showEditModal = (e) => {
         var modal = document.querySelector(".edit-item-modal")

@@ -55,9 +55,9 @@ class QuickLinkEdit extends Component {
             }
         }
         
-
         return <SketchPicker presetColors={items} color={colorInput} onChangeComplete = { this.handleColor }/>
     }
+
     //this.setState({colorSelected: color.hex})
     handleColor = (color) => document.querySelector('.input-colors').value = color.hex
 
@@ -126,7 +126,7 @@ class QuickLinkEdit extends Component {
 
         this.props.updateLinksState()
 
-        modal.style.display = 'none'
+        modal.classList.remove('modal-active')
         picker.style.display = 'none'
     }
 }
