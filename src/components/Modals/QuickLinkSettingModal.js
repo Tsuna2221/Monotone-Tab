@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { validateLinks } from '../../actions/formValidator'
 import { SketchPicker } from 'react-color';
 
 class QuickLinkModal extends Component {
@@ -50,7 +51,11 @@ class QuickLinkModal extends Component {
         return <SketchPicker className="new-sketch" presetColors={['fff']} color={colorInput} onChangeComplete={ this.handleColor }/>
     }
 
-    handleColor = (color) => document.querySelector('.input-color').value = color.hex
+    handleColor = (color) => {
+        document.querySelector('.input-color').value = color.hex
+
+        this.setState({newItemColor: color.hex})
+    }
 
     handleModalInput = (e) => {
         var key = e.target.name
@@ -75,7 +80,6 @@ class QuickLinkModal extends Component {
 
     handleItem = () => {
         var url = this.state.newItemURL;
-        var elements = document.getElementsByClassName('color-option')
         var inputName = document.querySelector(".input-name")
         var inputURL = document.querySelector(".input-url")
         var modal = document.querySelector(".new-item-modal")
@@ -83,30 +87,28 @@ class QuickLinkModal extends Component {
         var picker = document.querySelector('.new-sketch')
         var colorInput = document.querySelector(".input-color")
         var color = colorInput.value;
+        var { newItemName, newItemURL, newItemColor } = this.state
 
-        //URL "parser"
-        if(!url.includes('http')){
-            url = 'http://' + url
+        if(validateLinks(newItemName, newItemURL, newItemColor) === true){
+            //URL "parser"
+            if(!url.includes('http')){
+                url = 'http://' + url
+            }
+
+            //Update State
+            this.props.updateLinksState()
+
+            // eslint-disable-next-line
+            window.localStorage.setItem('item' + (lastNumberInt + 1), '{ "name":'+ '"' + this.state.newItemName + '"' +', "url":'+ '"' + url + '"' +', "color":'+ '"' + color + '"' +', "id": "item' + (lastNumberInt + 1) + '"' +'}')
+
+            //Clear Input Fields
+            inputName.value = ''
+            inputURL.value = ''
+
+            //Hide modal
+            modal.classList.toggle('modal-active')
+            picker.style.display = 'none'
         }
-
-        //Unmark Color of offclick
-        for(var i = 0; i < elements.length; i++){
-            elements[i].className = 'color-option'
-        }
-
-        //Update State
-        this.props.updateLinksState()
-
-        // eslint-disable-next-line
-        window.localStorage.setItem('item' + (lastNumberInt + 1), '{ "name":'+ '"' + this.state.newItemName + '"' +', "url":'+ '"' + url + '"' +', "color":'+ '"' + color + '"' +', "id": "item' + (lastNumberInt + 1) + '"' +'}')
-
-        //Clear Input Fields
-        inputName.value = ''
-        inputURL.value = ''
-
-        //Hide modal
-        modal.classList.toggle('modal-active')
-        picker.style.display = 'none'
     }
 }
 

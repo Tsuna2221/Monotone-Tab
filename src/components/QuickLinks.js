@@ -137,8 +137,6 @@ class QuickLinks extends Component {
         var urlInput = document.querySelector(".edit-url-input")
         var colorInput = document.querySelector(".edit-colors-input")
 
-        console.log('ewq')
-
         this.setState({
             selectedData: selectedItem
         })

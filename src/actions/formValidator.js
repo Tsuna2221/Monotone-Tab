@@ -48,5 +48,18 @@ const checkIfNotNull = (name, body) => {
         return false
     }
 }
-export { validateUser, validateEmail, validatePassword, checkIfNotNull };
+
+const validateLinks = (name, url, color) => {
+    if(name && url && color){
+        if(name !== '' && url !== '' && url !== ''){
+            return true
+        }else{
+            return false
+        }
+    }else{
+        return false
+    }
+}
+
+export { validateUser, validateEmail, validatePassword, checkIfNotNull, validateLinks };
 

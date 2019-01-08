@@ -92,11 +92,6 @@ class QuickLinkEdit extends Component {
         var colorInput = document.querySelector(".edit-colors-input")
         var color = colorInput.value;
 
-        //Reset selected color border
-        for(var i = 0; i < elements.length; i++){
-            elements[i].className = 'color-option'
-        }
-
         //Parse http
         if(!urlInput.includes('http')){
             urlInput = 'http://' + urlInput
