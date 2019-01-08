@@ -22,17 +22,23 @@ class App extends Component {
 		this.drawIfFirstStart()
 		return (
 			<div className="App">
+				{/* General */}
 				{this.drawIfFirstStart()}
 				<Navbar isLogged={this.state.isLogged} currentPerson={this.state.currentPerson} isVisible={this.state.sidebarVisible} showSidebar={this.showSidebar}/>
-				<AccountModal isLogged={this.state.isLogged} currentPerson={this.state.currentPerson} />
 				<Sidebar isVisible={this.state.sidebarVisible}/>
 				<QuickLinks/>
 				<AddNoteModal currentPerson={this.state.currentPerson}/>
+
+				{/* Modals */}
+				<AccountModal isLogged={this.state.isLogged} currentPerson={this.state.currentPerson} />
 
 				{/* Sidebar Modals */}
 				<SettingsModal updateState={this.updateState}/>
 				<NotesModal notes={this.state.currentNotes}/>
 				{this.showNoteButtonIfLogged()}
+				
+
+				{/* Transition */}
 				<div className="transition-bg"></div>
 			</div>			
 		);

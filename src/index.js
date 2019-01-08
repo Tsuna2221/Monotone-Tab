@@ -13,5 +13,6 @@ import './styles/SettingsModal.css';
 import './styles/AccountModal.css';
 import './styles/NewNoteModal.css';
 import './styles/NotesModal.css';
+import './styles/Prefixes.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));

@@ -1,0 +1,154 @@
+/*Sections*/
+
+.head-w{
+	font-size: 24px;
+	margin: 0;
+}
+
+.flex-w{
+	display: flex;
+	margin: 8px 0;
+	justify-content: space-between;
+}
+
+.section-w{
+	font-size: 19px;
+	margin-top: 20px;
+}
+
+.field-w{
+	margin: 18px 0;
+}
+
+.modal-w{
+	padding: 25px 25px 1px 25px;
+}
+
+.modal-g{
+	z-index: 100;
+}
+
+.modal{
+    z-index: 100;
+}
+
+/*Texts*/
+
+.head-w, .label-w, .section-w{
+	font-weight: 200;
+	color: #3D405D;
+}
+
+.label-w{
+	font-size: 15px;
+}
+
+
+.text-w{
+	color: #717171;
+    font-weight: 400;
+}
+
+/*Inputs*/
+
+.input-w, .input-area-w{
+	margin-top: 6px;
+}
+
+.input-w > input{
+	width: 230px;
+	height: 33px;
+	background-color: #ececec;
+    border: 1px solid #b2b2b200;
+	outline: none;
+	padding: 0 10px;
+	color: #3D405D; 
+	transition: .4s ease;
+	font-weight: 300;
+}
+
+.input-w175 > input{
+	width: 175px;
+}
+
+.input-w > input:focus{
+	background-color: #fff;
+	border: 1px solid #3D405D;
+}
+
+.input-w > input::placeholder{
+	color: #B2B2B2;
+	font-size: 14px;
+	font-weight: 200;
+}
+
+.input-area-w > textarea{
+    width: 230px;
+    height: 16px;
+    background-color: #ececec;
+    border: 1px solid #b2b2b200;
+    outline: none;
+    padding: 10px;
+    color: #3D405D;
+    transition: .4s ease;
+	font-weight: 300;
+	resize: none;
+}
+
+.input-a175 > textarea{
+	width: 175px;
+}
+
+.input-area-w > textarea:focus{
+	height: 100px;
+	background-color: #fff;
+	border: 1px solid #3D405D;
+}
+
+.range-w > input{
+    width: 100%;
+}
+
+/*Buttons*/
+
+.button-w{
+	cursor: pointer;
+	border: 1px solid #3D405D;
+    padding: 10px 18px;
+    font-weight: 300;
+    font-size: 13px;
+	color: #3D405D;
+	user-select: none;
+	transition: .2s ease;
+}
+
+.button-w:hover{
+	color: #fff;
+	background-color: #3D405D;
+}
+
+.btn-w{
+	height: 67px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .35s ease;
+    font-size: 14px;
+    font-weight: 300;
+	color: #3d405d;
+	cursor: pointer;
+}
+
+.btn-w:hover{
+    color: #f8f8f8;
+    background-color: #3d405d;
+}
+
+.f-w{
+	width: 100%;
+}
+
+.btn-container-w{
+	display: flex;
+}

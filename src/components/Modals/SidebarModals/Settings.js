@@ -1,18 +1,34 @@
 import React, { Component } from 'react';
+
+import Prompt from './Prompt'
 import Cookies from 'js-cookie'
 
 class SettingsModal extends Component {
     render() {
         return (
             <div className='Settings Settings-Inactive modal-g'>
+                <Prompt promptText={this.state.promptText}/>
+
                 <div className="settings-container">
                     <div className="modal-w">
                         <h1 className="head-w">Settings</h1>
+                        <div className="links-settings">
+                            <h2 className="section-w">Quick Links</h2>
 
-                        <div className="field-w">
-                            <label className="label-w">Columns</label>
-                            <div className="range-w">
-                                {this.columnInput()}
+                            <div className="field-w">
+                                <label className="label-w">Columns</label>
+                                <div className="range-w">
+                                    {this.columnInput()}
+                                </div>
+                            </div>
+
+                            <div className="field-w">
+                                <label className="label-w">Remove Items</label>
+                                
+                                <div className="remove-btns flex-w">
+                                    <div data-type='selective' onClick={this.togglePrompt} className="button-w">Selective</div>
+                                    <div data-type='remove-all' onClick={this.togglePrompt} className="button-w">Remove All</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -22,7 +38,14 @@ class SettingsModal extends Component {
     }
 
     state = {
-
+        promptText:{
+            head: 'head',
+            label: 'label',
+            options: {
+                num1: 'num1',
+                num2: 'num2'
+            }
+        }
     }
 
     componentDidMount = () => {
@@ -56,6 +79,43 @@ class SettingsModal extends Component {
 
         this.props.updateState()
         container.style.gridTemplateColumns = "repeat("+ e.target.value +", 245px)"
+    }
+
+    togglePrompt = (e) => {
+        if(document.querySelector('.app-prompt-inactive')){
+            var prompt = document.querySelector('.app-prompt')
+            var type = e.target.dataset.type
+    
+            var setText = (head, label, num1, num2, fnc1, fnc2) => {
+                this.setState({
+                    promptText:{
+                        head: head,
+                        label: label,
+                        fnc1: fnc1,
+                        fnc2: fnc2,
+                        options: {
+                            num1: num1,
+                            num2: num2
+                        }
+                    }
+                })
+            }
+    
+            switch(type){
+                case 'remove-all':
+                    setText('Remove All', 'Are you sure?', 'No', 'Yes', null, () => {
+                        localStorage.clear();
+                        this.props.updateState()
+                    })
+                break;
+    
+                case 'selective':
+                    setText('Selective Removal', 'Finish removal?', 'Finish', null, null, null)
+                break;
+            }
+    
+            prompt.classList.toggle('app-prompt-inactive')
+        }
     }
 }
 

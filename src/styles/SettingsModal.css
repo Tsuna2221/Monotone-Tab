@@ -12,3 +12,18 @@
 .Settings-Inactive{
     width: 0px;
 }
+
+.app-prompt{
+    position: fixed;
+    width: 300px;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    background-color: #FAF9FF;
+    transition: .18s ease;
+}
+
+.app-prompt-inactive{
+    opacity: 0;
+    pointer-events: none;
+}
