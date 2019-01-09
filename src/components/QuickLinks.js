@@ -18,12 +18,13 @@ class QuickLinks extends Component {
         return (
             <div id='QuickLinks'>
                 <QuickLinkEdit data={this.state.selectedData} lastItem={this.getLastItems()} updateLinksState={this.updateLinksState} linkColors={this.state.linkColors}/>
-                <QuickLinkModal lastItem={this.getLastItems()} updateLinksState={this.updateLinksState} linkColors={this.state.linkColors}/>
+                <QuickLinkModal folders={this.getFolders} items={this.state.items} selectedFolder={this.state.currentFolder} lastItem={this.getLastItems()} updateLinksState={this.updateLinksState} linkColors={this.state.linkColors}/>
                 
-                <Folders/>
+                <Folders currentFolder={this.currentFolder} setCurrentFolder={this.setCurrentFolder} updateLinksState={this.updateLinksState}/>
 
                 <div id="quick-main-container">
-                    <span className="quick-label head-w">Quick Links</span>                   
+                    <span className="quick-label head-w">Quick Links</span>            
+                    <p className="label-w folder-label">{this.setLabel(this.state.currentFolder)}</p>
                     <Masonry
                         elementType={'div'}
                         options={this.state.masonryOptions}
@@ -44,7 +45,9 @@ class QuickLinks extends Component {
         );
     }
 
-    state = {}
+    state = {
+        currentFolder: 'default',
+    }
 
     componentDidMount = () => {
         if(Cookies.get('isFirstStart') === undefined){
@@ -54,10 +57,11 @@ class QuickLinks extends Component {
 
     drawContainer = () => {
         var items = [];
-
         for(var data in localStorage){
-            if(data.includes('item')){
-                if(localStorage.getItem(data) && JSON.parse(localStorage.getItem(data)).name){
+            if(data.includes('item') ){
+                var itemIndex = JSON.parse(localStorage.getItem(data)).folder
+                var currentFolder = this.state.currentFolder
+                if(itemIndex === currentFolder){
                     items.push(JSON.parse(localStorage.getItem(data)))
                 }
             }
@@ -90,6 +94,23 @@ class QuickLinks extends Component {
         }
     }
 
+    setCurrentFolder = (folder) => {
+        this.setState({
+            ...this.state,
+            currentFolder: folder,
+        })
+    }
+
+    setLabel = () => {
+        var folderId = this.state.currentFolder
+
+        if(folderId === 'default'){
+            return 'Main'
+        }else{
+            return JSON.parse(localStorage.getItem(folderId)).name
+        }
+    }
+
     initColumnNo = () => {
         var maxColumns = Math.floor(window.innerWidth / 245);
         
@@ -98,6 +119,20 @@ class QuickLinks extends Component {
         }else{
             return Cookies.get('noOfColumns')
         }
+    }
+
+    getFolders = () => {
+        var items = []
+
+        for(var data in localStorage){
+            if(data.includes('folder')){
+                if(localStorage.getItem(data) && JSON.parse(localStorage.getItem(data)).name){
+                    items.push(JSON.parse(localStorage.getItem(data)))
+                }
+            }
+        }
+
+        return items
     }
 
     getLastItems = () => {

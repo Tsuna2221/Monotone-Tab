@@ -87,6 +87,8 @@ class NewFolder extends Component {
             localStorage.setItem('folder' + (this.getLastItems() + 1), '{"name": "'+ name +'", "color": "'+ color +'", "id": "folder'+ (this.getLastItems() + 1) +'"}')
             this.toggleModal()
         }
+
+        this.props.updateState()
     }
 }
 

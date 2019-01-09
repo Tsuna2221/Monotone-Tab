@@ -109,6 +109,29 @@
     width: 100%;
 }
 
+.select-w{
+    width: 100%;
+    height: 33px;
+    background-color: #ececec;
+    border: 1px solid #b2b2b200;
+    outline: none;
+    padding: 0 10px;
+    color: #3D405D;
+    -webkit-transition: .4s ease;
+    transition: .4s ease;
+    font-weight: 300;
+}
+
+select {
+	-webkit-appearance: none; 
+	-moz-appearance: none;
+	appearance: none;
+}
+
+option{
+	background-color: #ececec;
+}
+
 /*Buttons*/
 
 .button-w{
@@ -151,4 +174,21 @@
 
 .btn-container-w{
 	display: flex;
+}
+
+.item-option-btn{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 4px;
+	transition: .4s ease;
+	opacity: 0;
+    padding: 5px 13px;
+	margin: 13px 8px;
+	border-radius: 60px;
+	cursor: pointer;
+}
+
+.folder-option-btn{
+	margin: 8px 2px;
 }

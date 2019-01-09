@@ -77,19 +77,10 @@
 	text-align: center;
 }
 
-.quick-item-container:hover > .item-option-btn{
+.quick-item-container:hover > .item-option-btn, .folder-container:hover > .item-option-btn{
 	opacity: 1;
 }
 
-.item-option-btn{
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 4px;
-	transition: .4s ease;
-	opacity: 0;
-    padding: 5px 13px;
-	margin: 13px 8px;
-	border-radius: 60px;
-	cursor: pointer;
+.folder-label{
+    margin-top: 5px;
 }

@@ -96,7 +96,7 @@
 
 /*Modal*/
 
-.modal-new-folder{
+.modal-new-folder, .modal-edit-folder{
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -112,7 +112,7 @@
     pointer-events: none;
 }
 
-.new-folder-modal{
+.new-folder-modal, .edit-folder-modal{
     transition: .5s;
 	background-color: #f3f3f3;
 }

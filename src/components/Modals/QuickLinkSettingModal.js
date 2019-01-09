@@ -26,6 +26,16 @@ class QuickLinkModal extends Component {
                         </div>
 
                         <div className="field-w">
+                            <label className="label-w" htmlFor="folder">Folder</label>
+                            <div className="input-w">
+                                <select onChange={this.handleModalInput} name="newItemFolder" className="input-folder select-w">
+                                    <option value='default'>Default</option>
+                                    {this.drawFolderOptions()}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className="field-w">
                             <label className="label-w" htmlFor="colors">Color</label>
 
                             <div className="input-w">
@@ -43,13 +53,20 @@ class QuickLinkModal extends Component {
 
     state = {
         colorSelected:'',
+        folders: [],
+        newItemFolder: 'default'
     }
 
-    modalColors = () => {
-        var colorInput = document.querySelector('.input-color') || '#fff'
-
-        return <SketchPicker className="new-sketch" presetColors={['fff']} color={colorInput} onChangeComplete={ this.handleColor }/>
+    drawFolderOptions = () => {
+        return this.props.folders().map(folder => {
+            var { name, id } = folder
+            return (
+                <option key={id} value={id}>{name}</option>
+            )
+        })
     }
+
+    modalColors = () => <SketchPicker className="new-sketch" presetColors={['fff']} color={this.state.newItemColor} onChangeComplete={ this.handleColor }/>
 
     handleColor = (color) => {
         document.querySelector('.input-color').value = color.hex
@@ -79,31 +96,24 @@ class QuickLinkModal extends Component {
     showColors = () => { document.querySelector('.new-sketch').style.display = 'block' }
 
     handleItem = () => {
-        var url = this.state.newItemURL;
-        var inputName = document.querySelector(".input-name")
-        var inputURL = document.querySelector(".input-url")
+        var { newItemName, newItemURL, newItemFolder, newItemColor } = this.state
         var modal = document.querySelector(".new-item-modal")
         var lastNumberInt = this.props.lastItem
         var picker = document.querySelector('.new-sketch')
         var colorInput = document.querySelector(".input-color")
         var color = colorInput.value;
-        var { newItemName, newItemURL, newItemColor } = this.state
 
         if(validateLinks(newItemName, newItemURL, newItemColor) === true){
             //URL "parser"
-            if(!url.includes('http')){
-                url = 'http://' + url
+            if(!newItemURL.includes('http')){
+                newItemURL = 'http://' + newItemURL
             }
 
             //Update State
             this.props.updateLinksState()
 
             // eslint-disable-next-line
-            window.localStorage.setItem('item' + (lastNumberInt + 1), '{ "name":'+ '"' + this.state.newItemName + '"' +', "url":'+ '"' + url + '"' +', "color":'+ '"' + color + '"' +', "id": "item' + (lastNumberInt + 1) + '"' +'}')
-
-            //Clear Input Fields
-            inputName.value = ''
-            inputURL.value = ''
+            window.localStorage.setItem('item' + (lastNumberInt + 1), '{ "name":'+ '"' + newItemName + '"' +', "url":'+ '"' + newItemURL + '"' +', "folder": "'+ newItemFolder +'", "color":'+ '"' + color + '"' +', "id": "item' + (lastNumberInt + 1) + '"' +'}')
 
             //Hide modal
             modal.classList.toggle('modal-active')
