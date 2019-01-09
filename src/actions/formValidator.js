@@ -61,5 +61,13 @@ const validateLinks = (name, url, color) => {
     }
 }
 
-export { validateUser, validateEmail, validatePassword, checkIfNotNull, validateLinks };
+const validateFolder = (name, color) => {
+    if(name !== '' && color !== ''){
+        return true
+    }else{
+        return false
+    }
+}
+
+export { validateUser, validateEmail, validatePassword, checkIfNotNull, validateLinks, validateFolder };
 

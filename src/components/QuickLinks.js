@@ -6,6 +6,7 @@ import Masonry from 'react-masonry-component';
 //Components
 import QuickLinkModal from './Modals/QuickLinkSettingModal'
 import QuickLinkEdit from './Modals/QuickLinkEditModal'
+import Folders from './Folders'
 
 //Images
 import OptionButton from "../assets/OptionButton.svg";
@@ -18,10 +19,11 @@ class QuickLinks extends Component {
             <div id='QuickLinks'>
                 <QuickLinkEdit data={this.state.selectedData} lastItem={this.getLastItems()} updateLinksState={this.updateLinksState} linkColors={this.state.linkColors}/>
                 <QuickLinkModal lastItem={this.getLastItems()} updateLinksState={this.updateLinksState} linkColors={this.state.linkColors}/>
+                
+                <Folders/>
 
                 <div id="quick-main-container">
-                    <span className="quick-label head-w">Quick Links</span>
-
+                    <span className="quick-label head-w">Quick Links</span>                   
                     <Masonry
                         elementType={'div'}
                         options={this.state.masonryOptions}
@@ -54,8 +56,10 @@ class QuickLinks extends Component {
         var items = [];
 
         for(var data in localStorage){
-            if(localStorage.getItem(data) && JSON.parse(localStorage.getItem(data)).name){
-                items.push(JSON.parse(localStorage.getItem(data)))
+            if(data.includes('item')){
+                if(localStorage.getItem(data) && JSON.parse(localStorage.getItem(data)).name){
+                    items.push(JSON.parse(localStorage.getItem(data)))
+                }
             }
         }
 
@@ -101,13 +105,15 @@ class QuickLinks extends Component {
         var highestValues = [];
 
         for(var data in localStorage){
-            if(localStorage.getItem(data) !== null){
-                items.push(JSON.parse(localStorage.getItem(data)))
-                highestValues.push(parseInt(data.replace('item', '')))
+            if(data.includes('item')){
+                if(localStorage.getItem(data) !== null){
+                    items.push(JSON.parse(localStorage.getItem(data)))
+                    highestValues.push(parseInt(data.replace('item', '')))
+                }
             }
         }
 
-        if(localStorage.length < 1){
+        if(items.length < 1){
             return 0
         }else{
             return Math.max.apply(Math, highestValues)

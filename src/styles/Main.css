@@ -26,3 +26,9 @@ body{
 *{
 	font-family: 'Roboto', arial, sans-serif;
 }
+
+.modal-active{
+	display: flex !important;
+	opacity: 1 !important;
+	pointer-events: initial !important;
+}

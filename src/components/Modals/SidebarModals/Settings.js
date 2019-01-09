@@ -112,6 +112,9 @@ class SettingsModal extends Component {
                 case 'selective':
                     setText('Selective Removal', 'Finish removal?', 'Finish', null, null, null)
                 break;
+
+                default:
+                    return null
             }
     
             prompt.classList.toggle('app-prompt-inactive')

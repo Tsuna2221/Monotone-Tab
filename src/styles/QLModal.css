@@ -13,12 +13,6 @@
 	pointer-events: none;
 }
 
-.modal-active{
-	display: flex;
-	opacity: 1;
-	pointer-events: initial;
-}
-
 .new-item-modal-content{
 	transition: .5s;
 	background-color: #f3f3f3;

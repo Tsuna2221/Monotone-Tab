@@ -50,8 +50,10 @@ class QuickLinkEdit extends Component {
         var colorInput = document.querySelector('.input-colors') || '#fff'
 
         for(var data in localStorage){
-            if(localStorage.getItem(data)){
-                items.push(JSON.parse(localStorage.getItem(data)).color)
+            if(data.includes('item')){
+                if(localStorage.getItem(data)){
+                    items.push(JSON.parse(localStorage.getItem(data)).color)
+                }
             }
         }
         
@@ -86,7 +88,6 @@ class QuickLinkEdit extends Component {
     handleItem = () => {
         var nameInput = document.querySelector(".edit-name-input").value
         var urlInput = document.querySelector(".edit-url-input").value
-        var elements = document.getElementsByClassName('color-option')
         var modal = document.querySelector(".edit-item-modal")
         var picker = document.querySelector('.sketch-picker')
         var colorInput = document.querySelector(".edit-colors-input")
