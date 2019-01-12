@@ -18,7 +18,6 @@ const returnLinks = (currentFolder) => {
     for(var data in localStorage){
         if(data.includes('item') ){
             var itemIndex = JSON.parse(localStorage.getItem(data)).folder
-            var currentFolder = currentFolder
             if(itemIndex === currentFolder){
                 items.push(JSON.parse(localStorage.getItem(data)))
             }

@@ -61,7 +61,7 @@ class QuickLinkModal extends Component {
     drawFolderOptions = () => returnFolders().map(folder => <option key={folder.id} value={folder.id}>{folder.name}</option>)
 
     modalColors = () => <SketchPicker className="new-sketch" color={this.state.newItemColor} onChangeComplete={ this.handleColor }/>
-
+    // eslint-disable-next-line
     handleColor = (color) => (document.querySelector('.input-color').value = color.hex, this.setState({newItemColor: color.hex}))
 
     handleModalInput = (e) => this.setState({[e.target.name]: e.target.value})

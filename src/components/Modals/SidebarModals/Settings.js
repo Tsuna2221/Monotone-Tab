@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+//Actions
+import { exportBackup, importBackup } from '../../../actions/fbQuery'
+
 import Prompt from './Prompt'
 import Cookies from 'js-cookie'
 
@@ -28,6 +31,15 @@ class SettingsModal extends Component {
                                 <div className="remove-btns flex-w">
                                     <div data-type='selective' onClick={this.togglePrompt} className="button-w">Selective</div>
                                     <div data-type='remove-all' onClick={this.togglePrompt} className="button-w">Remove All</div>
+                                </div>
+                            </div>
+
+                            <div className="field-w">
+                                <label className="label-w">Backup Folders and Links</label>
+                                
+                                <div className="remove-btns flex-w">
+                                    <div data-type='backup' onClick={this.togglePrompt} className="button-w">Export</div>
+                                    <div data-type='restore' onClick={this.togglePrompt} className="button-w">Import</div>
                                 </div>
                             </div>
                         </div>
@@ -107,6 +119,16 @@ class SettingsModal extends Component {
     
                 case 'selective':
                     setText('Selective Removal', 'Finish removal?', 'Finish', null, null, null)
+                break;
+
+                case 'backup':
+                    setText('Export Folders and Items', 'Are you sure?', 'No', 'Yes', null, () => exportBackup(localStorage))
+                break;
+    
+                case 'restore':
+                    setText('Import Folders and Items', 'Are you sure?', 'No', 'Yes', null, () => {                     
+                        importBackup(this.props.updateState)
+                    })
                 break;
 
                 default:

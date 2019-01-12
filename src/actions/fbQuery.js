@@ -50,4 +50,32 @@ const storeNote = (name, body, uid) => {
     });
 }
 
-export { createNewPerson, loginPerson, signOutPerson, storeNote };
+const exportBackup = (storage) => {
+    db.collection("person").doc(auth.currentUser.uid).set({
+        backup: JSON.stringify(storage)
+    })
+    .then(function(res) {
+        console.log("Document written with ID: ", res);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+}
+
+const importBackup = (update) => {
+    db.collection("person").doc(auth.currentUser.uid).get().then(res => {
+        var items = JSON.parse(res.data().backup)
+        
+        for (var key in items) {
+            localStorage.setItem(key, items[key])
+        }
+
+        return res
+    })
+    .then(() => update())
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+}
+
+export { createNewPerson, loginPerson, signOutPerson, storeNote, exportBackup, importBackup };
