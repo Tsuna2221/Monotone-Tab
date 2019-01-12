@@ -4,16 +4,20 @@ self.__precacheManifest = [
     "url": "/Monotone-Tab/static/media/Mail.006c4744.svg"
   },
   {
-    "revision": "5139d09f52ce74838f40",
-    "url": "/Monotone-Tab/static/css/main.8d34f144.chunk.css"
+    "revision": "970cf266cef08ca1b99e",
+    "url": "/Monotone-Tab/static/css/main.e9c466ae.chunk.css"
   },
   {
-    "revision": "8c09f7e840194703c96a",
-    "url": "/Monotone-Tab/static/js/1.8c09f7e8.chunk.js"
+    "revision": "2426a564137eef49bd3b",
+    "url": "/Monotone-Tab/static/js/1.2426a564.chunk.js"
   },
   {
     "revision": "1257907870476e0e2852",
     "url": "/Monotone-Tab/static/js/runtime~main.12579078.js"
+  },
+  {
+    "revision": "e5d1adcbfda0cefad6eaee3f57148a32",
+    "url": "/Monotone-Tab/static/media/OptionButton.e5d1adcb.svg"
   },
   {
     "revision": "223ae4401c043456b8b0ba801a312f68",
@@ -32,8 +36,8 @@ self.__precacheManifest = [
     "url": "/Monotone-Tab/static/media/Evernote.3890a5fd.svg"
   },
   {
-    "revision": "5139d09f52ce74838f40",
-    "url": "/Monotone-Tab/static/js/main.5139d09f.chunk.js"
+    "revision": "970cf266cef08ca1b99e",
+    "url": "/Monotone-Tab/static/js/main.970cf266.chunk.js"
   },
   {
     "revision": "f088f485efb75775b298fcf9cb6e65f0",
@@ -48,8 +52,8 @@ self.__precacheManifest = [
     "url": "/Monotone-Tab/static/media/Expand.0cdb1071.svg"
   },
   {
-    "revision": "e5d1adcbfda0cefad6eaee3f57148a32",
-    "url": "/Monotone-Tab/static/media/OptionButton.e5d1adcb.svg"
+    "revision": "71902d2cc312d7a1efd74595e4b6754e",
+    "url": "/Monotone-Tab/static/media/CollapseArrow.71902d2c.svg"
   },
   {
     "revision": "09e37ac1b8f86af2dc7648b7c38ff4fc",
@@ -64,7 +68,7 @@ self.__precacheManifest = [
     "url": "/Monotone-Tab/static/media/Google.27264edf.svg"
   },
   {
-    "revision": "750e57e518c7d8bc170bf42b0a4e2e38",
+    "revision": "2ff9c0dd9cfc0bafdfbe5b36e8c0fc5a",
     "url": "/Monotone-Tab/index.html"
   }
 ];
