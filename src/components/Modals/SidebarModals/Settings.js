@@ -66,12 +66,8 @@ class SettingsModal extends Component {
         });
     }
 
-    columnInput = () => {
-        var maxRange = Math.floor(window.innerWidth / 245)
-        
-        return <input onChange={this.handleRange} type="range" min="1" max={maxRange} name="column-range" className="column-range"/>
-    }
-
+    columnInput = () => <input onChange={this.handleRange} type="range" min="1" max={Math.floor(window.innerWidth / 245)} name="column-range" className="column-range"/>
+    
     handleRange = (e) => {
         var container = document.querySelector(".quick-container")
 

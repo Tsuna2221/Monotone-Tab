@@ -41,23 +41,11 @@ class EditFolder extends Component {
 
     }
 
-    handleInput = (e) => {
-        var key = e.target.name
-        var val = e.target.value
-
-        this.setState({
-            [key]: val
-        })
-    }
+    handleInput = (e) => this.setState({[e.target.name]: e.target.value})
 
     toggleModal = () => document.querySelector('.modal-edit-folder').classList.toggle('modal-active')
 
-    closeModal = (e) => {
-        var modal = document.querySelector('.modal-edit-folder')
-        if(e.target === modal){
-            modal.classList.toggle('modal-active')
-        }
-    }
+    closeModal = (e) => e.target === document.querySelector('.modal-edit-folder') ? document.querySelector('.modal-edit-folder').classList.toggle('modal-active') : null
 
     editFolder = () => {
         var nameInput = document.querySelector(".edit-folder-name").value

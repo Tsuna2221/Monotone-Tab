@@ -11,13 +11,16 @@ import Folders from './Folders'
 //Images
 import OptionButton from "../assets/OptionButton.svg";
 
+//Actions
+import { returnLinks, returnLastLink } from "../actions/storageActions"
+
 
 class QuickLinks extends Component {
     render() {
         window.onclick = this.closeModal
         return (
             <div id='QuickLinks'>
-                <QuickLinkEdit data={this.state.selectedData} lastItem={this.getLastItems()} updateLinksState={this.updateLinksState} linkColors={this.state.linkColors}/>
+                <QuickLinkEdit folders={this.getFolders} data={this.state.selectedData} lastItem={this.getLastItems()} updateLinksState={this.updateLinksState} linkColors={this.state.linkColors}/>
                 <QuickLinkModal folders={this.getFolders} items={this.state.items} selectedFolder={this.state.currentFolder} lastItem={this.getLastItems()} updateLinksState={this.updateLinksState} linkColors={this.state.linkColors}/>
                 
                 <Folders currentFolder={this.currentFolder} setCurrentFolder={this.setCurrentFolder} updateLinksState={this.updateLinksState}/>
@@ -56,20 +59,7 @@ class QuickLinks extends Component {
     }
 
     drawContainer = () => {
-        var items = [];
-        for(var data in localStorage){
-            if(data.includes('item') ){
-                var itemIndex = JSON.parse(localStorage.getItem(data)).folder
-                var currentFolder = this.state.currentFolder
-                if(itemIndex === currentFolder){
-                    items.push(JSON.parse(localStorage.getItem(data)))
-                }
-            }
-        }
-
-        var sortedItems = items.sort((a, b) => parseInt(a.id.replace(/\D/g ,'')) - parseInt(b.id.replace(/\D/g ,'')))
-        
-        return sortedItems.map(itemDet => {
+        return returnLinks(this.state.currentFolder).map(itemDet => {
             if(itemDet !== null){
                 return (
                     <div key={itemDet.id} className="quick-item-container">
@@ -87,73 +77,16 @@ class QuickLinks extends Component {
         })
     }
 
-    setTransition = (e) => {
-        var bg = document.querySelector('.transition-bg')
-        if(!e.ctrlKey){
-            bg.style.height = '100vh'
-        }
-    }
+    setTransition = (e) => !e.ctrlKey ? document.querySelector('.transition-bg').style.height = '100vh' : null
 
-    setCurrentFolder = (folder) => {
-        this.setState({
-            ...this.state,
-            currentFolder: folder,
-        })
-    }
+    setCurrentFolder = (folder) => this.setState({...this.state, currentFolder: folder,})
 
-    setLabel = () => {
-        var folderId = this.state.currentFolder
+    setLabel = () => this.state.currentFolder === 'default' ? 'Main' : JSON.parse(localStorage.getItem(this.state.currentFolder)).name
 
-        if(folderId === 'default'){
-            return 'Main'
-        }else{
-            return JSON.parse(localStorage.getItem(folderId)).name
-        }
-    }
+    initColumnNo = () => Cookies.get('noOfColumns') > Math.floor(window.innerWidth / 245) ? Math.floor(window.innerWidth / 245) : Cookies.get('noOfColumns')
 
-    initColumnNo = () => {
-        var maxColumns = Math.floor(window.innerWidth / 245);
-        
-        if(Cookies.get('noOfColumns') > maxColumns){
-            return maxColumns
-        }else{
-            return Cookies.get('noOfColumns')
-        }
-    }
+    getLastItems = () => returnLastLink().items.length < 1 ? 0 : Math.max.apply(Math, returnLastLink().highestValues)
 
-    getFolders = () => {
-        var items = []
-
-        for(var data in localStorage){
-            if(data.includes('folder')){
-                if(localStorage.getItem(data) && JSON.parse(localStorage.getItem(data)).name){
-                    items.push(JSON.parse(localStorage.getItem(data)))
-                }
-            }
-        }
-
-        return items
-    }
-
-    getLastItems = () => {
-        var items = [];
-        var highestValues = [];
-
-        for(var data in localStorage){
-            if(data.includes('item')){
-                if(localStorage.getItem(data) !== null){
-                    items.push(JSON.parse(localStorage.getItem(data)))
-                    highestValues.push(parseInt(data.replace('item', '')))
-                }
-            }
-        }
-
-        if(items.length < 1){
-            return 0
-        }else{
-            return Math.max.apply(Math, highestValues)
-        }
-    }
 
     updateLinksState = () => {
         var items = []
@@ -164,9 +97,7 @@ class QuickLinks extends Component {
             }
         }
 
-        this.setState({
-            items: items
-        })
+        this.setState({items: items})
     }
 
     showNewModal = () => document.querySelector(".new-item-modal").classList.toggle('modal-active')
@@ -191,7 +122,6 @@ class QuickLinks extends Component {
     closeModal = (e) => {
         var newModal = document.querySelector(".new-item-modal")
         var editModal = document.querySelector(".edit-item-modal")
-        var elements = document.getElementsByClassName('color-option')
         var picker = document.querySelector('.sketch-picker')
         var pickerNew = document.querySelector('.new-sketch')
 
@@ -199,10 +129,6 @@ class QuickLinks extends Component {
             var inputs = document.querySelectorAll(".input")
 
             inputs.forEach(e => { e.value = '' });
-
-            for(var i = 0; i < elements.length; i++){
-                elements[i].className = 'color-option'
-            }
 
             document.querySelector(".edit-item-modal").classList.remove('modal-active')
             document.querySelector(".new-item-modal").classList.remove('modal-active')

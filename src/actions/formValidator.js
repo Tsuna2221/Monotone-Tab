@@ -69,5 +69,30 @@ const validateFolder = (name, color) => {
     }
 }
 
-export { validateUser, validateEmail, validatePassword, checkIfNotNull, validateLinks, validateFolder };
+const validateStartForm = (form) => {
+    var { name, email, password, confirm } = form
+    var formValid = {}
+    
+    if(name){ 
+        if(validateUser(name)){ formValid.isUserValid = true }
+    }
+
+    if(email){ 
+        if(validateEmail(email)){ formValid.isEmailValid = true }
+    }
+
+    if(password){
+        if(confirm){ 
+            if(validatePassword(password, confirm)){ formValid.isPassValid = true }
+        }
+    }
+
+    if(formValid.isUserValid && formValid.isEmailValid && formValid.isPassValid){
+        return true
+    }else{
+        return false
+    }
+}
+
+export { validateUser, validateEmail, validatePassword, checkIfNotNull, validateLinks, validateFolder , validateStartForm};
 

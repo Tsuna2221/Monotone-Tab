@@ -8,6 +8,9 @@ import EditFolder from './Modals/EditFolderModal'
 import Arrow from '../assets/CollapseArrow.svg'
 import OptionButton from "../assets/OptionButton.svg"
 
+//Actions
+import { returnFolders } from "../actions/storageActions"
+
 class Folders extends Component {
     render() {
         return (
@@ -52,19 +55,7 @@ class Folders extends Component {
     }
 
     drawFolders = () => {
-        var items = [];
-
-        for(var data in localStorage){
-            if(data.includes('folder')){
-                if(localStorage.getItem(data) && JSON.parse(localStorage.getItem(data)).name){
-                    items.push(JSON.parse(localStorage.getItem(data)))
-                }
-            }
-        }
-
-        var sortedFolders = items.sort((a, b) => parseInt(a.id.replace(/\D/g ,'')) - parseInt(b.id.replace(/\D/g ,'')))
-
-        return sortedFolders.map(itemDet => {
+        return returnFolders().map(itemDet => {
             var { name, color, id } = itemDet
             
             return (

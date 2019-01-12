@@ -32,16 +32,7 @@ class AddNoteModal extends Component {
         );
     }
 
-    state = {}
-
-    handleInput = (e) => {
-        var key = e.target.name;
-        var body = e.target.value;
-
-        this.setState({
-            [key]: body
-        })
-    }
+    handleInput = (e) => this.setState({[e.target.name]: e.target.value})
 
     storeNote = () => {
         var name = this.state.name;

@@ -12,10 +12,6 @@ class AccountModal extends Component {
         );
     }
 
-    state = {
-
-    }
-
     componentDidMount = () => {
         document.addEventListener("click", function(event) {
             var prefix = 'account-modal-inactive'
@@ -29,19 +25,9 @@ class AccountModal extends Component {
         });
     }
 
-    handleInput = (e) => {
-        var key = e.target.name
-        var value = e.target.value
+    handleInput = (e) => this.setState({[e.target.name]: e.target.value})
 
-        this.setState({
-            [key]: value
-        })
-    }
-
-    login = () => {
-        var {email, password} = this.state
-        loginPerson(email, password)
-    }
+    login = () => loginPerson(this.state.email, this.state.password)
 
     checkIfLogged = () => {
         if(this.props.isLogged){

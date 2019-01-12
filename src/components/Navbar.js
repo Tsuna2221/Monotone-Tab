@@ -29,13 +29,7 @@ class Navbar extends Component {
         
     }
 
-    componentDidMount = () => {
-        setInterval(() => {
-            this.setState({
-                currentTime: this.currentTime()
-            })
-        },1000);
-    }
+    componentDidMount = () => setInterval(() => {this.setState({currentTime: this.currentTime()})}, 1000);
 
     handleSubmit = (e) => {
         e.preventDefault()
@@ -48,14 +42,9 @@ class Navbar extends Component {
 
     toggleModal = () => document.querySelector('.AccountModal').classList.toggle('account-modal-inactive')
     
-    checkIfLogged = () => {
-        if(this.props.isLogged){
-            var {displayName, email} = this.props.currentPerson
-            return <p onClick={this.toggleModal} className="con-login">{`Hello, ${displayName || email}!`}</p>
-        }else{
-            return <p onClick={this.toggleModal} className="con-login">Log In</p>
-        }
-    }
+    checkIfLogged = () => this.props.isLogged === true ? 
+    <p onClick={this.toggleModal} className="con-login">{'Hello, ' + this.props.currentPerson.displayName || this.props.currentPerson.email}</p> :
+    <p onClick={this.toggleModal} className="con-login">Log In</p>
 }
 
 export default Navbar;

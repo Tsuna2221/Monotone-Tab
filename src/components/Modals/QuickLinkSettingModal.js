@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { validateLinks } from '../../actions/formValidator'
 import { SketchPicker } from 'react-color';
+import { returnFolders } from '../../actions/storageActions'
 
 class QuickLinkModal extends Component {
     render() {
@@ -29,7 +30,7 @@ class QuickLinkModal extends Component {
                             <label className="label-w" htmlFor="folder">Folder</label>
                             <div className="input-w">
                                 <select onChange={this.handleModalInput} name="newItemFolder" className="input-folder select-w">
-                                    <option value='default'>Default</option>
+                                    <option value='default'>Main</option>
                                     {this.drawFolderOptions()}
                                 </select>
                             </div>
@@ -57,41 +58,15 @@ class QuickLinkModal extends Component {
         newItemFolder: 'default'
     }
 
-    drawFolderOptions = () => {
-        return this.props.folders().map(folder => {
-            var { name, id } = folder
-            return (
-                <option key={id} value={id}>{name}</option>
-            )
-        })
-    }
+    drawFolderOptions = () => returnFolders().map(folder => <option key={folder.id} value={folder.id}>{folder.name}</option>)
 
-    modalColors = () => <SketchPicker className="new-sketch" presetColors={['fff']} color={this.state.newItemColor} onChangeComplete={ this.handleColor }/>
+    modalColors = () => <SketchPicker className="new-sketch" color={this.state.newItemColor} onChangeComplete={ this.handleColor }/>
 
-    handleColor = (color) => {
-        document.querySelector('.input-color').value = color.hex
+    handleColor = (color) => (document.querySelector('.input-color').value = color.hex, this.setState({newItemColor: color.hex}))
 
-        this.setState({newItemColor: color.hex})
-    }
+    handleModalInput = (e) => this.setState({[e.target.name]: e.target.value})
 
-    handleModalInput = (e) => {
-        var key = e.target.name
-        var val = e.target.value
-        
-        this.setState({
-            [key]: val
-        })
-    }
-
-    handleModalColor = (e) => {
-        var hex = e.target.dataset.color
-
-        this.setState({
-            newItemColor: hex
-        })
-
-        this.markSelectedColor(e)
-    }
+    handleModalColor = (e) => this.setState({newItemColor: e.target.dataset.color})
 
     showColors = () => { document.querySelector('.new-sketch').style.display = 'block' }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { SketchPicker } from 'react-color';
 import { validateFolder } from '../../actions/formValidator'
+import { returnLastFolder } from '../../actions/storageActions'
 
 class NewFolder extends Component {
     render() {
@@ -42,43 +43,15 @@ class NewFolder extends Component {
         color: ''
     }
 
-    modalColors = () => {
-        return <SketchPicker color={this.state.folderColor} onChangeComplete = { this.handleColor }/>
-    }
+    modalColors = () => <SketchPicker color={this.state.folderColor} onChangeComplete = { this.handleColor }/>
 
     toggleModal = () => document.querySelector('.modal-new-folder').classList.toggle('modal-active')
 
-    closeModal = (e) => {
-        var modal = document.querySelector('.modal-new-folder')
-        if(e.target === modal){
-            modal.classList.toggle('modal-active')
-        }
-    }
+    closeModal = (e) => e.target === document.querySelector('.modal-new-folder') ? document.querySelector('.modal-new-folder').classList.toggle('modal-active') : null
 
-    handleInput = (e) => {
-        var key = e.target.name;
-        var value = e.target.value;
+    handleInput = (e) => this.setState({[e.target.name]: e.target.value})
 
-        this.setState({
-            [key]: value,
-        })
-    }
-
-    getLastItems = () => {
-        var items = []
-        for(var data in localStorage){
-            if(data.includes('folder')){
-                if(localStorage.getItem(data) !== null){
-                    items.push(parseInt(data.replace('folder', '')))
-                }
-            }
-        }
-        if(items.length < 1){
-            return 0
-        }else{
-            return Math.max.apply(Math, items)
-        }
-    }
+    getLastItems = () => returnLastFolder() < 1 ? 0 : Math.max.apply(Math, returnLastFolder())
 
     addFolder = () => {
         var {name, color} = this.state

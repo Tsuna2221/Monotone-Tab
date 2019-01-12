@@ -84,35 +84,13 @@ class App extends Component {
 		});
 	}
 
-	drawIfFirstStart = () => {
-		if(Cookies.get('isFirstStart') === undefined){
-			return <FirstStart/>
-		}
-	}
+	drawIfFirstStart = () => Cookies.get('isFirstStart') === undefined ? <FirstStart/> : null
 
-	showSidebar = () => {
-		if(this.state.sidebarVisible === 'inactive'){
-			this.setState({
-				'sidebarVisible': 'active'
-			})
-		}else{
-			this.setState({
-				'sidebarVisible': 'inactive'
-			})
-		}
-	}
+	showSidebar = () => this.state.sidebarVisible === 'inactive' ? this.setState({'sidebarVisible': 'active'}) : this.setState({'sidebarVisible': 'inactive'})
 
-	updateState = () => {
-		this.setState({
-			...this.state
-		})
-	}
+	updateState = () => this.setState({...this.state})
 
-	showNoteButtonIfLogged = () => {
-		if(this.state.isLogged){
-			return <NewNote isLogged={this.state.isLogged} currentPerson={this.state.currentPerson}/>
-		}
-	}
+	showNoteButtonIfLogged = () => this.state.isLogged ? <NewNote isLogged={this.state.isLogged} currentPerson={this.state.currentPerson}/> : null
 }
 
 export default App;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { validateUser, validateEmail, validatePassword } from '../actions/formValidator'
+import { validateStartForm } from '../actions/formValidator'
 import { createNewPerson } from '../actions/fbQuery'
+
 import Cookies from 'js-cookie'
 
 
@@ -18,6 +19,7 @@ class FirstStart extends Component {
                         <form name="signup">
                             <h1>Sign Up</h1>
                             <h2>To optimize your experience and use widgets, <br/>please, consider signing up.</h2>
+                            
                             <div className="sign-label signup-name">
                                 <label className="signup-label" htmlFor="name">User Name</label>
                                 <div className="signup-input sign-name">
@@ -70,40 +72,9 @@ class FirstStart extends Component {
 
     }
 
-    handleInput = (e) => {
-        var {name, value} = e.target
-        
-        this.setState({
-            [name]: value
-        })
-    }
+    handleInput = (e) => this.setState({[e.target.name]: e.target.value})
 
-    storePerson = () => {
-        var {name, email, password, confirm} = this.state
-        var formValid = {}
-        
-        if(name){ 
-            if(validateUser(name)){ formValid.isUserValid = true }
-        }
-
-        if(email){ 
-            if(validateEmail(email)){ formValid.isEmailValid = true }
-        }
-
-        if(password){
-            if(confirm){ 
-                if(validatePassword(password, confirm)){ formValid.isPassValid = true }
-            }
-        }
-
-        if(formValid.isUserValid && formValid.isEmailValid && formValid.isPassValid){
-            var mail = email.toLowerCase()
-
-            createNewPerson(name, mail, password)
-
-            this.hideStart()
-        }
-    }
+    storePerson = () => validateStartForm(this.state) ? (createNewPerson(this.state.name, this.state.email.toLowerCase(), this.state.password), this.hideStart()) : null
 
     hideText = () => {
         setTimeout(() => {

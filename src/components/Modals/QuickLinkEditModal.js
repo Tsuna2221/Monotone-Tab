@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { SketchPicker } from 'react-color';
 
+import {returnFolders} from '../../actions/storageActions'
+
 class QuickLinkEdit extends Component {
     render() {
         return (
@@ -25,6 +27,16 @@ class QuickLinkEdit extends Component {
                         </div>
 
                         <div className="field-w">
+                            <label className="label-w" htmlFor="folder">Folder</label>
+                            <div className="input-w">
+                                <select onChange={this.handleModalInput} name="newItemFolder" className="input-folder edit-folder-input select-w">
+                                    <option value='default'>Main</option>
+                                    {this.drawFolderOptions()}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className="field-w">
                             <label className="label-w" htmlFor="colors">Color</label>
 
                             <div className="input-w">
@@ -45,49 +57,20 @@ class QuickLinkEdit extends Component {
     
     }
 
-    modalColors = () => {
-        var items = [];
-        var colorInput = document.querySelector('.input-colors') || '#fff'
+    modalColors = () => <SketchPicker color='#fff' onChangeComplete = { this.handleColor }/>
 
-        for(var data in localStorage){
-            if(data.includes('item')){
-                if(localStorage.getItem(data)){
-                    items.push(JSON.parse(localStorage.getItem(data)).color)
-                }
-            }
-        }
-        
-        return <SketchPicker presetColors={items} color={colorInput} onChangeComplete = { this.handleColor }/>
-    }
-
-    //this.setState({colorSelected: color.hex})
     handleColor = (color) => document.querySelector('.input-colors').value = color.hex
 
-    handleModalInput = (e) => {
-        var key = e.target.name
-        var val = e.target.value
-
-        this.setState({
-            [key]: val
-        })
-    }
+    handleModalInput = (e) => this.setState({[e.target.name]: e.target.value})
 
     showColors = () => { document.querySelector('.sketch-picker').style.display = 'block' }
 
-    markSelectedColor = (e) =>{
-        var selected = e.target
-        var elements = document.getElementsByClassName('color-option')
-
-        for(var i = 0; i < elements.length; i++){
-            elements[i].className = 'color-option'
-        }
-
-        selected.classList.toggle('color-selected')
-    }
+    drawFolderOptions = () => returnFolders().map(folder => <option key={folder.id} value={folder.id}>{folder.name}</option>)
 
     handleItem = () => {
         var nameInput = document.querySelector(".edit-name-input").value
         var urlInput = document.querySelector(".edit-url-input").value
+        var folderInput = document.querySelector(".edit-folder-input").value
         var modal = document.querySelector(".edit-item-modal")
         var picker = document.querySelector('.sketch-picker')
         var colorInput = document.querySelector(".edit-colors-input")
@@ -111,7 +94,7 @@ class QuickLinkEdit extends Component {
         })
 
         // eslint-disable-next-line
-        window.localStorage.setItem(this.props.data.id, '{ "name":'+ '"' + nameInput + '"' +', "url":'+ '"' + urlInput + '"' +', "color":'+ '"' + color + '"' +', "id": ' + '"' + this.props.data.id + '"' +'}')
+        window.localStorage.setItem(this.props.data.id, '{ "name":'+ '"' + nameInput + '"' +', "url":'+ '"' + urlInput + '"' +', "color":'+ '"' + color + '"' +', "id": ' + '"' + this.props.data.id + '"' +', "folder": "'+ folderInput +'"}')
     }
 
     removeItem = () => {
