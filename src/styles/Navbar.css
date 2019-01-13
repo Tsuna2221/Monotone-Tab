@@ -6,7 +6,7 @@
 	background-color: #3d405d;
 	position: fixed;
     top: 0;
-    z-index: 15;
+    z-index: 200;
 }
 
 .search-bar-container{
@@ -21,14 +21,13 @@
 }
 
 .search-input{
-	transition: all .5s ease;
+	transition: width .5s ease;
 	height: 31px; /*Responsive*/
 	width: 0vmin;
 	border-radius: 50px;
-	border: 3px solid #4285F4;
+	border: 3px solid;
 	outline: none;
 	padding-left: 40px;
-	background-image: url(../assets/Google.svg);
 	background-size: 21px;
     background-position: 9px;
     background-repeat: no-repeat;

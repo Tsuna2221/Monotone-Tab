@@ -1,0 +1,14 @@
+.About{
+    position: fixed;
+    width: 245px;
+    overflow: hidden;
+    right: 85px;
+    bottom: 0;
+    background-color: #FAF9FF;
+    transition: .4s ease;
+    z-index: 1;
+}
+
+.About-Inactive{
+    transform: translateX(150%)
+}

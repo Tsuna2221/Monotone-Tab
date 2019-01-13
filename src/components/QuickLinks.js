@@ -83,10 +83,9 @@ class QuickLinks extends Component {
 
     setLabel = () => this.state.currentFolder === 'default' ? 'Main' : JSON.parse(localStorage.getItem(this.state.currentFolder)).name
 
-    initColumnNo = () => Cookies.get('noOfColumns') > Math.floor(window.innerWidth / 245) ? Math.floor(window.innerWidth / 245) : Cookies.get('noOfColumns')
+    initColumnNo = () => Cookies.get('noOfColumns') > Math.floor(window.outerWidth / 245) ? Math.floor(window.outerWidth / 245) : Cookies.get('noOfColumns')
 
     getLastItems = () => returnLastLink().items.length < 1 ? 0 : Math.max.apply(Math, returnLastLink().highestValues)
-
 
     updateLinksState = () => {
         var items = []

@@ -30,7 +30,7 @@ class QuickLinkEdit extends Component {
                             <label className="label-w" htmlFor="folder">Folder</label>
                             <div className="input-w">
                                 <select onChange={this.handleModalInput} name="newItemFolder" className="input-folder edit-folder-input select-w">
-                                    <option value='default'>Main</option>
+                                    <option name='default' value='default'>Main</option>
                                     {this.drawFolderOptions()}
                                 </select>
                             </div>
@@ -65,7 +65,7 @@ class QuickLinkEdit extends Component {
 
     showColors = () => { document.querySelector('.sketch-picker').style.display = 'block' }
 
-    drawFolderOptions = () => returnFolders().map(folder => <option key={folder.id} value={folder.id}>{folder.name}</option>)
+    drawFolderOptions = () => returnFolders().map(folder => <option name={folder.id} key={folder.id} value={folder.id}>{folder.name}</option>)
 
     handleItem = () => {
         var nameInput = document.querySelector(".edit-name-input").value

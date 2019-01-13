@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+//Actions
+import { hideModal } from '../../actions/general'
 
 //Actions
 import { loginPerson, signOutPerson } from '../../actions/fbQuery'
@@ -13,15 +15,14 @@ class AccountModal extends Component {
     }
 
     componentDidMount = () => {
-        document.addEventListener("click", function(event) {
-            var prefix = 'account-modal-inactive'
-            var element = document.querySelector('.AccountModal')
-            var inactive = document.querySelector('.account-modal-inactive')
-            var button = document.querySelector('.con-login')
+        document.addEventListener("click", (e) => {
+            var els = {
+                prefix: 'account-modal-inactive',
+                element: '.AccountModal',
+                button: '.con-login',
+            }
 
-            if (!inactive && event.target !== button && !event.target.closest(".AccountModal")){
-                element.classList.toggle(prefix)
-            };
+            hideModal(els, e)
         });
     }
 

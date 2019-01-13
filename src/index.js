@@ -15,5 +15,6 @@ import './styles/NewNoteModal.css';
 import './styles/NotesModal.css';
 import './styles/Prefixes.css';
 import './styles/Folders.css';
+import './styles/AboutModal.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));

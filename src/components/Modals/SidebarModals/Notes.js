@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+//Actions
+import { hideModal } from '../../../actions/general'
 
 //Images
 import ArrowIcon from '../../../assets/NoteArrow.svg'
@@ -20,17 +22,14 @@ class NotesModal extends Component {
     }
 
     componentDidMount = () => {
-        document.addEventListener("click", function(event) {
-            var prefix = 'Notes-Inactive'
-            var element = document.querySelector('.Notes')
-            var inactive = document.querySelector('.Notes-Inactive')
-            var button = document.querySelector('.note-icon')
+        document.addEventListener("click", e => {
+            var els = {
+                prefix: 'Notes-Inactive',
+                element: '.Notes',
+                button: '.note-icon',
+            }
 
-            if (!inactive && event.target !== button && !event.target.closest(".Notes")){
-                if(element){
-                    element.classList.toggle(prefix)
-                }
-            };
+            hideModal(els, e)
         });
     }
 

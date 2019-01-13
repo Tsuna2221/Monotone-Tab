@@ -8,12 +8,13 @@ import Sidebar from './components/Sidebar'
 import QuickLinks from './components/QuickLinks'
 import FirstStart from './components/FirstStart'
 import NewNote from './components/NewNote'
-import AddNoteModal from './components/Modals/AddNoteModal'
 
 //Modals
+import AddNoteModal from './components/Modals/AddNoteModal'
 import AccountModal from './components/Modals/AccountModal'
 import SettingsModal from './components/Modals/SidebarModals/Settings'
 import NotesModal from './components/Modals/SidebarModals/Notes'
+import AboutModal from './components/Modals/SidebarModals/About'
 
 const db = firebase.firestore();
 
@@ -24,7 +25,7 @@ class App extends Component {
 			<div className="App">
 				{/* General */}
 				{this.drawIfFirstStart()}
-				<Navbar isLogged={this.state.isLogged} currentPerson={this.state.currentPerson} isVisible={this.state.sidebarVisible} showSidebar={this.showSidebar}/>
+				<Navbar state={this.state}/>
 				<Sidebar isVisible={this.state.sidebarVisible}/>
 				<QuickLinks/>
 				<AddNoteModal currentPerson={this.state.currentPerson}/>
@@ -33,8 +34,9 @@ class App extends Component {
 				<AccountModal isLogged={this.state.isLogged} currentPerson={this.state.currentPerson} />
 
 				{/* Sidebar Modals */}
-				<SettingsModal updateState={this.updateState}/>
+				<SettingsModal setEngine={this.setEngine} updateState={this.updateState}/>
 				<NotesModal notes={this.state.currentNotes}/>
+				<AboutModal/>
 				{this.showNoteButtonIfLogged()}
 				
 
@@ -45,7 +47,7 @@ class App extends Component {
 	}
 
 	state = {
-		'sidebarVisible': 'inactive',
+		engineTypo: 'google'
 	}
 
 	componentDidMount = () => {
@@ -84,9 +86,12 @@ class App extends Component {
 		});
 	}
 
-	drawIfFirstStart = () => Cookies.get('isFirstStart') === undefined ? <FirstStart/> : null
+	setEngine = (key, val) => {
+		this.setState({[key]: val})
+		Cookies.set(key, val)
+	}
 
-	showSidebar = () => this.state.sidebarVisible === 'inactive' ? this.setState({'sidebarVisible': 'active'}) : this.setState({'sidebarVisible': 'inactive'})
+	drawIfFirstStart = () => Cookies.get('isFirstStart') === undefined ? <FirstStart/> : null
 
 	updateState = () => this.setState({...this.state})
 

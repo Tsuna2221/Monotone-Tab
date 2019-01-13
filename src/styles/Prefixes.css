@@ -49,6 +49,8 @@
     font-weight: 400;
 }
 
+
+
 /*Inputs*/
 
 .input-w, .input-area-w{
@@ -143,6 +145,9 @@ option{
 	color: #3D405D;
 	user-select: none;
 	transition: .2s ease;
+	background-color: #faf9ff;
+	outline: none;
+	text-decoration: none;
 }
 
 .button-w:hover{

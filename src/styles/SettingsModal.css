@@ -1,16 +1,17 @@
 .Settings{
     position: fixed;
-    width: 300px;
-    overflow-y: scroll;
+    width: 275px;
+    overflow-y: hidden;
     overflow-x: hidden;
     bottom: 0;
     right: 85px;
     background-color: #FAF9FF;
     transition: .4s ease;
+    z-index: 1;
 }
 
 .Settings-Inactive{
-    width: 0px;
+    transform: translateX(150%)
 }
 
 .app-prompt{

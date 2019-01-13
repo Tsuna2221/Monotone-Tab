@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+//Actions
+import { hideModal } from '../actions/general'
 
 //Images
 import NoteButton from "../assets/NoteButton.svg";
@@ -19,17 +21,14 @@ class NewNote extends Component {
     }
 
     componentDidMount = () => {
-        document.addEventListener("click", function(event) {
-            var prefix = 'note-modal-inactive'
-            var element = document.querySelector('.AddNoteModal')
-            var inactive = document.querySelector('.note-modal-inactive')
-            var button = document.querySelector('.new-note-btn')
+        document.addEventListener("click", e => {
+            var els = {
+                prefix: 'note-modal-inactive',
+                element: '.AddNoteModal',
+                button: '.new-note-btn',
+            }
 
-            if (!inactive && event.target !== button && !event.target.closest(".AddNoteModal")){
-                if(element){
-                    element.classList.toggle(prefix)
-                }
-            };
+            hideModal(els, e)
         });
     }
 

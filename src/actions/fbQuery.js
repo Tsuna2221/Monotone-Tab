@@ -1,5 +1,5 @@
 import firebase from '../config/fbConfig'
-import randString from './randomString'
+import {randString} from './general'
 
 const auth = firebase.auth()
 const db = firebase.firestore();

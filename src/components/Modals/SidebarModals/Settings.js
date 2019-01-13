@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-
+import moment from "moment"
+  
 //Actions
 import { exportBackup, importBackup } from '../../../actions/fbQuery'
+import { hideModal } from '../../../actions/general'
 
 import Prompt from './Prompt'
 import Cookies from 'js-cookie'
@@ -9,7 +11,7 @@ import Cookies from 'js-cookie'
 class SettingsModal extends Component {
     render() {
         return (
-            <div className='Settings Settings-Inactive modal-g'>
+            <div className='Settings Settings-Inactive'>
                 <Prompt promptText={this.state.promptText}/>
 
                 <div className="settings-container">
@@ -33,6 +35,7 @@ class SettingsModal extends Component {
                                     <div data-type='remove-all' onClick={this.togglePrompt} className="button-w">Remove All</div>
                                 </div>
                             </div>
+                            
 
                             <div className="field-w">
                                 <label className="label-w">Backup Folders and Links</label>
@@ -40,6 +43,30 @@ class SettingsModal extends Component {
                                 <div className="remove-btns flex-w">
                                     <div data-type='backup' onClick={this.togglePrompt} className="button-w">Export</div>
                                     <div data-type='restore' onClick={this.togglePrompt} className="button-w">Import</div>
+                                </div>
+                            </div>
+                            <hr className="side-separator"/>
+                            <h2 className="section-w">Search Engine and Date</h2>
+
+                            <div className="field-w">
+                                <label className="label-w">Default Search Engine</label>
+                                
+                                <div className="remove-btns flex-w">
+                                    <select data-type='backup' onChange={(e) => this.props.setEngine(e.target.name, e.target.value)} name="engineTypo" className="select-w">
+                                        <option name='google' value="google">Google</option>
+                                        <option name='bing' value="bing">Bing</option>
+                                        <option name='duck' value="duck">DuckDuckGo</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div className="field-w">
+                                <label className="label-w">Default Date Format</label>
+                                
+                                <div className="remove-btns flex-w">
+                                    <select data-type='backup' onChange={(e) => this.props.setEngine(e.target.name, e.target.value)} name="formatTypo" className="select-w">
+                                        {this.drawFormatOptions()}
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -63,22 +90,31 @@ class SettingsModal extends Component {
     componentDidMount = () => {
         var range = document.querySelector(".column-range")
         range.value = Cookies.get('noOfColumns')
+        
+        document.getElementsByName(Cookies.get('engineTypo'))[0].setAttribute('selected', '1')
+        document.getElementsByName(Cookies.get('formatTypo'))[0].setAttribute('selected', '1')
+        document.addEventListener("click", e => {
+            var els = {
+                prefix: 'Settings-Inactive',
+                element: '.Settings',
+                button: '.settings-icon',
+            }
 
-        document.addEventListener("click", function(event) {
-            var prefix = 'Settings-Inactive'
-            var element = document.querySelector('.Settings')
-            var inactive = document.querySelector('.Settings-Inactive')
-            var button = document.querySelector('.settings-icon')
-
-            if (!inactive && event.target !== button && !event.target.closest(".Settings")){
-                if(element){
-                    element.classList.toggle(prefix)
-                }
-            };
+            hideModal(els, e)
         });
     }
 
-    columnInput = () => <input onChange={this.handleRange} type="range" min="1" max={Math.floor(window.innerWidth / 245)} name="column-range" className="column-range"/>
+    drawFormatOptions = () => {
+        var prefix = ['MMMM Do YYYY, h:mm:ss a', 'hh:mm:ss  |  dddd, Do', 'LT', 'LTS', 'L', 'l', 'LL', 'll', 'LLL', 'lll', 'LLLL', 'llll']
+
+        return prefix.map(pre => {
+            return (
+                <option name={pre} key={pre} value={pre}>{moment().format(pre)}</option>
+            )
+        })
+    }
+
+    columnInput = () => <input onChange={this.handleRange} type="range" min="1" max={Math.floor(window.outerWidth / 245)} name="column-range" className="column-range"/>
     
     handleRange = (e) => {
         var container = document.querySelector(".quick-container")
