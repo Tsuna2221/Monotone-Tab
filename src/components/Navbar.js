@@ -37,7 +37,7 @@ class Navbar extends Component {
     componentDidMount = () => setInterval(() => {this.setState({currentTime: this.currentTime()})}, 1000);
     
     drawEngine = () => {
-        var engineName = Cookies.get('engineTypo')
+        var engineName = localStorage.getItem('engineTypo')
         var engineSettings = {}
 
         switch (engineName) {
@@ -88,7 +88,7 @@ class Navbar extends Component {
         window.location.href = this.drawEngine().url + input
     }
 
-    currentTime = () => moment().format(Cookies.get('formatTypo') || 'MMMM Do YYYY, h:mm:ss a');
+    currentTime = () => moment().format(localStorage.getItem('formatTypo') || 'MMMM Do YYYY, h:mm:ss a');
 
     showSidebar = () => document.querySelector('.sidebar-container').classList.toggle('sidebar-active')
 

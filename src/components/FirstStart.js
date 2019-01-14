@@ -103,7 +103,7 @@ class FirstStart extends Component {
 
             setTimeout(() => {
                 start.style.display = 'none'
-                Cookies.set('isFirstStart', false)
+                localStorage.setItem('isFirstStart', 'false')
             },2000)
         },1500)
     }

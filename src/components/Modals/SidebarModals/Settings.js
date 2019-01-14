@@ -87,11 +87,11 @@ class SettingsModal extends Component {
 
     componentDidMount = () => {
         var range = document.querySelector(".column-range")
-        range.value = Cookies.get('noOfColumns')
+        range.value = localStorage.getItem('noOfColumns')
         
-        if(Cookies.get('engineTypo') && Cookies.get('engineTypo')){
-            document.getElementsByName(Cookies.get('engineTypo'))[0].setAttribute('selected', '1')
-            document.getElementsByName(Cookies.get('formatTypo'))[0].setAttribute('selected', '1')
+        if(localStorage.getItem('engineTypo') && localStorage.getItem('engineTypo')){
+            document.getElementsByName(localStorage.getItem('engineTypo'))[0].setAttribute('selected', '1')
+            document.getElementsByName(localStorage.getItem('formatTypo'))[0].setAttribute('selected', '1')
         }
         
         document.addEventListener("click", e => {
@@ -137,7 +137,7 @@ class SettingsModal extends Component {
     handleRange = (e) => {
         var container = document.querySelector(".quick-container")
 
-        Cookies.set('noOfColumns', e.target.value)
+        localStorage.setItem('noOfColumns', e.target.value)
 
         this.props.updateState()
         container.style.gridTemplateColumns = "repeat("+ e.target.value +", 245px)"

@@ -89,12 +89,12 @@ class App extends Component {
 
 	setEngine = (key, val) => {
 		this.setState({[key]: val})
-		Cookies.set(key, val)
+		localStorage.setItem(key, val)
 	}
 
 	setSelection = (bool) => this.setState({isSelecting: bool})
 
-	drawIfFirstStart = () => Cookies.get('isFirstStart') === undefined ? <FirstStart/> : null
+	drawIfFirstStart = () => localStorage.getItem('isFirstStart') === null ? <FirstStart/> : null
 
 	updateState = () => this.setState({...this.state})
 

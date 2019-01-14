@@ -54,8 +54,8 @@ class QuickLinks extends Component {
     }
 
     componentDidMount = () => {
-        if(Cookies.get('isFirstStart') === undefined){
-            Cookies.set('noOfColumns', 4)
+        if(localStorage.getItem('isFirstStart') === null){
+            localStorage.setItem('noOfColumns', 4)
         }
     }
 
@@ -92,7 +92,7 @@ class QuickLinks extends Component {
 
     setLabel = () => this.state.currentFolder === 'default' ? 'Main' : JSON.parse(localStorage.getItem(this.state.currentFolder)).name
 
-    initColumnNo = () => Cookies.get('noOfColumns') > Math.floor(window.outerWidth / 245) ? Math.floor(window.outerWidth / 245) : Cookies.get('noOfColumns')
+    initColumnNo = () => localStorage.getItem('noOfColumns') > Math.floor(window.outerWidth / 245) ? Math.floor(window.outerWidth / 245) : localStorage.getItem('noOfColumns')
 
     getLastItems = () => returnLastLink().items.length < 1 ? 0 : Math.max.apply(Math, returnLastLink().highestValues)
 
