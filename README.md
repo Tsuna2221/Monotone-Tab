@@ -2,6 +2,15 @@
 
 [Try an alpha here](https://tsuna2221.github.io/Monotone-Tab/) 
 
+## Todo
+
++ Night/Dark Mode
++ RSS Aggregator
++ Bug Fixes
++ Evernote Implementation
++ Top Visited and History folders
++ Weather API implementation
+
 ## Using
 
 + React
