@@ -9,6 +9,7 @@
 + Bug Fixes
 + Evernote Implementation
 + Top Visited and History folders
++ Weather API implementation
 
 ## Using
 
