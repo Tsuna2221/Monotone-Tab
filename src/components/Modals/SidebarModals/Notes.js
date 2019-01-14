@@ -9,9 +9,11 @@ class NotesModal extends Component {
     render() {
         return (
             <div className='Notes Notes-Inactive modal-g'>
-                <div className="notes-container">
-                    <p>Notes</p>
-                    {this.drawNotes()}
+                <div className="modal-w">
+                    <h1 className="head-w">Notes</h1>
+                    <div className="field-w">
+                        {this.drawNotes()}
+                    </div>
                 </div>
             </div>
         );
@@ -38,27 +40,48 @@ class NotesModal extends Component {
         if(notes){
             if(notes.length > 0){
                 return notes.map(note => {
-                    var { name, content, id } = note
+                    var { name, id } = note
                     return (
                         <div key={id} className="note-item">
                             <div className="note-cell" >
                                 <img data-id={id} onClick={this.showContent} className="note-arrow" src={ArrowIcon} alt=""/>
                                 <div className="note-title">
-                                    <p>{name}</p>
+                                    <p className="text-w">{name}</p>
                                 </div>
                             </div>
                             <div name={id} className="note-content">
-                                <p>{content}</p>
+                                {this.drawContent(id)}
                             </div>
                         </div>
                     )
                 });
             }else{
-                return <p>No notes found.</p>
+                return <label className="label-w">No notes found.</label>
             }
         }else if(notes === undefined){
-            return <p>Loading notes...</p>
+            return <label className="label-w">Loading notes...</label>
         }
+    }
+
+    drawContent = (id) => {
+        var notes = this.props.notes
+
+        return notes.map(note => {
+            if(note.id === id){
+                var parag = note.content.split('<br />')
+                return parag.map(para => {
+                    return (<p className="text-w">{para}</p>)
+                })
+            }
+            return null
+        })
+
+        // return notes.map(note => {
+        //     var parag = note.content.split('<br />')
+        //     return parag.map(para => {
+        //         return (<p className="text-w">{para}</p>)
+        //     })
+        // });
     }
 
     showContent = (e) => {

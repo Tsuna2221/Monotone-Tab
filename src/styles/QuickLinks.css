@@ -84,3 +84,21 @@
 .folder-label{
     margin-top: 5px;
 }
+
+.item-selection-btn{
+	opacity: 1 !important;
+	width: 15px !important;
+}
+
+.item-option-btn, .item-selection-btn{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 4px;
+	transition: opacity .4s ease;
+	opacity: 0;
+    padding: 5px 13px;
+	margin: 13px 8px;
+	border-radius: 60px;
+	cursor: pointer;
+}

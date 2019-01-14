@@ -44,9 +44,9 @@
 }
 
 
-.text-w{
-	color: #717171;
-    font-weight: 400;
+.text-w {
+    color: #3D405D;
+    font-weight: 300;
 }
 
 
@@ -181,18 +181,6 @@ option{
 	display: flex;
 }
 
-.item-option-btn{
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 4px;
-	transition: .4s ease;
-	opacity: 0;
-    padding: 5px 13px;
-	margin: 13px 8px;
-	border-radius: 60px;
-	cursor: pointer;
-}
 
 .folder-option-btn{
 	margin: 8px 2px;

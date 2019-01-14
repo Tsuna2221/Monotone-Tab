@@ -59,11 +59,11 @@ class QuickLinkEdit extends Component {
 
     modalColors = () => <SketchPicker color='#fff' onChangeComplete = { this.handleColor }/>
 
+    showColors = () => { document.querySelector('.sketch-picker').style.display = 'block' }
+
     handleColor = (color) => document.querySelector('.input-colors').value = color.hex
 
     handleModalInput = (e) => this.setState({[e.target.name]: e.target.value})
-
-    showColors = () => { document.querySelector('.sketch-picker').style.display = 'block' }
 
     drawFolderOptions = () => returnFolders().map(folder => <option name={folder.id} key={folder.id} value={folder.id}>{folder.name}</option>)
 

@@ -55,6 +55,7 @@
 
 .note-content-active{
     height: 100%;
+    margin-top: 5px;
 }
 
 .note-arrow{
@@ -78,5 +79,4 @@
 
 .note-title > p, .note-content > p{
     font-size: 13px;
-    color: #727272;
 }

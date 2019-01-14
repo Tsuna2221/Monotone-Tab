@@ -1,6 +1,7 @@
 .app-folders{
     margin: 10px auto;
-    width: 800px;
+    width: fit-content;
+    max-width: 830px;
 }
 
 .folder-main-container{
@@ -42,6 +43,7 @@
 .folder-container{
     position: relative;
     min-width: 160px;
+    user-select: none;
 }
 
 .folder-item{

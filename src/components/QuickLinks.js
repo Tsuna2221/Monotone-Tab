@@ -10,6 +10,7 @@ import Folders from './Folders'
 
 //Images
 import OptionButton from "../assets/OptionButton.svg";
+import Cross from "../assets/Cross.svg";
 
 //Actions
 import { returnLinks, returnLastLink } from "../actions/storageActions"
@@ -59,6 +60,14 @@ class QuickLinks extends Component {
     }
 
     drawContainer = () => {
+        var image = () => {
+            if(!this.props.isSelecting){
+                return <img onClick={this.showEditModal} data-id="item" className="item-option-btn" src={OptionButton} alt=""/>
+            }else{
+                return <img onClick={e => this.removeItem(e.target.previousSibling.dataset.id)} data-id="item" className="item-selection-btn" src={Cross} alt=""/>
+            }
+        }
+
         return returnLinks(this.state.currentFolder).map(itemDet => {
             if(itemDet !== null){
                 return (
@@ -69,7 +78,7 @@ class QuickLinks extends Component {
                             </div>
                             <span className="item-name">{itemDet.name}</span>
                         </a>
-                        <img onClick={this.showEditModal} data-id="item" className="item-option-btn" src={OptionButton} alt=""/>
+                        {image()}
                     </div> 
                 )
             }
@@ -86,6 +95,8 @@ class QuickLinks extends Component {
     initColumnNo = () => Cookies.get('noOfColumns') > Math.floor(window.outerWidth / 245) ? Math.floor(window.outerWidth / 245) : Cookies.get('noOfColumns')
 
     getLastItems = () => returnLastLink().items.length < 1 ? 0 : Math.max.apply(Math, returnLastLink().highestValues)
+
+    removeItem = (id) => {window.localStorage.removeItem(id);this.updateLinksState()}
 
     updateLinksState = () => {
         var items = []

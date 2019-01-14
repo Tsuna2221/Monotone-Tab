@@ -18,7 +18,7 @@ const createNewPerson = (name, email, password) => {
 const loginPerson = (email, password) => {
     auth.signInWithEmailAndPassword(email, password)
         .then(res => {
-            console.log(res)
+            console.log('user signed in')
         })
         .catch(err => {
             console.log(err)
@@ -43,7 +43,7 @@ const storeNote = (name, body, uid) => {
         createdAt: Math.round(currentTime / 1000)
     })
     .then(function(res) {
-        console.log("Document written with ID: ", res);
+        console.log("Document written");
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
@@ -55,7 +55,7 @@ const exportBackup = (storage) => {
         backup: JSON.stringify(storage)
     })
     .then(function(res) {
-        console.log("Document written with ID: ", res);
+        console.log("Document written");
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);

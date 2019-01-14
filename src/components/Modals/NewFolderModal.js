@@ -16,7 +16,7 @@ class NewFolder extends Component {
                             <div className="field-w">
                                 <label className="label-w" htmlFor="name">Name</label>
                                 <div className="input-w">
-                                    <input onChange={this.handleInput} autoComplete="off" name="name" className="input-name input" placeholder="Example" type="text"/>
+                                    <input onChange={this.handleInput} autoComplete="off" name="name" className="new-folder-name input" placeholder="Example" type="text"/>
                                 </div>
                             </div>                   
 
@@ -24,7 +24,7 @@ class NewFolder extends Component {
                                 <label className="label-w" htmlFor="colors">Color</label>
 
                                 <div className="input-w">
-                                    <input onFocus={this.showColors} onChange={this.handleInput} autoComplete="off" name="color" className="input-color input" placeholder="#E32018" type="text"/>
+                                    <input onFocus={this.showColors} onChange={this.handleInput} autoComplete="off" name="color" className="new-folder-color input" placeholder="#E32018" type="text"/>
                                 </div>
                             </div>
                         </div>
@@ -47,7 +47,18 @@ class NewFolder extends Component {
 
     toggleModal = () => document.querySelector('.modal-new-folder').classList.toggle('modal-active')
 
-    closeModal = (e) => e.target === document.querySelector('.modal-new-folder') ? document.querySelector('.modal-new-folder').classList.toggle('modal-active') : null
+    closeModal = (e) => {
+        if(e.target === document.querySelector('.modal-new-folder')){
+            document.querySelector('.modal-new-folder').classList.toggle('modal-active')
+            document.querySelector('.folder-new-sketch').style.display = 'none'
+        }
+    }
+
+    modalColors = () => <SketchPicker className='folder-new-sketch' color='#fff' onChangeComplete = { this.handleColor }/>
+
+    handleColor = (color) => {document.querySelector(".new-folder-color").value = color.hex; this.setState({color: color.hex})}
+
+    showColors = () => { document.querySelector('.folder-new-sketch').style.display = 'block';  }
 
     handleInput = (e) => this.setState({[e.target.name]: e.target.value})
 
@@ -60,7 +71,8 @@ class NewFolder extends Component {
             localStorage.setItem('folder' + (this.getLastItems() + 1), '{"name": "'+ name +'", "color": "'+ color +'", "id": "folder'+ (this.getLastItems() + 1) +'"}')
             this.toggleModal()
         }
-
+        
+        document.querySelector('.folder-new-sketch').style.display = 'none'
         this.props.updateState()
     }
 }

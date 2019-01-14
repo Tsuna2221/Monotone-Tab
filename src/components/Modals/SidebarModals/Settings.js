@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from "moment"
+import firebase from '../../../config/fbConfig'
   
 //Actions
 import { exportBackup, importBackup } from '../../../actions/fbQuery'
@@ -40,10 +41,7 @@ class SettingsModal extends Component {
                             <div className="field-w">
                                 <label className="label-w">Backup Folders and Links</label>
                                 
-                                <div className="remove-btns flex-w">
-                                    <div data-type='backup' onClick={this.togglePrompt} className="button-w">Export</div>
-                                    <div data-type='restore' onClick={this.togglePrompt} className="button-w">Import</div>
-                                </div>
+                                {this.checkIfLogged()}
                             </div>
                             <hr className="side-separator"/>
                             <h2 className="section-w">Search Engine and Date</h2>
@@ -91,8 +89,11 @@ class SettingsModal extends Component {
         var range = document.querySelector(".column-range")
         range.value = Cookies.get('noOfColumns')
         
-        document.getElementsByName(Cookies.get('engineTypo'))[0].setAttribute('selected', '1')
-        document.getElementsByName(Cookies.get('formatTypo'))[0].setAttribute('selected', '1')
+        if(Cookies.get('engineTypo') && Cookies.get('engineTypo')){
+            document.getElementsByName(Cookies.get('engineTypo'))[0].setAttribute('selected', '1')
+            document.getElementsByName(Cookies.get('formatTypo'))[0].setAttribute('selected', '1')
+        }
+        
         document.addEventListener("click", e => {
             var els = {
                 prefix: 'Settings-Inactive',
@@ -102,6 +103,23 @@ class SettingsModal extends Component {
 
             hideModal(els, e)
         });
+    }
+
+    checkIfLogged = () => {
+        if(firebase.auth().currentUser){
+            return (
+                <div className="remove-btns flex-w">
+                        <div data-type='backup' onClick={this.togglePrompt} className="button-w">Export</div>
+                        <div data-type='restore' onClick={this.togglePrompt} className="button-w">Import</div>
+                </div>
+            )
+        }else{
+            return (
+                <div className="remove-btns flex-w">
+                    <label className="label-w">Log in to backup your data</label>
+                </div>
+            )
+        }
     }
 
     drawFormatOptions = () => {
@@ -154,7 +172,8 @@ class SettingsModal extends Component {
                 break;
     
                 case 'selective':
-                    setText('Selective Removal', 'Finish removal?', 'Finish', null, null, null)
+                    this.props.setSelection(true)
+                    setText('Selective Removal', 'Finish removal?', 'Finish', null, () => this.props.setSelection(false), null)
                 break;
 
                 case 'backup':

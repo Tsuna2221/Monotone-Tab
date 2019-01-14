@@ -36,9 +36,10 @@ class AddNoteModal extends Component {
 
     storeNote = () => {
         var name = this.state.name;
-        var body = this.state.body;
+        var body = this.state.body.replace(/\r?\n/g, ' <br /> ');
         var personId = this.props.currentPerson.uid
         var modal = document.querySelector('.AddNoteModal')
+
         
         if(checkIfNotNull(name, body) === true){storeNote(name, body, personId); modal.classList.toggle('note-modal-inactive')}
     }

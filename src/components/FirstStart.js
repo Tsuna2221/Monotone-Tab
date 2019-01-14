@@ -18,7 +18,7 @@ class FirstStart extends Component {
                     <div className="form-signup-container">
                         <form name="signup">
                             <h1>Sign Up</h1>
-                            <h2>To optimize your experience and use widgets, <br/>please, consider signing up.</h2>
+                            <h2>To optimize your experience and use specific <br/> functionalities, please, consider signing up.</h2>
                             
                             <div className="sign-label signup-name">
                                 <label className="signup-label" htmlFor="name">User Name</label>

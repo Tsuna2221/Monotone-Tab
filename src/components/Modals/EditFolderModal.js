@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { SketchPicker } from 'react-color';
+
 import { validateFolder } from '../../actions/formValidator'
 
 class EditFolder extends Component {
@@ -9,6 +11,7 @@ class EditFolder extends Component {
                 <div className="edit-folder-modal">
                     <div className="edit-folder-modal-content">
                         <div className="modal-w">
+                            {this.modalColors()}
                             <h1 className="head-w">Edit Folder</h1>
 
                             <div className="field-w">
@@ -45,7 +48,17 @@ class EditFolder extends Component {
 
     toggleModal = () => document.querySelector('.modal-edit-folder').classList.toggle('modal-active')
 
-    closeModal = (e) => e.target === document.querySelector('.modal-edit-folder') ? document.querySelector('.modal-edit-folder').classList.toggle('modal-active') : null
+    closeModal = (e) => {
+        if(e.target === document.querySelector('.modal-edit-folder')){
+            document.querySelector('.modal-edit-folder').classList.toggle('modal-active')
+            document.querySelector('.folder-edit-sketch').style.display = 'none'
+        }
+    }
+    modalColors = () => <SketchPicker className='folder-edit-sketch' color='#fff' onChangeComplete = { this.handleColor }/>
+
+    handleColor = (color) => document.querySelector(".edit-folder-color").value = color.hex
+
+    showColors = () => { document.querySelector('.folder-edit-sketch').style.display = 'block' }
 
     editFolder = () => {
         var nameInput = document.querySelector(".edit-folder-name").value
@@ -56,7 +69,8 @@ class EditFolder extends Component {
             localStorage.setItem(id, '{"name": "'+ nameInput +'", "color": "'+ colorInput +'", "id": "'+ id +'"}')
             this.toggleModal()
         }
-
+        
+        document.querySelector('.folder-edit-sketch').style.display = 'none'
         this.props.updateState()
     }
 

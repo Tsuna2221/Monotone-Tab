@@ -27,14 +27,14 @@ class App extends Component {
 				{this.drawIfFirstStart()}
 				<Navbar state={this.state}/>
 				<Sidebar isVisible={this.state.sidebarVisible}/>
-				<QuickLinks/>
+				<QuickLinks isSelecting={this.state.isSelecting}/>
 				<AddNoteModal currentPerson={this.state.currentPerson}/>
 
 				{/* Modals */}
 				<AccountModal isLogged={this.state.isLogged} currentPerson={this.state.currentPerson} />
 
 				{/* Sidebar Modals */}
-				<SettingsModal setEngine={this.setEngine} updateState={this.updateState}/>
+				<SettingsModal setSelection={this.setSelection} setEngine={this.setEngine} updateState={this.updateState}/>
 				<NotesModal notes={this.state.currentNotes}/>
 				<AboutModal/>
 				{this.showNoteButtonIfLogged()}
@@ -47,7 +47,8 @@ class App extends Component {
 	}
 
 	state = {
-		engineTypo: 'google'
+		engineTypo: 'google',
+		isSelecting: false
 	}
 
 	componentDidMount = () => {
@@ -90,6 +91,8 @@ class App extends Component {
 		this.setState({[key]: val})
 		Cookies.set(key, val)
 	}
+
+	setSelection = (bool) => this.setState({isSelecting: bool})
 
 	drawIfFirstStart = () => Cookies.get('isFirstStart') === undefined ? <FirstStart/> : null
 
