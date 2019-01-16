@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Cookies from 'js-cookie'
 import firebase from './config/fbConfig'
 
 //Components
@@ -16,6 +15,9 @@ import SettingsModal from './components/Modals/SidebarModals/Settings'
 import NotesModal from './components/Modals/SidebarModals/Notes'
 import AboutModal from './components/Modals/SidebarModals/About'
 
+//Actions
+import { returnTheme } from './actions/storageActions'
+
 const db = firebase.firestore();
 
 class App extends Component {
@@ -27,7 +29,7 @@ class App extends Component {
 				{this.drawIfFirstStart()}
 				<Navbar state={this.state}/>
 				<Sidebar isVisible={this.state.sidebarVisible}/>
-				<QuickLinks isSelecting={this.state.isSelecting}/>
+				<QuickLinks exec={this.exec} isSelecting={this.state.isSelecting}/>
 				<AddNoteModal currentPerson={this.state.currentPerson}/>
 
 				{/* Modals */}
@@ -51,7 +53,10 @@ class App extends Component {
 		isSelecting: false
 	}
 
+	exec = func => func('default')
+
 	componentDidMount = () => {
+		var bg = document.querySelector('.t-dtc')
 		firebase.auth().onAuthStateChanged((user) => {
 			if (user){
 				var { email, emailVerified, uid, isAnonymous, displayName } = user
@@ -85,6 +90,8 @@ class App extends Component {
 				})
 			}
 		});
+
+		bg.classList.value = bg.classList.value.replace('theme-c', returnTheme() + '-t-body-bg')
 	}
 
 	setEngine = (key, val) => {

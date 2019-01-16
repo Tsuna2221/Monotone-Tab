@@ -5,11 +5,13 @@ import NotesIcon from "../assets/Notes.svg";
 import Info from "../assets/Info.svg";
 import Setting from "../assets/Setting.svg";
 
+import { returnTheme } from "../actions/storageActions"
+
 class Sidebar extends Component {
     render() {
         return (
             <div id='Sidebar'>
-                <div className='sidebar-container'>
+                <div className={'sidebar-container '+ returnTheme() + '-t-modal'}>
                     <div className="sidebar-items">
                         <div className="side-set">
                             <img onClick={this.showModal} className="side-icon note-icon" data-type="Notes" src={NotesIcon} alt=""/>

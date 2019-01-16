@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //Actions
 import { hideModal } from '../actions/general'
+import { returnTheme } from "../actions/storageActions"
 
 //Images
 import NoteButton from "../assets/NoteButton.svg";
@@ -9,7 +10,7 @@ class NewNote extends Component {
     render() {
         return (
             <div className='NewNoteButton'>
-                <div onClick={this.toggleModal} className="new-note-btn">
+                <div onClick={this.toggleModal} className={"new-note-btn "+ returnTheme() + "-t-background"}>
 					<img src={NoteButton} alt=""/>
 				</div>
             </div>

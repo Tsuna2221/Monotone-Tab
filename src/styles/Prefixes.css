@@ -1,19 +1,9 @@
 /*Sections*/
 
-.head-w{
-	font-size: 24px;
-	margin: 0;
-}
-
 .flex-w{
 	display: flex;
 	margin: 8px 0;
 	justify-content: space-between;
-}
-
-.section-w{
-	font-size: 19px;
-	margin-top: 20px;
 }
 
 .field-w{
@@ -35,14 +25,23 @@
 /*Texts*/
 
 .head-w, .label-w, .section-w{
-	font-weight: 200;
+	font-weight: 300;
 	color: #3D405D;
+}
+
+.section-w {
+    font-size: 19px;
+    margin-top: 20px;
 }
 
 .label-w{
 	font-size: 15px;
 }
 
+.head-w {
+    font-size: 24px;
+    margin: 0;
+}
 
 .text-w {
     color: #3D405D;
@@ -145,7 +144,7 @@ option{
 	color: #3D405D;
 	user-select: none;
 	transition: .2s ease;
-	background-color: #faf9ff;
+	background-color: transparent;
 	outline: none;
 	text-decoration: none;
 }

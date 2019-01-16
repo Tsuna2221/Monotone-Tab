@@ -4,11 +4,12 @@ import { hideModal } from '../../actions/general'
 
 //Actions
 import { loginPerson, signOutPerson } from '../../actions/fbQuery'
+import { returnTheme } from "../../actions/storageActions"
 
 class AccountModal extends Component {
     render() {
         return (
-            <div className='AccountModal account-modal-inactive'>
+            <div className={'AccountModal account-modal-inactive '+ returnTheme() + '-t-modal'}>
                 {this.checkIfLogged()}
             </div>
         );
@@ -37,24 +38,24 @@ class AccountModal extends Component {
             return (
                 <div className="account-container">
                     <div className="modal-w">
-                        <h1 className="head-w">Account</h1>
+                        <h1 className={"head-w "+ returnTheme() + "-t-text-w"}>Account</h1>
 
                         <div className="field-w">
-                            <label className="label-w">User</label>
+                            <label className={"label-w "+ returnTheme() + "-t-text-w"}>User</label>
                             <div className="input-w">
-                                <p className="text-w">{displayName}</p>
+                                <p className={"text-w "+ returnTheme() + "-t-text-w"}>{displayName}</p>
                             </div>
                         </div>
 
                         <div className="field-w">
-                            <label className="label-w">Email</label>
+                            <label className={"label-w "+ returnTheme() + "-t-text-w"}>Email</label>
                             <div className="input-w">
-                                <p className="text-w">{email}</p>
+                                <p className={"text-w "+ returnTheme() + "-t-text-w"}>{email}</p>
                             </div>
                         </div>
                     </div>
                     <div className="btn-container-w">
-                        <div onClick={signOutPerson} className="btn-w f-w">Sign Out</div>
+                        <div onClick={signOutPerson} className={"btn-w "+ returnTheme() + "-t-btn-w f-w"}>Sign Out</div>
                     </div>
                 </div>
             )
@@ -62,22 +63,22 @@ class AccountModal extends Component {
             return (
                 <div className="account-container">
                     <div className="modal-w">
-                        <h1 className="head-w">Log In</h1>
+                        <h1 className={"head-w "+ returnTheme() + "-t-text-w"}>Log In</h1>
                         <div className="field-w">
-                            <label className="label-w">Email</label>
+                            <label className={"label-w "+ returnTheme() + "-t-text-w"}>Email</label>
                             <div className="input-w input-w175">
                                 <input onChange={this.handleInput} name="email" type="email"/>
                             </div>
                         </div>
-                        <div className="field-w">
-                            <label className="label-w">Password</label>
+                        <div className={returnTheme() + "-t-field-w"}>
+                            <label className={"label-w "+ returnTheme() + "-t-text-w"}>Password</label>
                             <div className="input-w input-w175">
                                 <input onChange={this.handleInput} name="password" type="password"/>
                             </div>
                         </div>
                     </div>
                     <div className="btn-container-w">
-                        <div onClick={this.login} className="btn-w f-w">Log In</div>
+                        <div onClick={this.login} className={"btn-w "+ returnTheme() + "-t-btn-w f-w"}>Log In</div>
                     </div>
                 </div>
             )

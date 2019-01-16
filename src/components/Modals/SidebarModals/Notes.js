@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //Actions
 import { hideModal } from '../../../actions/general'
+import { returnTheme } from "../../../actions/storageActions"
 
 //Images
 import ArrowIcon from '../../../assets/NoteArrow.svg'
@@ -8,9 +9,9 @@ import ArrowIcon from '../../../assets/NoteArrow.svg'
 class NotesModal extends Component {
     render() {
         return (
-            <div className='Notes Notes-Inactive modal-g'>
+            <div className={'Notes Notes-Inactive modal-g '+ returnTheme() + '-t-modal'}>
                 <div className="modal-w">
-                    <h1 className="head-w">Notes</h1>
+                    <h1 className={"head-w "+ returnTheme() + "-t-text-w"}>Notes</h1>
                     <div className="field-w">
                         {this.drawNotes()}
                     </div>
@@ -46,7 +47,7 @@ class NotesModal extends Component {
                             <div className="note-cell" >
                                 <img data-id={id} onClick={this.showContent} className="note-arrow" src={ArrowIcon} alt=""/>
                                 <div className="note-title">
-                                    <p className="text-w">{name}</p>
+                                    <p className={"text-w "+ returnTheme() + "-t-text-w"}>{name}</p>
                                 </div>
                             </div>
                             <div name={id} className="note-content">
@@ -56,10 +57,10 @@ class NotesModal extends Component {
                     )
                 });
             }else{
-                return <label className="label-w">No notes found.</label>
+                return <label className={"label-w "+ returnTheme() + "-t-text-w"}>No notes found.</label>
             }
         }else if(notes === undefined){
-            return <label className="label-w">Loading notes...</label>
+            return <label className={"label-w "+ returnTheme() + "-t-text-w"}>Loading notes...</label>
         }
     }
 
@@ -70,7 +71,7 @@ class NotesModal extends Component {
             if(note.id === id){
                 var parag = note.content.split('<br />')
                 return parag.map(para => {
-                    return (<p className="text-w">{para}</p>)
+                    return (<p className={"text-w "+ returnTheme() + "-t-text-w"}>{para}</p>)
                 })
             }
             return null

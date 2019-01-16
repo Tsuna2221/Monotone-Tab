@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import p from 'parse-string-data'
-import Cookies from 'js-cookie'
 import Masonry from 'react-masonry-component';
 
 //Components
@@ -13,7 +12,7 @@ import OptionButton from "../assets/OptionButton.svg";
 import Cross from "../assets/Cross.svg";
 
 //Actions
-import { returnLinks, returnLastLink } from "../actions/storageActions"
+import { returnLinks, returnLastLink, returnTheme } from "../actions/storageActions"
 
 
 class QuickLinks extends Component {
@@ -27,8 +26,8 @@ class QuickLinks extends Component {
                 <Folders currentFolder={this.currentFolder} setCurrentFolder={this.setCurrentFolder} updateLinksState={this.updateLinksState}/>
 
                 <div id="quick-main-container">
-                    <span className="quick-label head-w">Quick Links</span>            
-                    <p className="label-w folder-label">{this.setLabel(this.state.currentFolder)}</p>
+                    <span className={"quick-label head-w "+ returnTheme() + "-t-text-w"}>Quick Links</span>            
+                    <p className={"label-w folder-label "+ returnTheme() + "-t-text-w"}>{this.setLabel(this.state.currentFolder)}</p>
                     <Masonry
                         elementType={'div'}
                         options={this.state.masonryOptions}
@@ -54,6 +53,7 @@ class QuickLinks extends Component {
     }
 
     componentDidMount = () => {
+        this.props.exec(this.setCurrentFolder)
         if(localStorage.getItem('isFirstStart') === null){
             localStorage.setItem('noOfColumns', 4)
         }
@@ -88,7 +88,7 @@ class QuickLinks extends Component {
 
     setTransition = (e) => !e.ctrlKey ? document.querySelector('.transition-bg').style.height = '100vh' : null
 
-    setCurrentFolder = (folder) => this.setState({...this.state, currentFolder: folder,})
+    setCurrentFolder = (folder) => this.setState({...this.state, currentFolder: folder})
 
     setLabel = () => this.state.currentFolder === 'default' ? 'Main' : JSON.parse(localStorage.getItem(this.state.currentFolder)).name
 

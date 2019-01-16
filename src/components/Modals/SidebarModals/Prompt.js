@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 
+import { returnTheme } from "../../../actions/storageActions"
+
 class Prompt extends Component {
     render() {
         var { head, label } = this.props.promptText
         return (
-            <div className='app-prompt app-prompt-inactive'>
+            <div className={'app-prompt app-prompt-inactive '+ returnTheme() + '-t-modal'}>
                 <div className="modal-w">
-                    <h1 className="head-w">{head}</h1>
+                    <h1 className={"head-w "+ returnTheme() + "-t-text-w"}>{head}</h1>
                     <div className="field-w">
-                        <label className="label-w">{label}</label>
+                        <label className={"label-w "+ returnTheme() + "-t-text-w"}>{label}</label>
                     </div>
                 </div>
                 {this.drawButtons()}
@@ -47,14 +49,14 @@ class Prompt extends Component {
         if( num2 ){
             return (
                 <div className="btn-container-w">
-                    <div data-fnc="fnc1" onClick={this.execPrompt} className="btn-w">{num1}</div>
-                    <div data-fnc="fnc2" onClick={this.execPrompt} className="btn-w">{num2}</div>
+                    <div data-fnc="fnc1" onClick={this.execPrompt} className={"btn-w "+ returnTheme() + "-t-btn-w"}>{num1}</div>
+                    <div data-fnc="fnc2" onClick={this.execPrompt} className={"btn-w "+ returnTheme() + "-t-btn-w"}>{num2}</div>
                 </div>
             )
         }else{
             return (
                 <div className="btn-container-w">
-                    <div data-fnc="fnc1" onClick={this.execPrompt} className="btn-w f-w">{num1}</div>
+                    <div data-fnc="fnc1" onClick={this.execPrompt} className={"btn-w "+ returnTheme() + "-t-btn-w f-w"}>{num1}</div>
                 </div>
             )
         }

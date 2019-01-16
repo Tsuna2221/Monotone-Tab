@@ -17,4 +17,8 @@ import './styles/Prefixes.css';
 import './styles/Folders.css';
 import './styles/AboutModal.css';
 
+//Themes
+import './styles/Themes/DarkTheme.css';
+import './styles/Themes/LightTheme.css';
+
 ReactDOM.render(<App />, document.getElementById('root'));

@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
 import { validateLinks } from '../../actions/formValidator'
 import { SketchPicker } from 'react-color';
-import { returnFolders } from '../../actions/storageActions'
+import { returnFolders, returnTheme } from '../../actions/storageActions'
 
 class QuickLinkModal extends Component {
     render() {
         return (
             <div className="new-item-modal">
-                <div className="new-item-modal-content">
+                <div className={"new-item-modal-content "+ returnTheme() + "-t-modal"}>
                     <div className="modal-w">
                         {this.modalColors()}
-                        <h1 className="head-w">Add Quick Link</h1>
+                        <h1 className={"head-w "+ returnTheme() + "-t-text-w"}>Add Quick Link</h1>
 
                         <div className="field-w">
-                            <label className="label-w" htmlFor="name">Name</label>
+                            <label className={"label-w "+ returnTheme() + "-t-text-w"} htmlFor="name">Name</label>
                             <div className="input-w">
                                 <input onChange={this.handleModalInput} autoComplete="off" name="newItemName" className="input-name input" placeholder="Example" type="text"/>
                             </div>
                         </div>
                         
                         <div className="field-w">
-                            <label className="label-w" htmlFor="url">URL</label>
+                            <label className={"label-w "+ returnTheme() + "-t-text-w"} htmlFor="url">URL</label>
                             <div className="input-w">
                                 <input onChange={this.handleModalInput} autoComplete="off" name="newItemURL" className="input-url input" placeholder="http://www.example.com" type="text"/>
                             </div>
                         </div>
 
                         <div className="field-w">
-                            <label className="label-w" htmlFor="folder">Folder</label>
+                            <label className={"label-w "+ returnTheme() + "-t-text-w"} htmlFor="folder">Folder</label>
                             <div className="input-w">
                                 <select onChange={this.handleModalInput} name="newItemFolder" className="input-folder select-w">
                                     <option value='default'>Main</option>
@@ -37,7 +37,7 @@ class QuickLinkModal extends Component {
                         </div>
 
                         <div className="field-w">
-                            <label className="label-w" htmlFor="colors">Color</label>
+                            <label className={"label-w "+ returnTheme() + "-t-text-w"} htmlFor="colors">Color</label>
 
                             <div className="input-w">
                                 <input onFocus={this.showColors} onChange={this.handleModalInput} autoComplete="off" name="newItemColor" className="input-color input" placeholder="#E32018" type="text"/>
@@ -45,7 +45,7 @@ class QuickLinkModal extends Component {
                         </div>
                     </div>
                     <div className=".btn-container-w">
-                        <div onClick={this.handleItem} className="btn-w f-w">Add Link</div>
+                        <div onClick={this.handleItem} className={"btn-w "+ returnTheme() + "-t-btn-w f-w"}>Add Link</div>
                     </div>
                 </div>
             </div>
@@ -87,8 +87,15 @@ class QuickLinkModal extends Component {
             //Update State
             this.props.updateLinksState()
 
-            // eslint-disable-next-line
-            window.localStorage.setItem('item' + (lastNumberInt + 1), '{ "name":'+ '"' + newItemName + '"' +', "url":'+ '"' + newItemURL + '"' +', "folder": "'+ newItemFolder +'", "color":'+ '"' + color + '"' +', "id": "item' + (lastNumberInt + 1) + '"' +'}')
+            var obj = {
+                name: newItemName,
+                url: newItemURL,
+                folder: newItemFolder,
+                color: color,
+                id: 'item' + (lastNumberInt + 1)
+            }
+
+            window.localStorage.setItem('item' + (lastNumberInt + 1), JSON.stringify(obj))
 
             //Hide modal
             modal.classList.toggle('modal-active')

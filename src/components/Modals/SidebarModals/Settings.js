@@ -1,53 +1,58 @@
 import React, { Component } from 'react';
 import moment from "moment"
 import firebase from '../../../config/fbConfig'
-  
+import Prompt from './Prompt'
+
+//Images
+import Theme from '../../../assets/ThemeButton.svg'
+
 //Actions
+import { returnTheme, setTheme } from '../../../actions/storageActions'
 import { exportBackup, importBackup } from '../../../actions/fbQuery'
 import { hideModal } from '../../../actions/general'
 
-import Prompt from './Prompt'
-import Cookies from 'js-cookie'
+
 
 class SettingsModal extends Component {
     render() {
         return (
-            <div className='Settings Settings-Inactive'>
+            <div className={'Settings Settings-Inactive '+ returnTheme() + '-t-modal'}>
                 <Prompt promptText={this.state.promptText}/>
 
                 <div className="settings-container">
                     <div className="modal-w">
-                        <h1 className="head-w">Settings</h1>
+                        <img onClick={this.applyTheme} className="theme-btn" src={Theme} alt=""/>
+                        <h1 className={"head-w "+ returnTheme() + "-t-text-w"}>Settings</h1>
                         <div className="links-settings">
-                            <h2 className="section-w">Quick Links</h2>
+                            <h2 className={"section-w "+ returnTheme() + "-t-text-w"}>Quick Links</h2>
 
                             <div className="field-w">
-                                <label className="label-w">Columns</label>
+                                <label className={"label-w "+ returnTheme() + "-t-text-w"}>Columns</label>
                                 <div className="range-w">
                                     {this.columnInput()}
                                 </div>
                             </div>
 
                             <div className="field-w">
-                                <label className="label-w">Remove Items</label>
+                                <label className={"label-w "+ returnTheme() + "-t-text-w"}>Remove Items</label>
                                 
                                 <div className="remove-btns flex-w">
-                                    <div data-type='selective' onClick={this.togglePrompt} className="button-w">Selective</div>
-                                    <div data-type='remove-all' onClick={this.togglePrompt} className="button-w">Remove All</div>
+                                    <div data-type='selective' onClick={this.togglePrompt} className={"button-w "+ returnTheme() + "-t-button-w"}>Selective</div>
+                                    <div data-type='remove-all' onClick={this.togglePrompt} className={"button-w "+ returnTheme() + "-t-button-w"}>Remove All</div>
                                 </div>
                             </div>
                             
 
                             <div className="field-w">
-                                <label className="label-w">Backup Folders and Links</label>
+                                <label className={"label-w "+ returnTheme() + "-t-text-w"}>Backup Folders and Links</label>
                                 
                                 {this.checkIfLogged()}
                             </div>
                             <hr className="side-separator"/>
-                            <h2 className="section-w">Search Engine and Date</h2>
+                            <h2 className={"section-w "+ returnTheme() + "-t-text-w"}>Search Engine and Date</h2>
 
                             <div className="field-w">
-                                <label className="label-w">Default Search Engine</label>
+                                <label className={"label-w "+ returnTheme() + "-t-text-w"}>Default Search Engine</label>
                                 
                                 <div className="remove-btns flex-w">
                                     <select data-type='backup' onChange={(e) => this.props.setEngine(e.target.name, e.target.value)} name="engineTypo" className="select-w">
@@ -59,7 +64,7 @@ class SettingsModal extends Component {
                             </div>
 
                             <div className="field-w">
-                                <label className="label-w">Default Date Format</label>
+                                <label className={"label-w "+ returnTheme() + "-t-text-w"}>Default Date Format</label>
                                 
                                 <div className="remove-btns flex-w">
                                     <select data-type='backup' onChange={(e) => this.props.setEngine(e.target.name, e.target.value)} name="formatTypo" className="select-w">
@@ -109,14 +114,14 @@ class SettingsModal extends Component {
         if(firebase.auth().currentUser){
             return (
                 <div className="remove-btns flex-w">
-                        <div data-type='backup' onClick={this.togglePrompt} className="button-w">Export</div>
-                        <div data-type='restore' onClick={this.togglePrompt} className="button-w">Import</div>
+                    <div data-type='backup' onClick={this.togglePrompt} className={"button-w "+ returnTheme() + "-t-button-w"}>Export</div>
+                    <div data-type='restore' onClick={this.togglePrompt} className={"button-w "+ returnTheme() + "-t-button-w"}>Import</div>
                 </div>
             )
         }else{
             return (
                 <div className="remove-btns flex-w">
-                    <label className="label-w">Log in to backup your data</label>
+                    <label className={"label-w "+ returnTheme() + "-t-text-w"}>Log in to backup your data</label>
                 </div>
             )
         }
@@ -143,6 +148,8 @@ class SettingsModal extends Component {
         container.style.gridTemplateColumns = "repeat("+ e.target.value +", 245px)"
     }
 
+    applyTheme = () => {returnTheme() === 'light' ? setTheme('dark') : setTheme('light'); window.location.reload()}
+
     togglePrompt = (e) => {
         if(document.querySelector('.app-prompt-inactive')){
             var prompt = document.querySelector('.app-prompt')
@@ -166,7 +173,12 @@ class SettingsModal extends Component {
             switch(type){
                 case 'remove-all':
                     setText('Remove All', 'Are you sure?', 'No', 'Yes', null, () => {
-                        localStorage.clear();
+                        window.location.reload()
+                        for(var item in localStorage){
+                            if(item.includes('folder') || item.includes('item')){
+                                localStorage.removeItem(item)
+                            }
+                        }
                         this.props.updateState()
                     })
                 break;

@@ -56,4 +56,8 @@ const returnLastLink = () => {
     return {items, highestValues}
 }
 
-export {returnFolders, returnLinks, returnLastLink, returnLastFolder}
+const returnTheme = () => localStorage.getItem('theme')
+
+const setTheme = (name) => localStorage.setItem('theme', name)
+
+export {returnFolders, returnLinks, returnLastLink, returnLastFolder, returnTheme, setTheme }

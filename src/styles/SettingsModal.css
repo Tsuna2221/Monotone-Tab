@@ -28,3 +28,9 @@
     opacity: 0;
     pointer-events: none;
 }
+
+.theme-btn{
+    cursor: pointer;
+    position: absolute;
+    right: 25px;
+}

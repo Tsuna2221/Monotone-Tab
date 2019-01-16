@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import moment from "moment"
-import Cookies from 'js-cookie'
 
 import Google from '../assets/Google.svg'
 import Duck from '../assets/Duck_Duck_Go.svg'
@@ -9,10 +8,12 @@ import Bing from '../assets/Bing.svg'
 //Images
 import MenuButton from "../assets/MenuButton.svg";
 
+import { returnTheme } from "../actions/storageActions"
+
 class Navbar extends Component {
     render() {
         return (
-            <nav className="navbar-container">
+            <nav className={"navbar-container "+ returnTheme() + "-t-background"}>
                 <div className="search-bar-container">
                     <form onSubmit={this.handleSubmit} className="search-form">
                         <input style={{backgroundImage: 'url('+ this.drawEngine().image +')', borderColor: this.drawEngine().color}} autoFocus className="search-input" type="text" placeholder={'Search on '+ this.drawEngine().name}/>

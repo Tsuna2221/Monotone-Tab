@@ -9,17 +9,17 @@ import Arrow from '../assets/CollapseArrow.svg'
 import OptionButton from "../assets/OptionButton.svg"
 
 //Actions
-import { returnFolders } from "../actions/storageActions"
+import { returnFolders, returnTheme } from "../actions/storageActions"
 
 class Folders extends Component {
     render() {
         return (
             <div className="app-folders">
                 <NewFolder updateState={this.props.updateLinksState}/>
-                <EditFolder updateState={this.props.updateLinksState} folderId={this.state.idToEdit}/>
+                <EditFolder setCurrentFolder={this.props.setCurrentFolder} updateState={this.props.updateLinksState} folderId={this.state.idToEdit}/>
 
                 <div className="sec-folders sec-folders-disabled">
-                    <span className="quick-label head-w">Folders</span>     
+                    <span className={"quick-label head-w "+ returnTheme() + "-t-text-w"}>Folders</span>     
                     <div className="folder-main-container">
                         <div className="folder-container">
                             <div onClick={() => this.props.setCurrentFolder('default')} data-id="default" style={{backgroundColor: '#5f5f5f'}} className="folder-item">
@@ -45,7 +45,7 @@ class Folders extends Component {
                     </div>
                 </div>
 
-                <div onClick={this.collapseFolders} className="expand-div"><img className="collapse-arrow collapse-arrow-active" src={Arrow} alt=""/></div>
+                <div onClick={this.collapseFolders} className={"expand-div "+ returnTheme() + "-t-expand"}><img className="collapse-arrow collapse-arrow-active" src={Arrow} alt=""/></div>
             </div>
         );
     }
