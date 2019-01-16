@@ -1,5 +1,7 @@
 # Monotone Tab
 
+[Get the extension for Chrome here](https://chrome.google.com/webstore/detail/monotone-tab/cbfofgjgoefkpnkcgbjifcalncjefdji)
+
 [Try an alpha here](https://tsuna2221.github.io/Monotone-Tab/) 
 
 ## Todo
