@@ -74,6 +74,7 @@ p{
 .signup-input > input{
     transition: .2s ease;
     width: -webkit-fill-available;
+    width: -moz-available;
     border: none;
     height: 33px;
     outline: none;

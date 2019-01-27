@@ -11,7 +11,7 @@
 
 .search-bar-container{
 	transform: translateX(-50%);
-    position: sticky;
+	position: absolute;
     left: 50%;
 }
 

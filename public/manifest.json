@@ -1,15 +1,9 @@
 {
   "name": "Monotone Tab",
-  "version": "1.001",
+  "version": "1.005",
   "description": "A simple and clean start page project. Containing notes and customizable items",
   "manifest_version": 2,
   "chrome_url_overrides" : {
     "newtab": "index.html"
-  },
-  "permissions": [
-    "storage",
-    "topSites",
-    "history",
-    "cookies"
-  ]
+  }
 }

@@ -1,13 +1,18 @@
+:root{
+	--main-white-text: #B4B3B3;
+	--main-blue: #3B70DE;
+}
+
 .dark-t-background, .dark-t-button-w:hover, .dark-t-btn-w:hover{
-    background-color: #3B70DE;
+    background-color: var(--main-blue);
 }
 
 .dark-t-body-bg{
-    background-color: #161616;
+    background-color: #353846;
 }
 
 .dark-t-modal{
-    background-color: #232323;
+    background-color: #222229;
 }
 
 .dark-t-expand{
@@ -17,14 +22,12 @@
 
 
 .dark-t-text-w{
-	color: #B4B3B3;
+	color: var(--main-white-text);
 }
 
-
-
 .dark-t-button-w{
-	border: 1px solid #3B70DE;
-	color: #B4B3B3;
+	border: 1px solid var(--main-blue);
+	color: var(--main-white-text);
 }
 
 .dark-t-button-w:hover{
@@ -32,5 +35,5 @@
 }
 
 .dark-t-btn-w{
-	color: #B4B3B3;
+	color: var(--main-white-text);
 }
