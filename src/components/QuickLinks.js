@@ -34,12 +34,12 @@ class QuickLinks extends Component {
                         className="quick-container" style={{ gridTemplateColumns: 'repeat( '+ this.initColumnNo() +', 245px )' }}>
                         {this.drawContainer()}
                         <div className="quick-item-container">
-                            <div data-id="new-item" onClick={this.showNewModal} className="quick-item empty-item">
+                            <div data-id="new-item" onClick={this.showNewModal} className={"quick-item empty-item " + returnTheme() + "-link-w"}>
                                 <div className="item-let empty-let">
                                     <span className="let-ind">+</span>
                                 </div>
 
-                                <span className="item-name empty-name">Add New</span>
+                                <span className={"item-name empty-name " + returnTheme() + '-link-text-w'}>Add New</span>
                             </div>
                         </div>
                     </Masonry>

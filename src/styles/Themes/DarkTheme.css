@@ -1,6 +1,6 @@
 :root{
-	--main-white-text: #B4B3B3;
-	--main-blue: #3B70DE;
+	--main-white-text: #dcdcdc;
+	--main-blue: rgb(79, 18, 179);
 }
 
 .dark-t-background, .dark-t-button-w:hover, .dark-t-btn-w:hover{
@@ -8,18 +8,16 @@
 }
 
 .dark-t-body-bg{
-    background-color: #353846;
+    background-color: #1e2029;
 }
 
 .dark-t-modal{
-    background-color: #222229;
+    background-color: #26263a;
 }
 
 .dark-t-expand{
 	background-color: #3c3c3c;
 }
-
-
 
 .dark-t-text-w{
 	color: var(--main-white-text);
@@ -36,4 +34,12 @@
 
 .dark-t-btn-w{
 	color: var(--main-white-text);
+}
+
+.dark-link-w{
+	background-color: #2e2e3a;
+}
+
+.dark-link-text-w{
+	color: #e6e6e6;
 }
