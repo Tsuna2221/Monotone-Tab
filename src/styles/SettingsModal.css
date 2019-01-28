@@ -1,17 +1,16 @@
 .Settings{
     position: fixed;
-    width: 275px;
     overflow-y: hidden;
     overflow-x: hidden;
-    bottom: 0;
-    right: 85px;
+    top: 66px;
+    right: 0;
     background-color: #FAF9FF;
     transition: .4s ease;
     z-index: 1;
 }
 
 .Settings-Inactive{
-    right: -280px;
+    right: -300px;
 }
 
 .app-prompt{
@@ -33,4 +32,13 @@
     cursor: pointer;
     position: absolute;
     right: 25px;
+}
+
+.main-menu-container{
+    overflow-y: scroll;
+    height: calc(100vh - 92px);
+}
+
+.section{
+    width: 235px;
 }

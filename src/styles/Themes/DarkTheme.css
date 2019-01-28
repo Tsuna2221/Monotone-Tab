@@ -1,6 +1,6 @@
 :root{
-	--main-white-text: #dcdcdc;
-	--main-blue: rgb(79, 18, 179);
+	--main-white-text: #f3f3f3;
+	--main-blue: rgb(74, 18, 179);
 }
 
 .dark-t-background, .dark-t-button-w:hover, .dark-t-btn-w:hover{

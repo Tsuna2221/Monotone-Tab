@@ -91,7 +91,7 @@ class Navbar extends Component {
 
     currentTime = () => moment().format(localStorage.getItem('formatTypo') || 'MMMM Do YYYY, h:mm:ss a');
 
-    showSidebar = () => document.querySelector('.sidebar-container').classList.toggle('sidebar-active')
+    showSidebar = () => document.querySelector('.Settings').classList.toggle('Settings-Inactive')
 
     toggleModal = () => document.querySelector('.AccountModal').classList.toggle('account-modal-inactive')
     

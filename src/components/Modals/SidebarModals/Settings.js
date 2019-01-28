@@ -3,15 +3,15 @@ import moment from "moment"
 import firebase from '../../../config/fbConfig'
 import Prompt from './Prompt'
 
-//Images
-import Theme from '../../../assets/ThemeButton.svg'
-
 //Actions
 import { returnTheme, setTheme } from '../../../actions/storageActions'
 import { exportBackup, importBackup } from '../../../actions/fbQuery'
 import { hideModal } from '../../../actions/general'
 
-
+//Components
+import SettingsSection from './MenuFields/SettingsSection'
+import AboutSection from './MenuFields/AboutSection'
+import ThemeSection from './MenuFields/ThemeSection'
 
 class SettingsModal extends Component {
     render() {
@@ -20,59 +20,10 @@ class SettingsModal extends Component {
                 <Prompt promptText={this.state.promptText}/>
 
                 <div className="settings-container">
-                    <div className="modal-w">
-                        <img onClick={this.applyTheme} className="theme-btn" src={Theme} alt=""/>
-                        <h1 className={"head-w "+ returnTheme() + "-t-text-w"}>Settings</h1>
-                        <div className="links-settings">
-                            <h2 className={"section-w "+ returnTheme() + "-t-text-w"}>Quick Links</h2>
-
-                            <div className="field-w">
-                                <label className={"label-w "+ returnTheme() + "-t-text-w"}>Columns</label>
-                                <div className="range-w">
-                                    {this.columnInput()}
-                                </div>
-                            </div>
-
-                            <div className="field-w">
-                                <label className={"label-w "+ returnTheme() + "-t-text-w"}>Remove Items</label>
-                                
-                                <div className="remove-btns flex-w">
-                                    <div data-type='selective' onClick={this.togglePrompt} className={"button-w "+ returnTheme() + "-t-button-w"}>Selective</div>
-                                    <div data-type='remove-all' onClick={this.togglePrompt} className={"button-w "+ returnTheme() + "-t-button-w"}>Remove All</div>
-                                </div>
-                            </div>
-                            
-
-                            <div className="field-w">
-                                <label className={"label-w "+ returnTheme() + "-t-text-w"}>Backup Folders and Links</label>
-                                
-                                {this.checkIfLogged()}
-                            </div>
-                            <hr className="side-separator"/>
-                            <h2 className={"section-w "+ returnTheme() + "-t-text-w"}>Search Engine and Date</h2>
-
-                            <div className="field-w">
-                                <label className={"label-w "+ returnTheme() + "-t-text-w"}>Default Search Engine</label>
-                                
-                                <div className="remove-btns flex-w">
-                                    <select data-type='backup' onChange={(e) => this.props.setEngine(e.target.name, e.target.value)} name="engineTypo" className="select-w">
-                                        <option name='google' value="google">Google</option>
-                                        <option name='bing' value="bing">Bing</option>
-                                        <option name='duck' value="duck">DuckDuckGo</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div className="field-w">
-                                <label className={"label-w "+ returnTheme() + "-t-text-w"}>Default Date Format</label>
-                                
-                                <div className="remove-btns flex-w">
-                                    <select data-type='backup' onChange={(e) => this.props.setEngine(e.target.name, e.target.value)} name="formatTypo" className="select-w">
-                                        {this.drawFormatOptions()}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+                    <div className="main-menu-container modal-w">
+                        <SettingsSection drawFormatOptions={this.drawFormatOptions} togglePrompt={this.togglePrompt} columnInput={this.columnInput} checkIfLogged={this.checkIfLogged} setEngine={this.props.setEngine}></SettingsSection>
+                        <ThemeSection/>
+                        <AboutSection/>
                     </div>
                 </div>
             </div>
@@ -103,7 +54,7 @@ class SettingsModal extends Component {
             var els = {
                 prefix: 'Settings-Inactive',
                 element: '.Settings',
-                button: '.settings-icon',
+                button: '.con-menu',
             }
 
             hideModal(els, e)

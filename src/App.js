@@ -3,22 +3,15 @@ import firebase from './config/fbConfig'
 
 //Components
 import Navbar from './components/Navbar'
-import Sidebar from './components/Sidebar'
 import QuickLinks from './components/QuickLinks'
 import FirstStart from './components/FirstStart'
-import NewNote from './components/NewNote'
 
 //Modals
-import AddNoteModal from './components/Modals/AddNoteModal'
 import AccountModal from './components/Modals/AccountModal'
 import SettingsModal from './components/Modals/SidebarModals/Settings'
-import NotesModal from './components/Modals/SidebarModals/Notes'
-import AboutModal from './components/Modals/SidebarModals/About'
 
 //Actions
 import { returnTheme } from './actions/storageActions'
-
-const db = firebase.firestore();
 
 class App extends Component {
 	render() {
@@ -28,19 +21,13 @@ class App extends Component {
 				{/* General */}
 				{this.drawIfFirstStart()}
 				<Navbar state={this.state}/>
-				<Sidebar isVisible={this.state.sidebarVisible}/>
 				<QuickLinks exec={this.exec} isSelecting={this.state.isSelecting}/>
-				<AddNoteModal currentPerson={this.state.currentPerson}/>
 
 				{/* Modals */}
 				<AccountModal isLogged={this.state.isLogged} currentPerson={this.state.currentPerson} />
 
 				{/* Sidebar Modals */}
-				<SettingsModal setSelection={this.setSelection} setEngine={this.setEngine} updateState={this.updateState}/>
-				<NotesModal notes={this.state.currentNotes}/>
-				<AboutModal/>
-				{this.showNoteButtonIfLogged()}
-				
+				<SettingsModal setSelection={this.setSelection} setEngine={this.setEngine} updateState={this.updateState}/>	
 
 				{/* Transition */}
 				<div className="transition-bg"></div>
@@ -60,18 +47,6 @@ class App extends Component {
 		firebase.auth().onAuthStateChanged((user) => {
 			if (user){
 				var { email, emailVerified, uid, isAnonymous, displayName } = user
-				var notesCollection = db.collection('person').doc(uid).collection('notes').orderBy('createdAt', 'desc')
-				
-				notesCollection.onSnapshot(res => {
-					var notes = [];
-					res.forEach(data => {
-						notes.push(data.data())
-					})
-					this.setState({
-						...this.state,
-						currentNotes: notes
-					})
-				})
 
 				this.setState({
 					...this.state,
@@ -104,8 +79,6 @@ class App extends Component {
 	drawIfFirstStart = () => localStorage.getItem('isFirstStart') === null ? <FirstStart/> : null
 
 	updateState = () => this.setState({...this.state})
-
-	showNoteButtonIfLogged = () => this.state.isLogged ? <NewNote isLogged={this.state.isLogged} currentPerson={this.state.currentPerson}/> : null
 }
 
 export default App;
