@@ -40,6 +40,8 @@ var SettingsSection = (props) => (
                     <option name='google' value="google">Google</option>
                     <option name='bing' value="bing">Bing</option>
                     <option name='duck' value="duck">DuckDuckGo</option>
+                    <option name='translate' value="translate">Google Translate</option>
+                    <option name='startPage' value="startPage">Startpage</option>
                 </select>
             </div>
         </div>

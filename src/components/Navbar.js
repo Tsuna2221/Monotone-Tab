@@ -68,6 +68,23 @@ class Navbar extends Component {
                     url: "https://duckduckgo.com/?q="
                 }
                 break;
+
+            case 'translate':
+                engineSettings = {
+                    name: 'Google Translate',
+                    color: '#4285F4',
+                    image: Google,
+                    url: "https://translate.google.com/#view=home&op=translate&sl=auto&tl=en&text="
+                }
+                break;
+
+            case 'startPage':
+                engineSettings = {
+                    name: 'Startpage',
+                    color: '#6573ff',
+                    url: "https://www.startpage.com/do/dsearch?cat=web&pl=opensearch&language=english&query="
+                }
+                break;
         
             default:
                 engineSettings = {
