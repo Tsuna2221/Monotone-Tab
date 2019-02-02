@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 //Actions
-import { returnTheme } from '../../../../actions/storageActions'
+import { returnTheme, returnEngines } from '../../../../actions/storageActions'
 
 class SettingsSection extends Component {
     render() {
@@ -52,10 +52,8 @@ class SettingsSection extends Component {
                             <option name='google' value="google">Google</option>
                             <option name='bing' value="bing">Bing</option>
                             <option name='duck' value="duck">DuckDuckGo</option>
-                            <option name='translate' value="translate">Google Translate</option>
                             <option name='startPage' value="startPage">Startpage</option>
-                            <option name='reddit' value="reddit">Reddit</option>
-                            <option name='yahoo' value="yahoo">Yahoo!</option>
+                            {this.drawEngines()}
                         </select>
                     </div>
                 </div>
@@ -73,6 +71,12 @@ class SettingsSection extends Component {
 
     state = {
 
+    }
+
+    drawEngines = () => {
+        return returnEngines().map(engine => {
+            return (<option name={engine.id} value={engine.id}>{engine.name}</option>)
+        })
     }
 
     toggleModal = () => document.querySelector('.engine-modal').classList.toggle('engine-modal-active')

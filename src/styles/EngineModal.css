@@ -35,8 +35,26 @@
 	font-weight: 300;
 	font-size: 14px;
 	padding: 7px 13px;
+	align-items: center;
+	border-top: 1px solid #d0d1e0;
+	position: relative;
+}
+
+.engine-item:nth-child(1){
+	border-top: none;
+}
+
+.engine-item-url{
+	max-width: 215px;
+}
+
+.engine-item-delete{
+    position: absolute;
+    padding: 9px;
+	right: 3px;
+	cursor: pointer;
 }
 
 .engine-item-name{
-	width: 115px;
+	min-width: 115px;
 }

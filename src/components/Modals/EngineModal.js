@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 
+//Imgs
+import Trash from '../../assets/Trash.svg'
+
 //Actions
 import { returnTheme, returnEngines, returnLastEngine } from '../../actions/storageActions'
 
 class QuickLinkModal extends Component {
     render() {
         return (
-            <div onClick={this.closeModal} className="engine-modal engine-modal-active">
+            <div onClick={this.closeModal} className="engine-modal">
                 <div className={"engine-modal-content "+ returnTheme() + "-t-modal"}>
                     <div className="modal-w">
                         <h1 className={"head-w "+ returnTheme() + "-t-text-w"}>Manage Engines</h1>
@@ -39,7 +42,7 @@ class QuickLinkModal extends Component {
                         </div>
                     </div>
                     <div className=".btn-container-w">
-                        <div onClick={this.handleItem} className={"btn-w "+ returnTheme() + "-t-btn-w f-w"}>Done</div>
+                        <div onClick={() => window.location.reload()} className={"btn-w "+ returnTheme() + "-t-btn-w f-w"}>Done</div>
                     </div>
                 </div>
                 
@@ -59,6 +62,7 @@ class QuickLinkModal extends Component {
                 <div className="engine-item">
                     <div className="engine-item-name"><p>{engine.name}</p></div>
                     <div className="engine-item-url"><p>{engine.url}</p></div>
+                    <div className="engine-item-delete"><img onClick={() => this.removeEngine(engine.id)} src={Trash} alt=""/></div>
                 </div>
             )
         })
@@ -71,15 +75,24 @@ class QuickLinkModal extends Component {
         var url = this.state.engineUrl
 
         if (!/^https?:\/\//i.test(url)) {
-            url = 'http://' + 'google.com';
+            url = 'http://' + url;
         }
 
         var obj = {
             name: name,
-            url: url
+            url: url,
+            color: '#507bc1',
+            id: 'sEngine' + (returnLastEngine() + 1)
         }
 
         localStorage.setItem('sEngine' + (returnLastEngine() + 1), JSON.stringify(obj))
+        this.setState({engines: returnEngines()})
+    }
+
+    removeEngine = (id) => {
+        localStorage.removeItem(id)
+
+        this.setState({engines: returnEngines()})
     }
 }
 

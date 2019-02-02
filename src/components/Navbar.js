@@ -13,7 +13,7 @@ import Yahoo from '../assets/Yahoo.svg'
 //Images
 import MenuButton from "../assets/MenuButton.svg";
 
-import { returnTheme } from "../actions/storageActions"
+import { returnTheme, returnEngines } from "../actions/storageActions"
 
 class Navbar extends Component {
     render() {
@@ -45,79 +45,64 @@ class Navbar extends Component {
     drawEngine = () => {
         var engineName = localStorage.getItem('engineTypo')
         var engineSettings = {}
+        var defaultEngines = ['google', 'bing', 'duck', 'startPage']
+        var selectedTypo = () => {
+            for(var i = 0; i < returnEngines().length; i++){
+                
+            }
+        }
 
-        switch (engineName) {
-            case 'google':
+        if(defaultEngines.includes(engineName)){
+            switch (engineName) {
+                case 'google':
+                    engineSettings = {
+                        name: 'Google',
+                        color: '#4285F4',
+                        image: Google,
+                        url: "https://www.google.com/search?q=%s%"
+                    }
+                    break;
+                
+                case 'bing':
+                    engineSettings = {
+                        name: 'Bing',
+                        color: '#F4BD27',
+                        image: Bing,
+                        url: "https://www.bing.com/search?q=%s%"
+                    }
+                    break;
+
+                case 'duck':
+                    engineSettings = {
+                        name: 'DuckDuckGo',
+                        color: '#EC2027',
+                        image: Duck,
+                        url: "https://duckduckgo.com/?q=%s%"
+                    }
+                    break;
+
+                case 'startPage':
+                    engineSettings = {
+                        name: 'Startpage',
+                        color: '#6573ff',
+                        image: Startpage,
+                        url: "https://www.startpage.com/do/dsearch?cat=web&pl=opensearch&query=%s%&language=english"
+                    }
+                    break;
+            }
+        }else{
+            if(JSON.parse(localStorage.getItem(engineName)) !== null){
+                var {name, color, url} = JSON.parse(localStorage.getItem(engineName))
+
                 engineSettings = {
-                    name: 'Google',
-                    color: '#4285F4',
-                    image: Google,
-                    url: "https://www.google.com/search?q=%s%"
+                    name: name,
+                    color: color,
+                    url: url
                 }
-                break;
+            }else{
+                localStorage.setItem('engineTypo', 'google')
+            }
             
-            case 'bing':
-                engineSettings = {
-                    name: 'Bing',
-                    color: '#F4BD27',
-                    image: Bing,
-                    url: "https://www.bing.com/search?q=%s%"
-                }
-                break;
-
-            case 'duck':
-                engineSettings = {
-                    name: 'DuckDuckGo',
-                    color: '#EC2027',
-                    image: Duck,
-                    url: "https://duckduckgo.com/?q=%s%"
-                }
-                break;
-
-            case 'translate':
-                engineSettings = {
-                    name: 'Google Translate',
-                    color: '#4285F4',
-                    image: Translate,
-                    url: "https://translate.google.com/#view=home&op=translate&sl=auto&tl=en&text=%s%"
-                }
-                break;
-
-            case 'startPage':
-                engineSettings = {
-                    name: 'Startpage',
-                    color: '#6573ff',
-                    image: Startpage,
-                    url: "https://www.startpage.com/do/dsearch?cat=web&pl=opensearch&query=%s%&language=english"
-                }
-                break;
-
-            case 'yahoo':
-                engineSettings = {
-                    name: 'Yahoo!',
-                    color: '#7934f7',
-                    image: Yahoo,
-                    url: 'https://search.yahoo.com/search?p=%s%'
-                }
-                break;
-
-            case 'reddit':
-                engineSettings = {
-                    name: 'Reddit',
-                    color: '#ff4500',
-                    image: Reddit,
-                    url: 'https://www.reddit.com/search?q=%s%'
-                }
-                break;
-        
-            default:
-                engineSettings = {
-                    name: 'Google',
-                    color: '#4285F4',
-                    image: Google,
-                    url: "https://www.google.com/search?q=%s%"
-                }
-                break;
         }
 
         return engineSettings

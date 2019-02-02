@@ -83,7 +83,7 @@ const returnLastEngine = () => {
         }
     }
 
-    return highestValues[highestValues.length - 1]
+    return highestValues[highestValues.length - 1] || 0
 }
 
 const returnTheme = () => localStorage.getItem('theme')
