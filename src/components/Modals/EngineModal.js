@@ -19,14 +19,14 @@ class QuickLinkModal extends Component {
                         <div className="field-w">
                             <label className={"label-w "+ returnTheme() + "-t-text-w"} htmlFor="name">Name</label>
                             <div className="input-w">
-                                <input onChange={this.handleItem} autoComplete="off" name="engineName" className="input" placeholder="Example" type="text"/>
+                                <input onChange={this.handleItem} autoComplete="off" name="engineName" className="input-engineName" placeholder="Example" type="text"/>
                             </div>
                         </div>
                         
                         <div className="field-w">
                             <label className={"label-w "+ returnTheme() + "-t-text-w"} htmlFor="url">URL (With %s% in place of query)</label>
                             <div className="input-w">
-                                <input onChange={this.handleItem} autoComplete="off" name="engineUrl" className="input" placeholder="http://www.example.com/search?p=%s%" type="text"/>
+                                <input onChange={this.handleItem} autoComplete="off" name="engineUrl" className="input-engineUrl" placeholder="http://www.example.com/search?p=%s%" type="text"/>
                             </div>
                         </div>
                     </div>
@@ -73,6 +73,8 @@ class QuickLinkModal extends Component {
     storeEngine = () => {
         var name = this.state.engineName
         var url = this.state.engineUrl
+        var inputName = document.querySelector('.input-engineName')
+        var inputUrl = document.querySelector('.input-engineUrl')
 
         if (!/^https?:\/\//i.test(url)) {
             url = 'http://' + url;
@@ -85,14 +87,19 @@ class QuickLinkModal extends Component {
             id: 'sEngine' + (returnLastEngine() + 1)
         }
 
+        inputName.value = ''
+        inputUrl.value = ''
+
         localStorage.setItem('sEngine' + (returnLastEngine() + 1), JSON.stringify(obj))
         this.setState({engines: returnEngines()})
+        this.props.updateState()
     }
 
     removeEngine = (id) => {
         localStorage.removeItem(id)
 
         this.setState({engines: returnEngines()})
+        this.props.updateState()
     }
 }
 

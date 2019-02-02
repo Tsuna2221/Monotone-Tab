@@ -26,7 +26,7 @@ class App extends Component {
 
 				{/* Modals */}
 				<AccountModal isLogged={this.state.isLogged} currentPerson={this.state.currentPerson} />
-				<EngineModal/>
+				<EngineModal updateState={this.updateState}/>
 
 				{/* Sidebar Modals */}
 				<SettingsModal setSelection={this.setSelection} setEngine={this.setEngine} updateState={this.updateState}/>	
