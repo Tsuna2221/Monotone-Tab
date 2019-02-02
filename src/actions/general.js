@@ -39,7 +39,7 @@ const setCustomTheme = () => {
             //el.style.backgroundColor = localStorage.getItem('t-modal-button')
         }else 
         
-        if(el.className.includes("custom-t-button-w")){
+        if(el.className.includes("custom-t-button-wz")){
             el.style.borderColor = localStorage.getItem('t-general-button')
             el.style.color = localStorage.getItem('t-general-button')
         }else 

@@ -4,6 +4,11 @@ import moment from "moment"
 import Google from '../assets/Google.svg'
 import Duck from '../assets/Duck_Duck_Go.svg'
 import Bing from '../assets/Bing.svg'
+import Translate from '../assets/Translate.svg'
+import Reddit from '../assets/Reddit.svg'
+import Startpage from '../assets/Startpage.svg'
+import Yahoo from '../assets/Yahoo.svg'
+
 
 //Images
 import MenuButton from "../assets/MenuButton.svg";
@@ -47,7 +52,7 @@ class Navbar extends Component {
                     name: 'Google',
                     color: '#4285F4',
                     image: Google,
-                    url: "https://www.google.com/search?q="
+                    url: "https://www.google.com/search?q=%s%"
                 }
                 break;
             
@@ -56,7 +61,7 @@ class Navbar extends Component {
                     name: 'Bing',
                     color: '#F4BD27',
                     image: Bing,
-                    url: "https://www.bing.com/search?q="
+                    url: "https://www.bing.com/search?q=%s%"
                 }
                 break;
 
@@ -65,7 +70,7 @@ class Navbar extends Component {
                     name: 'DuckDuckGo',
                     color: '#EC2027',
                     image: Duck,
-                    url: "https://duckduckgo.com/?q="
+                    url: "https://duckduckgo.com/?q=%s%"
                 }
                 break;
 
@@ -73,8 +78,8 @@ class Navbar extends Component {
                 engineSettings = {
                     name: 'Google Translate',
                     color: '#4285F4',
-                    image: Google,
-                    url: "https://translate.google.com/#view=home&op=translate&sl=auto&tl=en&text="
+                    image: Translate,
+                    url: "https://translate.google.com/#view=home&op=translate&sl=auto&tl=en&text=%s%"
                 }
                 break;
 
@@ -82,7 +87,26 @@ class Navbar extends Component {
                 engineSettings = {
                     name: 'Startpage',
                     color: '#6573ff',
-                    url: "https://www.startpage.com/do/dsearch?cat=web&pl=opensearch&language=english&query="
+                    image: Startpage,
+                    url: "https://www.startpage.com/do/dsearch?cat=web&pl=opensearch&query=%s%&language=english"
+                }
+                break;
+
+            case 'yahoo':
+                engineSettings = {
+                    name: 'Yahoo!',
+                    color: '#7934f7',
+                    image: Yahoo,
+                    url: 'https://search.yahoo.com/search?p=%s%'
+                }
+                break;
+
+            case 'reddit':
+                engineSettings = {
+                    name: 'Reddit',
+                    color: '#ff4500',
+                    image: Reddit,
+                    url: 'https://www.reddit.com/search?q=%s%'
                 }
                 break;
         
@@ -91,7 +115,7 @@ class Navbar extends Component {
                     name: 'Google',
                     color: '#4285F4',
                     image: Google,
-                    url: "https://www.google.com/search?q="
+                    url: "https://www.google.com/search?q=%s%"
                 }
                 break;
         }
@@ -102,8 +126,9 @@ class Navbar extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         var input = document.querySelector('.search-input').value.replace(' ', '+')
-        
-        window.location.href = this.drawEngine().url + input
+        var location = this.drawEngine().url.replace('%s%', input)
+
+        window.location.href = location
     }
 
     currentTime = () => moment().format(localStorage.getItem('formatTypo') || 'MMMM Do YYYY, h:mm:ss a');

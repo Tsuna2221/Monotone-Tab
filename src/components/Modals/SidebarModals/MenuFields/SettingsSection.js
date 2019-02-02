@@ -6,7 +6,7 @@ var SettingsSection = (props) => (
     <div className="section">
         <h1 className={"head-w "+ returnTheme() + "-t-text-w"}>Settings</h1>
         <h2 className={"section-w "+ returnTheme() + "-t-text-w"}>Quick Links</h2>
-
+    
         <div className="field-w">
             <label className={"label-w "+ returnTheme() + "-t-text-w"}>Columns</label>
             <div className="range-w">
@@ -42,6 +42,8 @@ var SettingsSection = (props) => (
                     <option name='duck' value="duck">DuckDuckGo</option>
                     <option name='translate' value="translate">Google Translate</option>
                     <option name='startPage' value="startPage">Startpage</option>
+                    <option name='reddit' value="reddit">Reddit</option>
+                    <option name='yahoo' value="yahoo">Yahoo!</option>
                 </select>
             </div>
         </div>
