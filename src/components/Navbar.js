@@ -4,16 +4,13 @@ import moment from "moment"
 import Google from '../assets/Google.svg'
 import Duck from '../assets/Duck_Duck_Go.svg'
 import Bing from '../assets/Bing.svg'
-import Translate from '../assets/Translate.svg'
-import Reddit from '../assets/Reddit.svg'
 import Startpage from '../assets/Startpage.svg'
-import Yahoo from '../assets/Yahoo.svg'
 
 
 //Images
 import MenuButton from "../assets/MenuButton.svg";
 
-import { returnTheme, returnEngines } from "../actions/storageActions"
+import { returnTheme } from "../actions/storageActions"
 
 class Navbar extends Component {
     render() {
@@ -46,11 +43,6 @@ class Navbar extends Component {
         var engineName = localStorage.getItem('engineTypo')
         var engineSettings = {}
         var defaultEngines = ['google', 'bing', 'duck', 'startPage']
-        var selectedTypo = () => {
-            for(var i = 0; i < returnEngines().length; i++){
-                
-            }
-        }
 
         if(defaultEngines.includes(engineName)){
             switch (engineName) {
@@ -87,6 +79,15 @@ class Navbar extends Component {
                         color: '#6573ff',
                         image: Startpage,
                         url: "https://www.startpage.com/do/dsearch?cat=web&pl=opensearch&query=%s%&language=english"
+                    }
+                    break;
+
+                default:
+                    engineSettings = {
+                        name: 'Google',
+                        color: '#4285F4',
+                        image: Google,
+                        url: "https://www.google.com/search?q=%s%"
                     }
                     break;
             }

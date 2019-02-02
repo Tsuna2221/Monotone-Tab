@@ -45,11 +45,14 @@ class SettingsModal extends Component {
         var range = document.querySelector(".column-range")
         range.value = localStorage.getItem('noOfColumns')
         
-        if(localStorage.getItem('engineTypo') && localStorage.getItem('engineTypo')){
+        if(localStorage.getItem('engineTypo')){
             document.getElementsByName(localStorage.getItem('engineTypo'))[0].setAttribute('selected', '1')
-            document.getElementsByName(localStorage.getItem('formatTypo'))[0].setAttribute('selected', '1')
         }
         
+        if(localStorage.getItem('formatTypo')){
+            document.getElementsByName(localStorage.getItem('formatTypo'))[0].setAttribute('selected', '1')
+        }
+
         document.addEventListener("click", e => {
             var els = {
                 prefix: 'Settings-Inactive',

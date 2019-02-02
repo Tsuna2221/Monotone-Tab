@@ -12,7 +12,6 @@ import SettingsModal from './components/Modals/SidebarModals/Settings'
 import EngineModal from './components/Modals/EngineModal'
 
 //Actions
-import { setCustomTheme } from './actions/general'
 import { returnTheme } from './actions/storageActions'
 
 class App extends Component {
@@ -46,8 +45,6 @@ class App extends Component {
 	exec = func => func('default')
 
 	componentDidMount = () => {
-		if(localStorage.getItem('theme') === 'custom'){setCustomTheme()}
-
 		var bg = document.querySelector('.t-dtc')
 		firebase.auth().onAuthStateChanged((user) => {
 			if (user){
