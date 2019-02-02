@@ -54,7 +54,7 @@ class NewFolder extends Component {
         }
     }
 
-    modalColors = () => <SketchPicker className='folder-new-sketch' color='#fff' onChangeComplete = { this.handleColor }/>
+    modalColors = () => <SketchPicker className={returnTheme() + '-t-modal folder-new-sketch'}  color='#fff' onChangeComplete = { this.handleColor }/>
 
     handleColor = (color) => {document.querySelector(".new-folder-color").value = color.hex; this.setState({color: color.hex})}
 

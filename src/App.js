@@ -9,6 +9,7 @@ import FirstStart from './components/FirstStart'
 //Modals
 import AccountModal from './components/Modals/AccountModal'
 import SettingsModal from './components/Modals/SidebarModals/Settings'
+import EngineModal from './components/Modals/EngineModal'
 
 //Actions
 import { setCustomTheme } from './actions/general'
@@ -26,6 +27,7 @@ class App extends Component {
 
 				{/* Modals */}
 				<AccountModal isLogged={this.state.isLogged} currentPerson={this.state.currentPerson} />
+				<EngineModal/>
 
 				{/* Sidebar Modals */}
 				<SettingsModal setSelection={this.setSelection} setEngine={this.setEngine} updateState={this.updateState}/>	

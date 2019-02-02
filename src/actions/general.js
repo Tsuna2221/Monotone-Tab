@@ -54,10 +54,19 @@ const setCustomTheme = () => {
     })
 }
 
+const randomColor = () => {
+    var color = "#"
+    var digit = ["a", "b", "c", "d", "e", "f", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    for(var i = 0; i < 6; i++){
+      color += digit[Math.floor(Math.random() * (digit.length - 0) + 0)]
+    }
+    return color
+}
+
 // $("[class*='custom']").each((i, el) => {
 //     if(document.querySelector(".custom-t-body-bg")){
 //         el.style.backgroundColor = localStorage.getItem('t-background')
 //     }
 // })
 
-export {randString, hideModal, setCustomTheme}
+export {randString, hideModal, setCustomTheme, randomColor}

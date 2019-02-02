@@ -60,7 +60,7 @@ class QuickLinkModal extends Component {
 
     drawFolderOptions = () => returnFolders().map(folder => <option key={folder.id} value={folder.id}>{folder.name}</option>)
 
-    modalColors = () => <SketchPicker className="new-sketch" color={this.state.newItemColor} onChangeComplete={ this.handleColor }/>
+    modalColors = () => <SketchPicker className={returnTheme() + '-t-modal new-sketch'} color={this.state.newItemColor} onChangeComplete={ this.handleColor }/>
     // eslint-disable-next-line
     handleColor = (color) => (document.querySelector('.input-color').value = color.hex, this.setState({newItemColor: color.hex}))
 
@@ -95,7 +95,7 @@ class QuickLinkModal extends Component {
                 id: 'item' + (lastNumberInt + 1)
             }
 
-            window.localStorage.setItem('item' + (lastNumberInt + 1), JSON.stringify(obj))
+            localStorage.setItem('item' + (lastNumberInt + 1), JSON.stringify(obj))
 
             //Hide modal
             modal.classList.toggle('modal-active')

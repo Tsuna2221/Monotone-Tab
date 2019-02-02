@@ -12,9 +12,10 @@ class ComponentName extends Component {
                     
                     <div className="remove-btns flex-w">
                         <select onChange={this.setTheme} className="select-w">
-                            <option name='light' value="light">Light</option>
-                            <option name='dark' value="dark">Dark</option>
-                            <option name='custom' value="custom">Custom</option>
+                            <option name='light' value="light">Light (Shadow Blue)</option>
+                            <option name='light2' value="light2">Light (Bright Purple)</option>
+                            <option name='dark' value="dark">Dark (Brilliant Violet)</option>
+                            <option name='dark2' value="dark2">Dark (Cobalt Blue)</option>
                         </select>
                     </div>
                 </div>

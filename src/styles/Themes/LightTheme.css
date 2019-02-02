@@ -1,3 +1,36 @@
+.null-t-background, .null-t-button-w:hover, .null-t-btn-w:hover{
+    background-color: #3d405d;
+}
+
+.null-t-body-bg{
+    background-color: #e6e6e6;
+}
+
+.null-t-modal{
+    background-color: #f3f3f3 !important;
+}
+
+.null-t-expand{
+	background-color: #cecece;
+}
+
+.null-t-text-w{
+	color: #3d405d;
+}
+
+.null-t-button-w{
+	border: 1px solid #3d405d;
+	color: #3d405d;
+}
+
+.null-t-button-w:hover{
+	color: #fff;
+}
+
+.null-t-btn-w{
+	color: #3d405d;
+} 
+
 .light-t-background, .light-t-button-w:hover, .light-t-btn-w:hover{
     background-color: #3d405d;
 }
@@ -7,7 +40,7 @@
 }
 
 .light-t-modal{
-    background-color: #f3f3f3;
+    background-color: #f3f3f3 !important;
 }
 
 .light-t-expand{

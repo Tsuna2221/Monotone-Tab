@@ -57,7 +57,8 @@
 }
 
 .input-w > input{
-	width: 230px;
+	min-width: 230px;
+	width: -webkit-fill-available;
 	height: 33px;
 	background-color: #ececec;
     border: 1px solid #b2b2b200;

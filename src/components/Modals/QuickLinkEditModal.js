@@ -57,7 +57,7 @@ class QuickLinkEdit extends Component {
     
     }
 
-    modalColors = () => <SketchPicker color='#fff' onChangeComplete = { this.handleColor }/>
+    modalColors = () => <SketchPicker className={returnTheme() + '-t-modal'} color='#fff' onChangeComplete = { this.handleColor }/>
 
     showColors = () => { document.querySelector('.sketch-picker').style.display = 'block' }
 

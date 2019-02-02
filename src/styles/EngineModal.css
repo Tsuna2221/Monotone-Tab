@@ -1,0 +1,42 @@
+.engine-modal{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    z-index: 200;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+	background-color: #5d5d5dc2;
+	transition: .1s ease;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.engine-modal-active{
+	opacity: 1;
+	pointer-events: inherit;
+}
+
+.engine-entry{
+	padding-top: 0 !important;
+}
+
+.engine-entry-container {
+    background-color: #ececec;
+    height: 200px;
+	width: 400px;
+	overflow-y: scroll;
+}
+
+.engine-item{
+	display: flex;
+    color: #3D405D;
+	font-weight: 300;
+	font-size: 14px;
+	padding: 7px 13px;
+}
+
+.engine-item-name{
+	width: 115px;
+}

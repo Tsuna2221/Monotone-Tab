@@ -56,8 +56,38 @@ const returnLastLink = () => {
     return {items, highestValues}
 }
 
+const returnEngines = () => {
+    var items = [];
+
+    for(var data in localStorage){
+        if(data.includes('sEngine')){
+            if(localStorage.getItem(data) && JSON.parse(localStorage.getItem(data)).name){
+                items.push(JSON.parse(localStorage.getItem(data)))
+            }
+        }
+    }
+
+    return items
+}
+
+const returnLastEngine = () => {
+    var items = []
+    var highestValues = [];
+
+    for(var data in localStorage){
+        if(data.includes('sEngine')){
+            if(localStorage.getItem(data) !== null){
+                items.push(JSON.parse(localStorage.getItem(data)))
+                highestValues.push(parseInt(data.replace('sEngine', '')))
+            }
+        }
+    }
+
+    return highestValues[highestValues.length - 1]
+}
+
 const returnTheme = () => localStorage.getItem('theme')
 
 const setTheme = (name) => localStorage.setItem('theme', name)
 
-export {returnFolders, returnLinks, returnLastLink, returnLastFolder, returnTheme, setTheme }
+export {returnFolders, returnLinks, returnLastLink, returnLastFolder, returnTheme, setTheme, returnEngines, returnLastEngine}

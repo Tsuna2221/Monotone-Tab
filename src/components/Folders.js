@@ -34,12 +34,12 @@ class Folders extends Component {
                         {this.drawFolders()}
 
                         <div className="folder-container">
-                            <div data-id="new-folder" onClick={this.toggleModal} className="folder-item empty-folder">
+                            <div data-id="new-folder" onClick={this.toggleModal} className={"folder-item empty-folder "+ returnTheme() + "-link-w"}>
                                 <div className="folder-let folder-empty-let">
                                     <span className="folder-let-ind">+</span>
                                 </div>
 
-                                <span className="folder-name folder-empty-name">New Folder</span>
+                                <span className={"folder-name folder-empty-name" + returnTheme() + '-link-text-w'}>New Folder</span>
                             </div>
                         </div>
                     </div>
