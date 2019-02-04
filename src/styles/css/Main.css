@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i");
+.sketch-picker {
+  width: 275px !important;
+  background: none !important;
+  border: none;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  position: absolute !important;
+  transform: translate(87%, -25px) !important;
+  background-color: #f3f3f3 !important;
+  padding: 27px 20px !important;
+  display: none; }
+
+.sketch-picker-true {
+  display: block; }
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; }
+
+* {
+  font-family: 'Roboto', sans-serif; }
+
+.modal-active {
+  display: flex !important;
+  opacity: 1 !important;
+  pointer-events: initial !important; }

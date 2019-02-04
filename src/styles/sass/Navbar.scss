@@ -1,0 +1,77 @@
+@import 'Mixins';
+
+.navbar-container{
+	@include displayAlign(hor);
+	@include size(100%, 66px);
+	@include position(fixed, 0, '', '', '');
+	background-color: #3d405d;
+	z-index: 200;
+	
+	.search-bar-container{
+		@include position(absolute, '', '', '', 50%);
+		transform: translateX(-50%);
+				
+		.search-form{
+			@include displayAlign(hor);
+				
+			.search-input{
+				@include size(0vmin, 31px);
+				transition: width .5s ease;
+				border-radius: 50px;
+				border: 3px solid;
+				outline: none;
+				padding-left: 40px;
+				background-size: 21px;
+				background-position: 9px;
+				background-repeat: no-repeat;
+			}
+						
+			.search-input:focus{
+				width: 45vmin;
+			}
+
+			.search-input::placeholder{
+				font-style: italic;
+				color: #CFCFCF;
+			}
+		}
+	}
+
+		
+	.content-container{
+		@include displayAlign(hor);
+		@include size(100%, 100%);
+		justify-content: flex-end;
+
+		.con-date{
+			@include displayAlign(hor);
+		}
+
+		.con-time, .con-login{
+			@include font(13px, 500);
+			color: #F8F8F8;
+		}
+
+		.con-login{
+			margin-left: 30px;
+			cursor: pointer;
+		}
+				
+		.con-login:hover{
+			text-decoration: underline;
+		}
+
+		.con-menu{
+			height: 25%;
+			margin: 0 30px;
+			cursor: pointer;
+		}
+	}
+}
+
+
+
+
+
+
+

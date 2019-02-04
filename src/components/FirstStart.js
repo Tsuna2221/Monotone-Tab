@@ -2,63 +2,24 @@ import React, { Component } from 'react';
 import { validateStartForm } from '../actions/formValidator'
 import { createNewPerson } from '../actions/fbQuery'
 
-
-
 class FirstStart extends Component {
     render() {
         this.hideText()
         return (
             <div id='FirstStart'>
-                <div className="welcome no2">
-                    <div id="text">
-                        <h1 className="welcome-text">Welcome to Monotone!</h1>
-                    </div>
+                <div className="welcome">
+                    <h1 className="main-text absolute">Welcome to Monotone!</h1>
 
                     <div className="form-signup-container">
-                        <form name="signup">
-                            <h1>Sign Up</h1>
-                            <h2 className="net-ce">To optimize your experience and use specific <br/> functionalities, please, consider signing up.</h2>
+                        <form className="signup-form" name="signup">
+                            <h1 className="main-text">Sign Up</h1>
+                            <h2 className="secondary-text">To optimize your experience and use specific <br/> functionalities, please, consider signing up.</h2>
                             
-                            <div className="sign-label signup-name">
-                                <label className="signup-label" htmlFor="name">User Name</label>
-                                <div className="signup-input sign-name">
-                                    <input onChange={this.handleInput} autoComplete="off" spellCheck="false" id="signup-name" name="name" type="text" required/>
-                                    <div className="sign-input-border"></div>
-                                </div>
-                            </div>
-
-                            <div className="sign-label signup-email">
-                                <label className="signup-label" htmlFor="email">Email</label>
-                                <div className="signup-input sign-name">
-                                    <input onChange={this.handleInput} autoComplete="off" spellCheck="false" id="signup-email" name="email" type="email" required/>
-                                    <div className="sign-input-border"></div>
-                                </div>
-                            </div>  
-
-                            <div className="sign-label signup-password">
-                                <label className="signup-label" htmlFor="password">Password</label>
-                                <div className="signup-input sign-name">
-                                    <input onChange={this.handleInput} autoComplete="off" spellCheck="false" id="signup-password" name="password" type="password" required/>
-                                    <div className="sign-input-border"></div>
-                                </div>
-                            </div>
-
-                            <div className="sign-label signup-confirm-password">
-                                <label className="signup-label" htmlFor="confirm-password">Confirm Password</label>  
-                                <div className="signup-input sign-name">
-                                    <input onChange={this.handleInput} autoComplete="off" spellCheck="false" id="signup-confirm" name="confirm" type="password" required/>   
-                                    <div className="sign-input-border"></div>
-                                </div>
-                            </div>
+                            {this.drawFields()}
 
                             <div className="signup-buttons">
-                                <div onClick={this.hideStart} className="sign-guest-btn sign-btn">
-                                    <p>Enter as Guest</p>
-                                </div>
-
-                                <div onClick={this.storePerson} className="sign-confirm-btn sign-btn">
-                                    <p>Sign Up</p>
-                                </div>
+                                <div onClick={this.hideStart} className="sign-guest-btn sign-btn">Enter as Guest</div>
+                                <div onClick={this.storePerson} className="sign-confirm-btn sign-btn">Sign Up</div>
                             </div>
                         </form>
                     </div>
@@ -71,13 +32,35 @@ class FirstStart extends Component {
 
     }
 
+    drawFields = () => {
+        var fields = [
+            {name: 'name', label: 'User Name', type: 'text'},
+            {name: 'email', label: 'Email', type: 'email'},
+            {name: 'password', label: 'Password', type: 'password'},
+            {name: 'confirm', label: 'Confirm Password', type: 'password'}
+        ]
+
+        return fields.map(field => {
+            var { name, label, type } = field
+
+            return (
+                <div key={name} className="signup-field">
+                    <label className="signup-label">{label}</label>
+                    <div className="signup-input">
+                        <input onChange={this.handleInput} autoComplete="off" spellCheck="false" id={`signup-${name}`} name={name} type={type} required/>
+                    </div>
+                </div>
+            )
+        })
+    }
+
     handleInput = (e) => this.setState({[e.target.name]: e.target.value})
 
     storePerson = () => validateStartForm(this.state) ? (createNewPerson(this.state.name, this.state.email.toLowerCase(), this.state.password), this.hideStart()) : null
 
     hideText = () => {
         setTimeout(() => {
-            var text = document.querySelector('.welcome-text');
+            var text = document.querySelector('.main-text');
             var form = document.querySelector('.form-signup-container') 
 
             form.style.display = 'flex'

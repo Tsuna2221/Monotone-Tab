@@ -1,0 +1,43 @@
+.Settings {
+  position: fixed;
+  top: 66px;
+  right: 0;
+  bottom: "";
+  left: "";
+  overflow: hidden;
+  background-color: #FAF9FF;
+  transition: .4s ease;
+  z-index: 1; }
+
+.Settings-Inactive {
+  right: -300px; }
+
+.app-prompt {
+  position: fixed;
+  top: "";
+  right: "";
+  bottom: 10px;
+  left: 50%;
+  width: 300px;
+  transform: translateX(-50%);
+  background-color: #FAF9FF;
+  transition: .18s ease; }
+
+.app-prompt-inactive {
+  opacity: 0;
+  pointer-events: none; }
+
+.theme-btn {
+  position: absolute;
+  top: "";
+  right: 25px;
+  bottom: "";
+  left: "";
+  cursor: pointer; }
+
+.main-menu-container {
+  overflow-y: scroll;
+  height: calc(100vh - 92px); }
+
+.section {
+  width: 235px; }

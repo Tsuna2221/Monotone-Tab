@@ -30,7 +30,7 @@ class QuickLinkModal extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className=".btn-container-w">
+                    <div className="btn-container-w">
                         <div onClick={this.storeEngine} className={"btn-w "+ returnTheme() + "-t-btn-w f-w"}>Add Search Engine</div>
                     </div>
 
@@ -41,7 +41,7 @@ class QuickLinkModal extends Component {
                             {this.drawEngines()}
                         </div>
                     </div>
-                    <div className=".btn-container-w">
+                    <div className="btn-container-w">
                         <div onClick={() => window.location.reload()} className={"btn-w "+ returnTheme() + "-t-btn-w f-w"}>Done</div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ class QuickLinkModal extends Component {
     drawEngines = () => {
         return this.state.engines.map(engine => {
             return (
-                <div className="engine-item">
+                <div key={engine.id} className="engine-item">
                     <div className="engine-item-name"><p>{engine.name}</p></div>
                     <div className="engine-item-url"><p>{engine.url}</p></div>
                     <div className="engine-item-delete"><img onClick={() => this.removeEngine(engine.id)} src={Trash} alt=""/></div>

@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
+@import 'Mixins';
+
 .sketch-picker{
     width: 275px !important;
     background: none !important;
@@ -19,7 +21,6 @@
 body{
   	margin: 0;
 	padding: 0;
-	background-color: #e6e6e6;
 	overflow-x: hidden;
 }
 

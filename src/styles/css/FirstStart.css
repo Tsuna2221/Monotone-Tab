@@ -1,0 +1,78 @@
+#FirstStart {
+  position: fixed;
+  top: 0;
+  right: "";
+  bottom: "";
+  left: "";
+  z-index: 1100;
+  transition: .85s ease;
+  opacity: 1; }
+  #FirstStart * {
+    user-select: none; }
+  #FirstStart .welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0078D7;
+    display: flex;
+    flex-direction: column; }
+    #FirstStart .welcome .absolute {
+      position: absolute; }
+    #FirstStart .welcome .main-text {
+      font-size: 40px;
+      font-weight: 200;
+      text-align: center;
+      transition: 1s ease;
+      opacity: 1;
+      margin: 0;
+      color: #fff; }
+    #FirstStart .welcome .form-signup-container {
+      display: none;
+      transition: 1s ease;
+      opacity: 0; }
+      #FirstStart .welcome .form-signup-container .signup-form .secondary-text {
+        font-size: 15px;
+        font-weight: 200;
+        margin: 10px 0;
+        color: #fff; }
+      #FirstStart .welcome .form-signup-container .signup-form .signup-field {
+        margin: 15px 0; }
+        #FirstStart .welcome .form-signup-container .signup-form .signup-field .signup-label {
+          font-size: 15px;
+          font-weight: 200;
+          color: #fff; }
+        #FirstStart .welcome .form-signup-container .signup-form .signup-field .signup-input {
+          position: relative;
+          margin-top: 3px; }
+          #FirstStart .welcome .form-signup-container .signup-form .signup-field .signup-input input {
+            width: -webkit-fill-available;
+            height: 33px;
+            border: none;
+            outline: none;
+            transition: .2s ease;
+            width: -moz-available;
+            background-color: #ffffff42;
+            color: #fff;
+            padding: 0 10px; }
+          #FirstStart .welcome .form-signup-container .signup-form .signup-field .signup-input input:focus {
+            background-color: #fff;
+            color: #000; }
+      #FirstStart .welcome .form-signup-container .signup-form .signup-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 25px; }
+        #FirstStart .welcome .form-signup-container .signup-form .signup-buttons .sign-btn {
+          font-size: 13px;
+          font-weight: 500;
+          cursor: pointer;
+          width: fit-content;
+          text-align: center;
+          border: 2px solid;
+          padding: 12px 25px;
+          border-color: #fff;
+          color: #fff; }
+        #FirstStart .welcome .form-signup-container .signup-form .signup-buttons .sign-confirm-btn {
+          background-color: #fff;
+          color: #0078D7; }

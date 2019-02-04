@@ -1,3 +1,5 @@
+@import 'Mixins';
+
 /*Sections*/
 
 .flex-w{
@@ -14,19 +16,14 @@
 	padding: 25px 25px 1px 25px;
 }
 
-.modal-g{
+.modal-g, .modal{
 	z-index: 100;
-}
-
-.modal{
-    z-index: 100;
 }
 
 /*Texts*/
 
 .head-w, .label-w, .section-w{
 	font-weight: 200;
-	color: #3D405D;
 }
 
 .section-w {
@@ -44,7 +41,6 @@
 }
 
 .text-w {
-    color: #3D405D;
     font-weight: 300;
 }
 
@@ -57,9 +53,8 @@
 }
 
 .input-w > input{
+	@include size(-webkit-fill-available, 33px);
 	min-width: 230px;
-	width: -webkit-fill-available;
-	height: 33px;
 	background-color: #ececec;
     border: 1px solid #b2b2b200;
 	outline: none;
@@ -79,32 +74,8 @@
 }
 
 .input-w > input::placeholder{
+	@include font(14px, 200);
 	color: #B2B2B2;
-	font-size: 14px;
-	font-weight: 200;
-}
-
-.input-area-w > textarea{
-    width: 230px;
-    height: 16px;
-    background-color: #ececec;
-    border: 1px solid #b2b2b200;
-    outline: none;
-    padding: 10px;
-    color: #3D405D;
-    transition: .4s ease;
-	font-weight: 300;
-	resize: none;
-}
-
-.input-a175 > textarea{
-	width: 175px;
-}
-
-.input-area-w > textarea:focus{
-	height: 100px;
-	background-color: #fff;
-	border: 1px solid #3D405D;
 }
 
 .range-w > input{
@@ -112,8 +83,7 @@
 }
 
 .select-w{
-    width: 100%;
-    height: 33px;
+	@include size(100%, 33px);
     background-color: #ececec;
     border: 1px solid #b2b2b200;
     outline: none;
@@ -137,11 +107,10 @@ option{
 /*Buttons*/
 
 .button-w{
+	@include font(13px, 300);
 	cursor: pointer;
-	border: 1px solid #3D405D;
+	border: 1px solid;
     padding: 10px 18px;
-    font-weight: 300;
-    font-size: 13px;
 	color: #3D405D;
 	user-select: none;
 	transition: .2s ease;
@@ -150,27 +119,12 @@ option{
 	text-decoration: none;
 }
 
-.button-w:hover{
-	color: #fff;
-	background-color: #3D405D;
-}
-
 .btn-w{
-	height: 67px;
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	@include size(50%, 67px);
+	@include displayAlign(center);
+	@include font(14px, 300);
     transition: .35s ease;
-    font-size: 14px;
-    font-weight: 300;
-	color: #3d405d;
 	cursor: pointer;
-}
-
-.btn-w:hover{
-    color: #f8f8f8;
-    background-color: #3d405d;
 }
 
 .f-w{
@@ -183,5 +137,5 @@ option{
 
 
 .folder-option-btn{
-	margin: 8px 2px;
+	margin: 8px 4px  !important;
 }

@@ -1,0 +1,60 @@
+.navbar-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 66px;
+  position: fixed;
+  top: 0;
+  right: "";
+  bottom: "";
+  left: "";
+  background-color: #3d405d;
+  z-index: 200; }
+  .navbar-container .search-bar-container {
+    position: absolute;
+    top: "";
+    right: "";
+    bottom: "";
+    left: 50%;
+    transform: translateX(-50%); }
+    .navbar-container .search-bar-container .search-form {
+      display: flex;
+      align-items: center; }
+      .navbar-container .search-bar-container .search-form .search-input {
+        width: 0vmin;
+        height: 31px;
+        transition: width .5s ease;
+        border-radius: 50px;
+        border: 3px solid;
+        outline: none;
+        padding-left: 40px;
+        background-size: 21px;
+        background-position: 9px;
+        background-repeat: no-repeat; }
+      .navbar-container .search-bar-container .search-form .search-input:focus {
+        width: 45vmin; }
+      .navbar-container .search-bar-container .search-form .search-input::placeholder {
+        font-style: italic;
+        color: #CFCFCF; }
+  .navbar-container .content-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    justify-content: flex-end; }
+    .navbar-container .content-container .con-date {
+      display: flex;
+      align-items: center; }
+    .navbar-container .content-container .con-time, .navbar-container .content-container .con-login {
+      font-size: 13px;
+      font-weight: 500;
+      color: #F8F8F8; }
+    .navbar-container .content-container .con-login {
+      margin-left: 30px;
+      cursor: pointer; }
+    .navbar-container .content-container .con-login:hover {
+      text-decoration: underline; }
+    .navbar-container .content-container .con-menu {
+      height: 25%;
+      margin: 0 30px;
+      cursor: pointer; }

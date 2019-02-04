@@ -1,9 +1,8 @@
+@import 'Mixins';
+
 .Settings{
-    position: fixed;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    top: 66px;
-    right: 0;
+    @include position(fixed, 66px, 0, '', '');
+    overflow: hidden;
     background-color: #FAF9FF;
     transition: .4s ease;
     z-index: 1;
@@ -14,10 +13,8 @@
 }
 
 .app-prompt{
-    position: fixed;
+    @include position(fixed, '', '', 10px, 50%);
     width: 300px;
-    left: 50%;
-    bottom: 10px;
     transform: translateX(-50%);
     background-color: #FAF9FF;
     transition: .18s ease;
@@ -29,9 +26,8 @@
 }
 
 .theme-btn{
+    @include position(absolute, '', 25px,'','');
     cursor: pointer;
-    position: absolute;
-    right: 25px;
 }
 
 .main-menu-container{

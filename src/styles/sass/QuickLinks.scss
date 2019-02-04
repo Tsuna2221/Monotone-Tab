@@ -1,0 +1,92 @@
+@import 'Mixins';
+
+#QuickLinks{
+	margin-top: 80px;
+
+	#quick-main-container{
+		width: fit-content;
+		margin: 20px auto 0 auto;
+
+		.quick-label{
+			font-weight: 300;
+			color: #545454;
+		}
+		.folder-label{
+			margin-top: 5px;
+		}
+
+				
+		.quick-container{
+			display: grid;
+			margin: 10px auto;
+			user-select: none;
+						
+			.quick-item-container{
+				position: relative;
+				width: 245px;
+								
+				.quick-item{
+					position: relative;
+					text-decoration: none;
+					margin: 1px;
+					transition: .25s ease;
+					padding-bottom: 20px;
+					display: flex;
+					cursor: pointer;
+					flex-direction: column;
+					position: relative;
+										
+					.item-let{
+						@include size(68px, 68px);
+						@include displayAlign(center);
+						margin: 20px auto 5px auto;
+						text-align: center;
+						background-color: #ffffff80;
+						border-radius: 50px;
+
+						.let-ind{
+							@include font(30px, bold);
+							color: #FFF;
+						}
+					}
+
+					
+					.item-name{
+						@include font(14px, 600);
+						color: #E6E6E6;
+						text-align: center;
+						margin-top: 6px;
+					}
+
+					.empty-name{
+						text-align: center;
+					}
+
+					.empty-let{
+						background-color: #74747471;
+					}
+				}					
+			}
+		}
+	}
+}
+
+.quick-item-container:hover > .item-option-btn, .folder-container:hover > .item-option-btn{
+	opacity: 1;
+}
+
+.item-selection-btn{
+	opacity: 1 !important;
+	width: 15px !important;
+}
+
+.item-option-btn, .item-selection-btn{
+	@include position(absolute, 0, 0, '', '');
+	width: 4px;
+	transition: opacity .4s ease;
+	opacity: 0;
+    padding: 5px 13px;
+	margin: 13px 8px;
+	border-radius: 60px;
+	cursor: pointer;
+}

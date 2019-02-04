@@ -75,7 +75,7 @@ class SettingsSection extends Component {
 
     drawEngines = () => {
         return returnEngines().map(engine => {
-            return (<option name={engine.id} value={engine.id}>{engine.name}</option>)
+            return (<option key={engine.id} name={engine.id} value={engine.id}>{engine.name}</option>)
         })
     }
 

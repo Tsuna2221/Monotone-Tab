@@ -1,0 +1,57 @@
+.engine-modal {
+  position: fixed;
+  top: 0;
+  right: "";
+  bottom: "";
+  left: "";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 200;
+  background-color: #5d5d5dc2;
+  transition: .1s ease;
+  opacity: 0;
+  pointer-events: none; }
+
+.engine-modal-active {
+  opacity: 1;
+  pointer-events: inherit; }
+
+.engine-entry {
+  padding-top: 0 !important; }
+
+.engine-entry-container {
+  width: 400px;
+  height: 200px;
+  background-color: #ececec;
+  overflow-y: scroll; }
+
+.engine-item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 300;
+  color: #3D405D;
+  padding: 7px 13px;
+  border-top: 1px solid #d0d1e0;
+  position: relative; }
+
+.engine-item:nth-child(1) {
+  border-top: none; }
+
+.engine-item-url {
+  max-width: 215px; }
+
+.engine-item-delete {
+  position: absolute;
+  top: "";
+  right: 3px;
+  bottom: "";
+  left: "";
+  padding: 9px;
+  cursor: pointer; }
+
+.engine-item-name {
+  min-width: 115px; }

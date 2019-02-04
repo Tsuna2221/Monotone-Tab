@@ -1,10 +1,8 @@
-:root{
-	--dark22-white-text: #d4d4d4;
-	--dark22-blue: rgb(7, 85, 202);
-}
+$dark2-white-text: #d4d4d4;
+$dark2-blue: rgb(7, 85, 202);
 
 .dark2-t-background, .dark2-t-button-w:hover, .dark2-t-btn-w:hover{
-    background-color: var(--dark22-blue);
+    background-color: $dark2-blue;
 }
 
 .dark2-t-body-bg{
@@ -20,12 +18,12 @@
 }
 
 .dark2-t-text-w{
-	color: var(--dark22-white-text);
+	color: $dark2-white-text !important;
 }
 
 .dark2-t-button-w{
-	border: 1px solid var(--dark22-blue);
-	color: var(--dark22-white-text);
+	border: 1px solid $dark2-blue;
+	color: $dark2-white-text;
 }
 
 .dark2-t-button-w:hover{
@@ -33,7 +31,7 @@
 }
 
 .dark2-t-btn-w{
-	color: var(--dark22-white-text);
+	color: $dark2-white-text;
 }
 
 .dark2-link-w{

@@ -39,7 +39,7 @@ class Folders extends Component {
                                     <span className="folder-let-ind">+</span>
                                 </div>
 
-                                <span className={"folder-name folder-empty-name" + returnTheme() + '-link-text-w'}>New Folder</span>
+                                <span className={"folder-name folder-empty-name " + returnTheme() + '-link-text-w'}>New Folder</span>
                             </div>
                         </div>
                     </div>

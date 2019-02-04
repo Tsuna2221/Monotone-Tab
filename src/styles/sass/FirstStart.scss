@@ -1,0 +1,100 @@
+@import 'Mixins';
+
+#FirstStart{
+    @include position(fixed, 0,'', '', '');
+    z-index: 1100;
+    transition: .85s ease;
+    opacity: 1;
+
+    *{
+        user-select: none;
+    }
+
+    .welcome{
+        @include displayAlign(center);
+        @include size(100vw, 100vh);
+        background-color: #0078D7;
+        display: flex;
+        flex-direction: column;
+        
+        .absolute{
+            position: absolute;
+        }
+
+        .main-text{
+            @include font(40px, 200);
+            text-align: center;
+            transition: 1s ease;
+            opacity: 1;
+            margin: 0;
+            color: #fff;
+        }
+
+        .form-signup-container{
+            display: none;
+            transition: 1s ease;
+            opacity: 0;
+
+            .signup-form{
+
+                .secondary-text{
+                    @include font(15px, 200);
+                    margin: 10px 0;
+                    color: #fff;
+                }
+
+                .signup-field{
+                    margin: 15px 0;
+
+                    .signup-label{
+                        @include font(15px, 200);
+                        color: #fff;
+                    }
+                    
+                    .signup-input{
+                        position: relative;
+                        margin-top: 3px;
+                    
+                        input{
+                            @include size(-webkit-fill-available, 33px);
+                            @include borderline(none);
+                            transition: .2s ease;
+                            width: -moz-available;
+                            background-color: #ffffff42;
+                            color: #fff;
+                            padding: 0 10px;
+                        }
+                    
+                        input:focus{
+                            background-color: #fff;
+                            color: #000;
+                        }
+                    }                    
+                }
+
+                .signup-buttons{
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 25px;
+                
+                    .sign-btn{
+                        @include font(13px, 500);
+                        cursor: pointer;
+                        width: fit-content;
+                        text-align: center;
+                        border: 2px solid;
+                        padding: 12px 25px;
+                        border-color: #fff;
+                        color: #fff;
+                    }
+                
+                    .sign-confirm-btn{
+                        background-color: #fff;
+                        color: #0078D7;
+                    }
+                }
+                
+            }
+        }
+    }
+}

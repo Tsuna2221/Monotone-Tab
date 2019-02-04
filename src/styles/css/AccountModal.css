@@ -1,0 +1,14 @@
+.AccountModal {
+  position: absolute;
+  top: 66px;
+  right: 85px;
+  bottom: "";
+  left: "";
+  z-index: 1;
+  background-color: #faf9ff;
+  transition: .1s ease;
+  opacity: 1; }
+
+.account-modal-inactive {
+  opacity: 0;
+  pointer-events: none; }

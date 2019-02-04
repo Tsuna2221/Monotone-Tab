@@ -1,10 +1,8 @@
-:root{
-	--dark-white-text: #d4d4d4;
-	--dark-blue: rgb(73, 27, 158);
-}
+$dark-white-text: #d4d4d4;
+$dark-blue: rgb(73, 27, 158);
 
 .dark-t-background, .dark-t-button-w:hover, .dark-t-btn-w:hover{
-    background-color: var(--dark-blue);
+    background-color: $dark-blue;
 }
 
 .dark-t-body-bg{
@@ -20,12 +18,12 @@
 }
 
 .dark-t-text-w{
-	color: var(--dark-white-text);
+	color: $dark-white-text !important;
 }
 
 .dark-t-button-w{
-	border: 1px solid var(--dark-blue);
-	color: var(--dark-white-text);
+	border: 1px solid $dark-blue;
+	color: $dark-white-text;
 }
 
 .dark-t-button-w:hover{
@@ -33,7 +31,7 @@
 }
 
 .dark-t-btn-w{
-	color: var(--dark-white-text);
+	color: $dark-white-text;
 }
 
 .dark-link-w{

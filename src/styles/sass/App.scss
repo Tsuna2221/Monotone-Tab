@@ -1,25 +1,15 @@
-.side-modal{
-    position: absolute;
-    transform: translateX(-85px);
-    z-index: 1000;
-    right: 0;
-    bottom: 0px;
-    background-color: #FAF9FF;
-}
+@import 'Mixins';
 
 .transition-bg{
-    position: fixed;
-    bottom: 0;
-    width: 100vw;
-    height: 0vh;
+    @include position(fixed, '', '', 0, '');
+    @include size(100vw, 0vh);
     background-color: #fff;
     transition: .4s ease;
     z-index: 999999;
 }
 
 ::-webkit-scrollbar {
-    width: 6px;
-    height: 3px;
+    @include size(6px, 3px);
 }
 
 ::-webkit-scrollbar-track {

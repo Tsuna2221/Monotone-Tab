@@ -1,0 +1,29 @@
+.new-item-modal, .edit-item-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: "";
+  bottom: "";
+  left: "";
+  z-index: 200;
+  background-color: #5d5d5dc2;
+  transition: .1s ease;
+  opacity: 0;
+  pointer-events: none; }
+
+.new-item-modal-content {
+  transition: .5s;
+  background-color: #f3f3f3; }
+
+.color-field {
+  margin: 3px 0; }
+
+.a-color-picker-row {
+  padding: 5px 15px; }
+
+.a-color-picker-row-top {
+  padding: 0px; }

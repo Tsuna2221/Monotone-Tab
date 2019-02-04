@@ -124,7 +124,7 @@ class Navbar extends Component {
     toggleModal = () => document.querySelector('.AccountModal').classList.toggle('account-modal-inactive')
     
     checkIfLogged = () => this.props.state.isLogged === true ? 
-    <p onClick={this.toggleModal} className="con-login">{'Hello, ' + this.props.state.currentPerson.displayName || this.props.state.currentPerson.email}</p> :
+    <p onClick={this.toggleModal} className="con-login">{'Hello, ' + (this.props.state.currentPerson.displayName || this.props.state.currentPerson.email)}</p> :
     <p onClick={this.toggleModal} className="con-login">Log In</p>
 }
 
