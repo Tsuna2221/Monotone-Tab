@@ -14,8 +14,7 @@
 		.folder-label{
 			margin-top: 5px;
 		}
-
-				
+	
 		.quick-container{
 			display: grid;
 			margin: 10px auto;
@@ -89,4 +88,31 @@
 	margin: 13px 8px;
 	border-radius: 60px;
 	cursor: pointer;
+}
+
+.folder-columns{
+	display: flex;
+	justify-content: space-between;
+	position: fixed;
+	pointer-events: none;
+	top: 66px;
+	width: 100vw;
+    height: calc(100vh - 66px);
+
+	&__item{
+		pointer-events: all;
+		width: 60px;
+		height: 100%;
+		background-color: #0000001a;
+		transition: .52s ease;
+
+		&--active{
+			cursor: pointer;
+		}
+
+		&:hover{
+			transition-delay: .6s;
+			background-color: #0000008c;
+		}
+	}
 }

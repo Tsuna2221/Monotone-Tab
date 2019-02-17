@@ -12,7 +12,7 @@ import OptionButton from "../assets/OptionButton.svg";
 import Cross from "../assets/Cross.svg";
 
 //Actions
-import { returnLinks, returnLastLink, returnTheme } from "../actions/storageActions"
+import { returnLinks, returnLastLink, returnTheme, returnFolders } from "../actions/storageActions"
 
 
 class QuickLinks extends Component {
@@ -44,6 +44,11 @@ class QuickLinks extends Component {
                         </div>
                     </Masonry>
                 </div>
+
+                <div className="folder-columns">
+                    <div data-index='0' onClick={this.moveToFolder} onMouseEnter={this.setClickableColumn} onMouseLeave={this.clearTimeoutClass} className="folder-columns__item"></div>
+                    <div data-index='1' onClick={this.moveToFolder} onMouseEnter={this.setClickableColumn} onMouseLeave={this.clearTimeoutClass} className="folder-columns__item"></div>
+                </div>
             </div>
         );
     }
@@ -56,6 +61,45 @@ class QuickLinks extends Component {
         this.props.exec(this.setCurrentFolder)
         if(localStorage.getItem('isFirstStart') === null){
             localStorage.setItem('noOfColumns', 4)
+        }
+    }
+
+    setClickableColumn = (e) => {
+        var index = e.target.dataset.index;
+        var timeout;
+
+        if(e.target === document.getElementsByClassName('folder-columns__item')[index]){
+            timeout = setTimeout(() => document.getElementsByClassName('folder-columns__item')[index].classList.add('folder-columns__item--active'), 520)
+        }
+
+        this.setState({timeout: timeout})
+    }
+
+
+    clearTimeoutClass = (e) => {
+        e.target.classList.remove('folder-columns__item--active')
+
+        clearTimeout(this.state.timeout)
+    }
+
+    moveToFolder = (e) => {
+        var index = parseInt(e.target.dataset.index);
+        var objIndex = returnFolders().findIndex(x => x.id === this.state.currentFolder)
+
+        if(e.target.className.includes('folder-columns__item--active')){
+            if(index === 0){
+                if(this.state.currentFolder !== 'default'){
+                    if(objIndex - 1 === -1){
+                        this.setCurrentFolder('default')
+                    }else{
+                        this.setCurrentFolder(returnFolders()[objIndex - 1].id)
+                    }
+                }
+            }else{
+                if(objIndex < returnFolders().length - 1){
+                    this.setCurrentFolder(returnFolders()[objIndex + 1].id)
+                }
+            }
         }
     }
 

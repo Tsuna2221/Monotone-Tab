@@ -1,5 +1,5 @@
 .AccountModal {
-  position: absolute;
+  position: fixed;
   top: 66px;
   right: 85px;
   bottom: "";

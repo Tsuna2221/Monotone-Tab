@@ -1,7 +1,7 @@
 @import 'Mixins';
 
 .AccountModal{
-    @include position(absolute, 66px, 85px, '', '');
+    @include position(fixed, 66px, 85px, '', '');
     z-index: 1;
     background-color: #faf9ff;
     transition: .1s ease;
